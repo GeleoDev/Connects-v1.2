@@ -19,6 +19,16 @@
 
     // Obtener ruta base para componentes
     function getComponentBasePath() {
+        // Detectar si estamos en GitHub Pages
+        if (window.location.hostname.includes('github.io')) {
+            // Extraer el nombre del repositorio de la URL
+            // Ejemplo: https://geleodev.github.io/Connects-v1.2/ -> Connects-v1.2
+            const pathParts = window.location.pathname.split('/').filter(p => p);
+            const repoName = pathParts[0] || 'Connects-v1.2'; // fallback por si acaso
+            return `/${repoName}/component`;
+        }
+
+        // Comportamiento normal para desarrollo local
         const depth = getPageDepth();
         if (depth === 0) {
             return './component';
@@ -32,7 +42,12 @@
         const basePath = getComponentBasePath();
         // Los archivos están en minúsculas: navbar.css, promobanner.css, footer.css
         const normalizedName = componentName.toLowerCase();
-        const cssPath = `${basePath}/${componentName}/${normalizedName}.css`;
+        let cssPath = `${basePath}/${componentName}/${normalizedName}.css`;
+
+        // Para GitHub Pages, usar URL absoluta completa
+        if (window.location.hostname.includes('github.io')) {
+            cssPath = `${window.location.origin}${cssPath}`;
+        }
 
         // Verificar si ya está cargado en el HTML
         const existingLink = document.querySelector(`link[href*="${componentName}/${normalizedName}.css"]`);
@@ -59,7 +74,12 @@
         const basePath = getComponentBasePath();
         // Los archivos están en minúsculas: navbar.js, promobanner.js, footer.js
         const normalizedName = componentName.toLowerCase();
-        const jsPath = `${basePath}/${componentName}/${normalizedName}.js`;
+        let jsPath = `${basePath}/${componentName}/${normalizedName}.js`;
+
+        // Para GitHub Pages, usar URL absoluta completa
+        if (window.location.hostname.includes('github.io')) {
+            jsPath = `${window.location.origin}${jsPath}`;
+        }
 
         // Verificar si ya está cargado
         if (document.querySelector(`script[src="${jsPath}"]`)) {
@@ -80,7 +100,12 @@
         const basePath = getComponentBasePath();
         // Los archivos están en minúsculas: navbar.html, promobanner.html, footer.html
         const normalizedName = componentName.toLowerCase();
-        const htmlPath = `${basePath}/${componentName}/${normalizedName}.html`;
+        let htmlPath = `${basePath}/${componentName}/${normalizedName}.html`;
+
+        // Para GitHub Pages, usar URL absoluta completa
+        if (window.location.hostname.includes('github.io')) {
+            htmlPath = `${window.location.origin}${htmlPath}`;
+        }
 
         // Verificar si estamos en file:// (sistema de archivos) - fetch no funciona
         if (window.location.protocol === 'file:') {
