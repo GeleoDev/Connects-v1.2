@@ -17,6 +17,15 @@
 
     // Generar ruta relativa hacia la raíz
     function getRelativePathToRoot() {
+        // Detectar si estamos en GitHub Pages
+        if (window.location.hostname.includes('github.io')) {
+            // Extraer el nombre del repositorio de la URL
+            const pathParts = window.location.pathname.split('/').filter(p => p);
+            const repoName = pathParts[0] || 'Connects-v1.2';
+            return `/${repoName}/`;
+        }
+
+        // Comportamiento normal para desarrollo local
         const depth = getPageDepth();
         if (depth === 0) {
             return './';

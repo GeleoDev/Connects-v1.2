@@ -52,7 +52,7 @@
     <link rel="preload" href="./img/Hero3.jpg" as="image">
     <link rel="preload" href="./img/energ.jpg" as="image">
     <!-- Logo se carga dinámicamente en navbar, preload opcional con baja prioridad -->
-    <link rel="preload" href="./img/ConnectsLogo.png" as="image" fetchpriority="low">
+    <link id="logo-preload" rel="preload" href="./img/ConnectsLogo.png" as="image" fetchpriority="low">
     
     <!-- Schema.org JSON-LD -->
     <script type="application/ld+json">
@@ -318,6 +318,16 @@
             } catch (e) {
                 // Ignorar error si no se puede usar replaceState
                 console.warn('No se pudo usar replaceState:', e.message);
+            }
+        }
+
+        // Corregir rutas para GitHub Pages
+        if (window.location.hostname.includes('github.io')) {
+            const logoPreload = document.getElementById('logo-preload');
+            if (logoPreload) {
+                const pathParts = window.location.pathname.split('/').filter(p => p);
+                const repoName = pathParts[0] || 'Connects-v1.2';
+                logoPreload.href = `/${repoName}/img/ConnectsLogo.png`;
             }
         }
     </script>

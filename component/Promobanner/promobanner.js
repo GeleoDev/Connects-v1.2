@@ -23,7 +23,15 @@
         
         if (promoLink) {
             // Redirigir a Energías Renovables
-            promoLink.href = depth === 0 ? './Energias-renovables/' : '../Energias-renovables/';
+            if (window.location.hostname.includes('github.io')) {
+                // En GitHub Pages, usar ruta absoluta con el repositorio
+                const pathParts = window.location.pathname.split('/').filter(p => p);
+                const repoName = pathParts[0] || 'Connects-v1.2';
+                promoLink.href = `/${repoName}/Energias-renovables/`;
+            } else {
+                // Comportamiento normal para desarrollo local
+                promoLink.href = depth === 0 ? './Energias-renovables/' : '../Energias-renovables/';
+            }
         }
     }
 
