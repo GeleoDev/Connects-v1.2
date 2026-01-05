@@ -2,53 +2,9 @@
 
 Sitio web de Connects - Soluciones en Telecomunicaciones, Fibra Óptica y Energías Renovables
 
-## 🚀 Inicio Rápido
 
-### Opción 1: Servidor Local (Recomendado)
 
-1. **Instalar http-server** (si no está instalado):
-   ```bash
-   npm install -g http-server
-   ```
 
-2. **Iniciar servidor**:
-   ```bash
-   cd "C:\Users\Tomas Dev\Downloads\htdocs"
-   http-server -p 8080 -c-1
-   ```
-
-3. **Abrir navegador**:
-   - Visita: `http://localhost:8080`
-
-### Opción 2: Abrir directamente
-- Abre `index.html` directamente en el navegador
-- Nota: Algunas funcionalidades pueden no funcionar correctamente
-
-## 📁 Estructura del Proyecto
-
-```
-htdocs/
-├── index.html                 # Página principal
-├── styles/
-│   └── styles.css            # Estilos globales
-├── js/
-│   └── main.js               # JavaScript principal
-├── component/                # Componentes reutilizables
-│   ├── Navbar/
-│   ├── Footer/
-│   ├── Promobanner/
-│   └── ...
-├── Productos/               # Páginas de productos
-│   ├── Kit/
-│   │   ├── index.html
-│   │   └── styles/product.css
-│   └── Inversor Solar/
-│       ├── index.html
-│       └── styles/product.css
-├── img/                     # Imágenes
-├── favicon.png
-└── ...
-```
 
 ## ✨ Mejoras Recientes
 
@@ -108,17 +64,7 @@ El sitio está completamente optimizado para:
 - Node.js (para servidor local)
 - Navegador moderno con soporte ES6+
 
-### Comandos Útiles
-```bash
-# Instalar servidor global
-npm install -g http-server
 
-# Iniciar servidor de desarrollo
-http-server -p 8080 -c-1 -o
-
-# Verificar archivos
-ls -la
-```
 
 ## 📞 Contacto
 
