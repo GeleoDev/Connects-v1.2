@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inversor Solar - Connects</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Component Styles -->
+    <link rel="stylesheet" href="../../component/Navbar/navbar.css">
+    <link rel="stylesheet" href="../../component/Footer/footer.css">
+    <link rel="stylesheet" href="../../component/Promobanner/promobanner.css">
+    <link rel="stylesheet" href="./styles/product.css">
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+</head>
+
+<body>
+    <!-- Navbar Component -->
+    <div data-component="navbar"></div>
+
+    <!-- Promo Banner Component -->
+    <div data-component="promobanner"></div>
+
+    <!-- Product Hero Section -->
+    <section class="product-hero">
+        <div class="container">
+            <nav class="breadcrumb">
+                <a href="../../index.html">Inicio</a>
+                <span>/</span>
+                <a href="../../Energias-renovables/index.html">Energías Renovables</a>
+                <span>/</span>
+                <span>Inversor Solar</span>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Product Detail Section -->
+    <section class="product-detail">
+        <div class="container">
+            <div class="product-layout">
+                <!-- Left Column: Images + Description + Characteristics -->
+                <div class="product-left-column">
+                    <!-- Product Images -->
+                    <div class="product-images">
+                        <div class="product-main-image">
+                            <button class="image-nav-btn image-nav-prev" onclick="changeImagePrev()">
+                                <i class="fas fa-chevron-left"></i>
+                            </button>
+                            <img src="../../Energias-renovables/img/panele.jpg" alt="Inversor Solar" id="mainImage" loading="eager">
+                            <button class="image-nav-btn image-nav-next" onclick="changeImageNext()">
+                                <i class="fas fa-chevron-right"></i>
+                            </button>
+                        </div>
+                        <div class="product-thumbnails">
+                            <img src="../../Energias-renovables/img/panele.jpg" alt="Vista 1" class="thumbnail active" onclick="changeImageByIndex(0)" loading="lazy">
+                            <img src="../../Energias-renovables/img/energyren.png" alt="Vista 2" class="thumbnail" onclick="changeImageByIndex(1)" loading="lazy">
+                        </div>
+                    </div>
+
+                    <!-- Description Section (below images) -->
+                    <div class="product-description-full">
+                        <h3>Descripción</h3>
+                        <p>Inversor de alta eficiencia para sistemas solares fotovoltaicos. Convierte la energía DC de los paneles solares en corriente alterna (AC) para uso doméstico y comercial. Diseñado con tecnología de punta para maximizar la eficiencia energética y garantizar un rendimiento óptimo.</p>
+                    </div>
+
+                    <!-- Características Generales (Dropdown) -->
+                    <div class="dropdown-section">
+                        <button class="dropdown-toggle" onclick="toggleDropdown('caracteristicas-generales')">
+                            <h3>Características Generales</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="caracteristicas-generales">
+                            <ul>
+                                <li><i class="fas fa-check"></i> Alta eficiencia de conversión</li>
+                                <li><i class="fas fa-check"></i> Compatible con paneles monocristalinos y policristalinos</li>
+                                <li><i class="fas fa-check"></i> Protección contra sobrecarga y sobretensión</li>
+                                <li><i class="fas fa-check"></i> Monitoreo remoto vía app móvil</li>
+                                <li><i class="fas fa-check"></i> Garantía extendida</li>
+                                <li><i class="fas fa-check"></i> Instalación profesional incluida</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Características Técnicas (Dropdown) -->
+                    <div class="dropdown-section">
+                        <button class="dropdown-toggle" onclick="toggleDropdown('caracteristicas-tecnicas')">
+                            <h3>Características Técnicas</h3>
+                            <i class="fas fa-chevron-down"></i>
+                        </button>
+                        <div class="dropdown-content" id="caracteristicas-tecnicas">
+                            <div class="specs-list">
+                                <div class="spec-item">
+                                    <span class="spec-label">Potencia máxima</span>
+                                    <span class="spec-value">Consultar</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Eficiencia</span>
+                                    <span class="spec-value">Hasta 98%</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Tipo de onda</span>
+                                    <span class="spec-value">Onda senoidal pura</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Voltaje de entrada</span>
+                                    <span class="spec-value">12V / 24V / 48V</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Voltaje de salida</span>
+                                    <span class="spec-value">220V AC</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Protecciones</span>
+                                    <span class="spec-value">Sobrecarga, sobretensión, cortocircuito</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Temperatura de trabajo</span>
+                                    <span class="spec-value">-10°C a 50°C</span>
+                                </div>
+                                <div class="spec-item">
+                                    <span class="spec-label">Garantía</span>
+                                    <span class="spec-value">2 años</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Product Info -->
+                <div class="product-info">
+                    <h1 class="product-title">Inversor Solar</h1>
+                    <div class="product-rating">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <span>(4.8)</span>
+                    </div>
+                    
+                    <!-- Price Section with Payment Icons -->
+                    <div class="product-price">
+                        <div class="price-header">
+                            <span class="price-label">$6.600.000</span>
+                            <div class="payment-icons">
+                                <i class="fab fa-cc-visa"></i>
+                                <i class="fab fa-cc-mastercard"></i>
+                                <i class="fab fa-cc-amex"></i>
+                                <i class="fas fa-credit-card"></i>
+                            </div>
+                        </div>
+                        <p class="price-note">Precio en Efectivo o Transferencia</p>
+                    </div>
+
+                    <!-- Financiamiento Button -->
+                    <button class="btn btn-financing" type="button" data-FORM-open="financing">
+                        Consultar opciones de financiación 
+                    </button>
+
+                    <!-- Transferencia Button -->
+                    <button class="btn btn-transfer" type="button" data-FORM-open="transfer">
+                        Abonar con transferencia
+                    </button>
+
+                    <!-- Aclaraciones -->
+                    <div class="product-clarifications">
+                        <h3>Garantía</h3>
+                        <p><i class="fas fa-check-circle"></i> El inversor cuenta con 2 años y las baterías con 5 años.
+                            Garantía de los componentes
+                            El equipo ha sido homologado eléctricamente en Argentina.
+                            Certificación Eléctrica Nacional</p>
+                        
+                    </div>
+
+                    <!-- Artículos Opcionales -->
+                    <div class="optional-items">
+                        <h3>Artículos Opcionales</h3>
+                        <ul>
+                            <li><i class="fas fa-wifi"></i> Módulo plug WiFi USB para monitoreo</li>
+                            <li><i class="fas fa-solar-panel"></i> Paneles solares, soporte y cableado</li>
+                            <li><i class="fas fa-tools"></i> Instalación Profesional</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div data-component="footer"></div>
+
+    <!-- FORM- Modal (desde 0) -->
+    <div class="FORM-modal" id="FORM-modal" aria-hidden="true">
+        <div class="FORM-modal__overlay" data-FORM-close></div>
+        <div class="FORM-modal__dialog" role="dialog" aria-modal="true" aria-label="Formulario">
+            <button type="button" class="FORM-modal__close" data-FORM-close aria-label="Cerrar">&times;</button>
+            <h3 class="FORM-modal__title" id="FORM-modal-title">Formulario</h3>
+
+            <!-- Financiamiento -->
+            <form class="FORM-form" data-FORM-form="financing" action="https://formsubmit.co/ventas@connects.com.ar" method="POST" enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Consulta de Financiamiento - Inversor Solar">
+                <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-consulta/">
+                <input type="hidden" name="_error" value="../../Confirmaciones/Error/">
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-fin-product">Producto</label>
+                    <select class="FORM-select" id="FORM-fin-product" name="producto" required>
+                        <option value="Inversor Solar" selected>Inversor Solar</option>
+                        <option value="Kit Solar">Kit Solar</option>
+                    </select>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-fin-doc">CUIT/CUIL/DNI</label>
+                    <input class="FORM-input" type="text" id="FORM-fin-doc" name="cuit_cuil_dni" required>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-fin-name">Nombre y Apellido</label>
+                    <input class="FORM-input" type="text" id="FORM-fin-name" name="nombre_apellido" required>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-fin-company">Razón Social</label>
+                    <input class="FORM-input" type="text" id="FORM-fin-company" name="razon_social">
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-fin-phone">Teléfono</label>
+                    <input class="FORM-input" type="tel" id="FORM-fin-phone" name="telefono" required>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-fin-email">Email</label>
+                    <input class="FORM-input" type="email" id="FORM-fin-email" name="email" required>
+                </div>
+
+                <button type="submit" class="FORM-submit">Enviar Consulta</button>
+            </form>
+
+            <!-- Transferencia -->
+            <form class="FORM-form" data-FORM-form="transfer" action="https://formsubmit.co/ventas@connects.com.ar" method="POST" enctype="multipart/form-data" novalidate>
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_subject" value="Pago por Transferencia - Inversor Solar">
+                <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-transferencia/">
+                <input type="hidden" name="_error" value="../../Confirmaciones/Error/">
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-tr-product">Producto</label>
+                    <select class="FORM-select" id="FORM-tr-product" name="producto" required>
+                        <option value="Inversor Solar" selected>Inversor Solar</option>
+                        <option value="Kit Solar">Kit Solar</option>
+                    </select>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-tr-doc">CUIT/CUIL/DNI</label>
+                    <input class="FORM-input" type="text" id="FORM-tr-doc" name="cuit_cuil_dni" required>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-tr-name">Nombre y Apellido</label>
+                    <input class="FORM-input" type="text" id="FORM-tr-name" name="nombre_apellido" required>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-tr-company">Razón Social</label>
+                    <input class="FORM-input" type="text" id="FORM-tr-company" name="razon_social">
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-tr-phone">Teléfono</label>
+                    <input class="FORM-input" type="tel" id="FORM-tr-phone" name="telefono" required>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-tr-email">Email</label>
+                    <input class="FORM-input" type="email" id="FORM-tr-email" name="email" required>
+                </div>
+
+                <div class="FORM-field">
+                    <label class="FORM-label" for="FORM-tr-proof">Comprobante (PDF)</label>
+                    <input class="FORM-file" type="file" id="FORM-tr-proof" name="comprobante" accept=".pdf" required>
+                </div>
+
+                <button type="submit" class="FORM-submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="../../component/load-components.js"></script>
+    <script src="../FORM-modal.js"></script>
+    <script>
+        // Sistema optimizado de cambio de imágenes con throttling
+        const images = [
+            '../../Energias-renovables/img/panele.jpg',
+            '../../Energias-renovables/img/energyren.png'
+        ];
+        let currentImageIndex = 0;
+        let imageChangeTimeout = null;
+        let isImageChanging = false;
+
+        // Throttling para cambios de imagen
+        function throttleImageChange(callback, delay = 300) {
+            if (isImageChanging) return;
+            isImageChanging = true;
+
+            callback();
+
+            clearTimeout(imageChangeTimeout);
+            imageChangeTimeout = setTimeout(() => {
+                isImageChanging = false;
+            }, delay);
+        }
+
+        // Cambiar imagen por índice con throttling
+        function changeImageByIndex(index) {
+            if (currentImageIndex === index) return;
+
+            throttleImageChange(() => {
+                currentImageIndex = index;
+                const mainImage = document.getElementById('mainImage');
+                mainImage.style.opacity = '0.7';
+                mainImage.src = images[currentImageIndex];
+
+                mainImage.onload = () => {
+                    mainImage.style.opacity = '1';
+                    updateThumbnails();
+                };
+            });
+        }
+
+        // Cambiar a imagen anterior
+        function changeImagePrev() {
+            throttleImageChange(() => {
+                currentImageIndex = (currentImageIndex - 1 + images.length) % images.length;
+                const mainImage = document.getElementById('mainImage');
+                mainImage.style.opacity = '0.7';
+                mainImage.src = images[currentImageIndex];
+
+                mainImage.onload = () => {
+                    mainImage.style.opacity = '1';
+                    updateThumbnails();
+                };
+            });
+        }
+
+        // Cambiar a imagen siguiente
+        function changeImageNext() {
+            throttleImageChange(() => {
+                currentImageIndex = (currentImageIndex + 1) % images.length;
+                const mainImage = document.getElementById('mainImage');
+                mainImage.style.opacity = '0.7';
+                mainImage.src = images[currentImageIndex];
+
+                mainImage.onload = () => {
+                    mainImage.style.opacity = '1';
+                    updateThumbnails();
+                };
+            });
+        }
+
+        // Actualizar estado de thumbnails con optimización
+        function updateThumbnails() {
+            const thumbnails = document.querySelectorAll('.thumbnail');
+            thumbnails.forEach((thumb, index) => {
+                if (index === currentImageIndex) {
+                    thumb.classList.add('active');
+                } else {
+                    thumb.classList.remove('active');
+                }
+            });
+        }
+
+        // Toggle dropdown optimizado
+        function toggleDropdown(id) {
+            const dropdown = document.getElementById(id);
+            const toggle = event.currentTarget;
+            const icon = toggle.querySelector('i');
+
+            // Usar requestAnimationFrame para animaciones suaves
+            requestAnimationFrame(() => {
+                dropdown.classList.toggle('active');
+                icon.classList.toggle('fa-chevron-down');
+                icon.classList.toggle('fa-chevron-up');
+            });
+        }
+
+        // FORM- Modal controller (JS en archivo dedicado)
+
+        // Redirigir si aparece index.html en la URL
+        if (window.location.href.includes('index.html')) {
+            var nuevaURL = window.location.href.replace('index.html', '');
+            window.history.replaceState({}, document.title, nuevaURL);
+        }
+    </script>
+</body>
+
+</html>

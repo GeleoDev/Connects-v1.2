@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Connects - Descarga de Documentos</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="./certificados.css">
+    
+    <link rel="icon" type="image/png" href="../../favicon.png" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <style>
+        /* Estilos específicos para la página de descargas */
+       
+        
+
+        .downloads-container {
+            padding: 80px 0;
+            padding-top: 100px;
+            background-color: var(--color-primary);
+        }
+         /* Asegurar que el contenedor principal permita scroll */
+.seccionaa {
+    position: relative;
+}
+
+        .downloads-box {
+            background-color: var(--color-secondary);
+            border-radius: 15px;
+            padding: 40px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+            position: relative;
+        }
+
+        .downloads-title {
+            font-size: 2rem;
+            margin-bottom: 30px;
+            color: var(--color-white);
+        }
+
+        .downloads-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .download-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--color-dark);
+            border-radius: 15px;
+            padding: 30px 20px;
+            height: 100%;
+            transition: all var(--transition-medium);
+            border: 2px solid var(--color-accent);
+        }
+
+        .download-btn:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            background-color: rgba(52, 152, 219, 0.1);
+        }
+
+        .download-icon {
+            font-size: 3rem;
+            color: var(--color-accent);
+            margin-bottom: 20px;
+        }
+
+        .download-text {
+            font-size: 1rem;
+            color: var(--color-white);
+            text-align: center;
+            word-break: break-word;
+        }
+
+        /* Botón circular de retroceso */
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: var(--color-accent);
+            color: var(--color-white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all var(--transition-fast);
+            border: none;
+            z-index: 10;
+            box-shadow: var(--shadow-md);
+        }
+
+        .back-button:hover {
+            transform: translateY(-2px) scale(1.05);
+            background-color: var(--color-white);
+            color: var(--color-accent);
+        }
+
+        .back-button i {
+            font-size: 1.2rem;
+        }
+
+        
+
+        @media (max-width: 768px) {
+            .downloads-hero {
+                height: 40vh;
+            }
+            
+            .downloads-box {
+                padding: 30px 20px;
+            }
+            
+            .downloads-title {
+                font-size: 1.8rem;
+            }
+            
+            .downloads-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .back-button {
+                width: 36px;
+                height: 36px;
+                top: 15px;
+                left: 15px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-container container">
+            <a href="../../index.html" class="navbar-logo">
+                <img src="../img/ConnectsLogo.png" alt="Connects Logo" class="logo-image">
+            </a>
+            <div class="navbar-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+            <ul class="navbar-menu">
+                <li class="navbar-item"><a href="../../Servicios/index.html" class="navbar-link">Servicios</a></li>
+                <li class="navbar-item"><a href="../../fibra-optica/index.html" class="navbar-link">Fibra Óptica</a></li>
+                <li class="navbar-item"><a href="../../Energias-renovables/index.html" class="navbar-link">Energías Renovables</a></li>
+                <li class="navbar-item"><a href="../../Sobre-nosotros/index.html" class="navbar-link">Sobre Nosotros</a></li>
+                <li class="navbar-item"><a href="../../index.html#contact" class="navbar-link contact-btn">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    
+
+    <!-- Downloads Section -->
+    <section class="downloads-container">
+        <div class="container">
+            <div class="downloads-box">
+                <!-- Botón circular de retroceso -->
+                <button class="back-button" onclick="window.history.back()">
+                    <i class="fas fa-arrow-left"></i>
+                </button>
+                
+                <h2 class="downloads-title">Documentos disponibles</h2>
+                <p>Descarga los documentos de tu producto Connects</p>
+                
+                <div class="downloads-grid">
+                    <!-- Botón 1 -->
+                    <a download href="./pdf/FR-IQC-026 E5 R0 Certificado de Tipo T 012249-1.pdf" class="download-btn" >
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-text">Declaración Jurada de Conformidad del Producto</div>
+                    </a>
+                    
+                    <!-- Botón 2 -->
+                    <a href="./pdf/ANEXO TIPO T 012249-1.pdf" class="download-btn" download>
+                        <div class="download-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </div>
+                        <div class="download-text">Código de identificación del Producto: CONNECTS-SE-000001</div>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container container">
+            <div class="footer-section">
+                <h3 class="footer-title">Connects</h3>
+                <p class="footer-text">Soluciones innovadoras en telecomunicaciones y energías renovables.</p>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Enlaces rápidos</h3>
+                <ul class="footer-links">
+                    <li><a href="../../Servicios/index.html">Servicios</a></li>
+                    <li><a href="../../fibra-optica/index.html">Fibra Óptica</a></li>
+                    <li><a href="../../Energias-renovables/index.html">Energías Renovables</a></li>
+                    <li><a href="../../Sobre-nosotros/index.html">Sobre Nosotros</a></li>
+                    <li><a href="../../index.html#contact">Contacto</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3 class="footer-title">Contacto</h3>
+                <ul class="footer-contact">
+                    <li><i class="fas fa-map-marker-alt"></i> Dirección: Montes de Oca 501, CABA</li>
+                    <li><i class="fas fa-envelope"></i> Email: ventas@connects.com.ar</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Connects. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="../../Sobre-nosotros/js/Sobrenosotros.js"></script>
+    <script src="../js/Energias-renovables.js"></script>
+    
+    
+    <script>
+        // Redirigir si aparece index.html en la URL
+        if (window.location.href.includes('index.html')) {
+            var nuevaURL = window.location.href.replace('index.html', '');
+            window.history.replaceState({}, document.title, nuevaURL);
+        }
+
+        // Loading screen
+        document.addEventListener('DOMContentLoaded', function() {
+            
+
+           
+            
+        });
+    </script>
+</body>
+</html>

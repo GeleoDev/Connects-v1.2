@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+    
+    <!-- Primary Meta Tags -->
+    <title>Productos de Fibra Óptica - Connects | Distribuidor Oficial Samm Teknoloji | Argentina</title>
+    <meta name="title" content="Productos de Fibra Óptica - Connects | Distribuidor Oficial Samm Teknoloji | Argentina">
+    <meta name="description" content="Distribuidor oficial de productos de fibra óptica Samm Teknoloji en Argentina. Cajas de fibra, cables indoor/outdoor, cableado estructurado, soluciones para datacenter. Proveedor del CERN desde 2021.">
+    <meta name="keywords" content="fibra óptica, productos fibra óptica, cables fibra óptica, cajas fibra óptica, cableado estructurado, datacenter, Samm Teknoloji, distribuidor fibra óptica Argentina, FTTH, cables indoor outdoor">
+    <meta name="author" content="Connects">
+    <meta name="language" content="Spanish">
+    <meta name="geo.region" content="AR">
+    <meta name="geo.placename" content="Buenos Aires">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://connects.com.ar/fibra-optica/">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://connects.com.ar/fibra-optica/">
+    <meta property="og:title" content="Productos de Fibra Óptica - Connects | Distribuidor Oficial Samm Teknoloji">
+    <meta property="og:description" content="Distribuidor oficial de productos de fibra óptica Samm Teknoloji en Argentina. Cajas, cables, cableado estructurado y soluciones para datacenter.">
+    <meta property="og:image" content="https://connects.com.ar/fibra-optica/img/CajasFibraOptica.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="Productos de Fibra Óptica - Connects">
+    <meta property="og:locale" content="es_AR">
+    <meta property="og:site_name" content="Connects">
+    
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://connects.com.ar/fibra-optica/">
+    <meta name="twitter:title" content="Productos de Fibra Óptica - Connects | Distribuidor Oficial Samm Teknoloji">
+    <meta name="twitter:description" content="Distribuidor oficial de productos de fibra óptica Samm Teknoloji en Argentina. Cajas, cables, cableado estructurado y soluciones para datacenter.">
+    <meta name="twitter:image" content="https://connects.com.ar/fibra-optica/img/CajasFibraOptica.png">
+    <meta name="twitter:image:alt" content="Productos de Fibra Óptica - Connects">
+    
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css">
+    <!-- Component Styles - Cargar ANTES para tener prioridad -->
+    <link rel="stylesheet" href="../component/Navbar/navbar.css">
+    <link rel="stylesheet" href="../component/Footer/footer.css">
+    <link rel="stylesheet" href="../component/Promobanner/promobanner.css">
+    <link rel="stylesheet" href="./styles/fibra-optica.css">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <style>
+        /* Estilos adicionales para el modal de video */
+        .video-modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            overflow: auto;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .video-modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 1;
+        }
+
+        .video-modal-content {
+            position: relative;
+            width: 80%;
+            max-width: 900px;
+            background-color: var(--color-dark);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        .video-modal-close {
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            color: white;
+            font-size: 35px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 10;
+            transition: color 0.3s;
+        }
+
+        .video-modal-close:hover {
+            color: var(--color-accent);
+        }
+
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%;
+            /* 16:9 aspect ratio */
+            height: 0;
+            overflow: hidden;
+        }
+
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        @media (max-width: 768px) {
+            .video-modal-content {
+                width: 95%;
+            }
+
+            .video-modal-close {
+                top: 10px;
+                right: 15px;
+                font-size: 25px;
+            }
+        }
+    </style>
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "ProductCollection",
+        "name": "Productos de Fibra Óptica - Connects",
+        "description": "Distribuidor oficial de productos de fibra óptica Samm Teknoloji en Argentina. Cajas de fibra, cables indoor/outdoor, cableado estructurado, soluciones para datacenter.",
+        "url": "https://connects.com.ar/fibra-optica/",
+        "brand": {
+            "@type": "Brand",
+            "name": "Samm Teknoloji"
+        },
+        "seller": {
+            "@type": "Organization",
+            "name": "Connects",
+            "url": "https://connects.com.ar",
+            "logo": "https://connects.com.ar/img/ConnectsLogo.png",
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Av. Montes de Oca 501",
+                "addressLocality": "Ciudad Autónoma de Buenos Aires",
+                "postalCode": "C1270AAF",
+                "addressCountry": "AR"
+            },
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "+54-9-11-2345-6789",
+                "contactType": "Ventas",
+                "email": "ventas@connects.com.ar",
+                "areaServed": "AR",
+                "availableLanguage": "Spanish"
+            }
+        },
+        "hasPart": [
+            {
+                "@type": "Product",
+                "name": "Cajas de Fibra Óptica",
+                "description": "Cajas de fibra óptica para protección y organización de empalmes. Productos certificados Samm Teknoloji.",
+                "image": "https://connects.com.ar/fibra-optica/img/CajasFibraOptica.png",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Samm Teknoloji"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "Connects"
+                    }
+                }
+            },
+            {
+                "@type": "Product",
+                "name": "Redes para Centros de Datos",
+                "description": "Infraestructura de alta capacidad para centros de datos. Soluciones completas en fibra óptica.",
+                "image": "https://connects.com.ar/fibra-optica/img/DatacenterSolutions.png",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Samm Teknoloji"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "Connects"
+                    }
+                }
+            },
+            {
+                "@type": "Product",
+                "name": "Cableado Estructurado",
+                "description": "Sistemas completos de cableado estructurado para redes de datos. Soluciones profesionales.",
+                "image": "https://connects.com.ar/fibra-optica/img/CableadoEstructurado.png",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Samm Teknoloji"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "Connects"
+                    }
+                }
+            },
+            {
+                "@type": "Product",
+                "name": "Cables de Fibra para Interiores",
+                "description": "Amplia variedad de cables de fibra óptica para instalaciones interiores. Certificados internacionales.",
+                "image": "https://connects.com.ar/fibra-optica/img/indoor.png",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Samm Teknoloji"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "Connects"
+                    }
+                }
+            },
+            {
+                "@type": "Product",
+                "name": "Cables de Fibra para Exteriores",
+                "description": "Amplia variedad de cables de fibra óptica para instalaciones exteriores. Resistencia a condiciones climáticas.",
+                "image": "https://connects.com.ar/fibra-optica/img/outdoor.png",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Samm Teknoloji"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "Connects"
+                    }
+                }
+            },
+            {
+                "@type": "Product",
+                "name": "Estructuras para Cables",
+                "description": "Soluciones para estructuras de cableado en centros de datos. Sistemas de gestión de cables.",
+                "image": "https://connects.com.ar/fibra-optica/img/CableadoEstructurado2.png",
+                "brand": {
+                    "@type": "Brand",
+                    "name": "Samm Teknoloji"
+                },
+                "offers": {
+                    "@type": "Offer",
+                    "availability": "https://schema.org/InStock",
+                    "seller": {
+                        "@type": "Organization",
+                        "name": "Connects"
+                    }
+                }
+            }
+        ],
+        "breadcrumb": {
+            "@type": "BreadcrumbList",
+            "itemListElement": [
+                {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Inicio",
+                    "item": "https://connects.com.ar/"
+                },
+                {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Fibra Óptica",
+                    "item": "https://connects.com.ar/fibra-optica/"
+                }
+            ]
+        }
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Navbar Component -->
+    <div data-component="navbar"></div>
+
+    <!-- Promo Banner Component -->
+    <div data-component="promobanner"></div>
+
+    <!-- Hero Section -->
+    <section class="fiber-hero">
+        <div class="fiber-hero-content">
+            <h1 class="fiber-hero-title">Fibra Óptica de Alta Calidad</h1>
+            <p class="fiber-hero-subtitle">Soluciones tecnológicas innovadoras</p>
+            <div class="fiber-hero-buttons">
+                <a href="#products" class="fiber-hero-btn btn">Ver Productos</a>
+                <a href="#" class="btn-special btn-internet-day" id="internetDayBtn">¡Internet Day!<br> Connects x Samm
+                    Teknoloji</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para el video del Internet Day -->
+    <div class="video-modal" id="videoModal">
+        <div class="video-modal-content">
+            <span class="video-modal-close">&times;</span>
+            <div class="video-container">
+                <video controls playsinline id="internetDayVideo" preload="metadata">
+                    <source src="./video/Connects.mp4" type="video/mp4">
+                    Tu navegador no soporta el elemento de video.
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <!-- Partnership Section -->
+    <section class="partnership">
+        <div class="partnership-container container">
+            <!--SECTOR ALIANZA-->
+            <div class="partnership-content">
+                <h2 class="section-title">Alianza Estratégica con SAMM Teknoloji</h2>
+                <p class="partnership-text">En Connects hemos establecido una alianza estratégica con SAMM Teknoloji,
+                    líder turco en fabricación de componentes de fibra óptica, para brindar a nuestros clientes
+                    productos de la más alta calidad a precios competitivos.</p>
+                <p class="partnership-text">SAMM Teknoloji es reconocido internacionalmente por su innovación y
+                    estándares de calidad en la producción de cables de fibra óptica, conectores, empalmes y accesorios
+                    para redes FTTH (Fiber To The Home).</p>
+                <p class="partnership-text">Esta colaboración nos permite ofrecer:</p>
+                <ul class="partnership-list">
+                    <li>Productos certificados con estándares internacionales</li>
+                    <li>Tecnología de punta con garantía de fabricante</li>
+                    <li>Precios competitivos por importación directa</li>
+                    <li>Soporte técnico especializado</li>
+                    <li>Proveedor del CERN desde 2021 (Centro Europeo de Investigación Nuclear)</li>
+                </ul>
+            </div>
+
+            <!--SECTOR LOGOS UNION-->
+            <div class="partnership-logos">
+                <div class="logo-container logo-left">
+                    <img src="./img/ConnectsLogo2.png" alt="Connects Logo - Distribuidor oficial" class="logo-connects" loading="lazy">
+                </div>
+                <div class="logo-x">×</div>
+                <div class="logo-container logo-right">
+                    <img src="./img/SammLogo.png" alt="Samm Teknoloji Logo - Fabricante líder en fibra óptica" class="logo-samm" loading="lazy">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Section -->
+    <section class="products" id="products">
+        <div class="products-container container">
+            <h2 class="section-title">Productos Destacados</h2>
+            <p class="section-subtitle">Soluciones completas en fibra óptica</p>
+
+            <div class="products-grid">
+                <!-- Cajas de Fibra Óptica -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./img/CajasFibraOptica.png" alt="Cajas de Fibra Óptica para protección y organización de empalmes" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cajas de Fibra Óptica</h3>
+                        <p class="product-subtitle">Protección y organización para empalmes</p>
+                        <div class="product-buttons">
+                            <a href="./pdf/CajasFibraOptica.pdf" download class="product-btn btn btn-download">
+                                <i class="fas fa-file-pdf"></i> Descargar Catálogo
+                            </a>
+                            <a href="https://telecom.samm.com/fiber-optic-enclosures" target="_blank"
+                                class="product-btn btn btn-samm">
+                                <i class="fas fa-external-link-alt"></i> Samm Teknoloji
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Redes para Centros de Datos -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/DatacenterSolutions.png" alt="Redes para Centros de Datos - Infraestructura de alta capacidad" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Redes para Centros de Datos</h3>
+                        <p class="product-subtitle">Infraestructura de alta capacidad</p>
+                        <div class="product-buttons">
+                            <a href="./pdf/DataCenter.pdf" download class="product-btn btn btn-download">
+                                <i class="fas fa-file-pdf"></i> Descargar Catálogo
+                            </a>
+                            <a href="https://telecom.samm.com/data-center-products" target="_blank"
+                                class="product-btn btn btn-samm">
+                                <i class="fas fa-external-link-alt"></i> Samm Teknoloji
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Cableado Estructurado -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="./img/CableadoEstructurado.png" alt="Cableado Estructurado - Sistemas completos para redes de datos" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cableado Estructurado</h3>
+                        <p class="product-subtitle">Sistemas completos para redes de datos</p>
+                        <div class="product-buttons">
+                            <a href="./pdf/CableadoEstructurado.pdf" download class="product-btn btn btn-download">
+                                <i class="fas fa-file-pdf"></i> Descargar Catálogo
+                            </a>
+                            <a href="https://telecom.samm.com/fiber-optic-cable" target="_blank"
+                                class="product-btn btn btn-samm">
+                                <i class="fas fa-external-link-alt"></i> Samm Teknoloji
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cables de fibra para interiores -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/indoor.png" alt="Cables de fibra óptica para interiores - Amplia variedad certificada" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cables de fibra para interiores</h3>
+                        <p class="product-subtitle">Amplia variedad en cables de interiores</p>
+                        <div class="product-buttons">
+                            <a href="./pdf/Fiber-Optic-Cables-Indoor.pdf" download class="product-btn btn btn-download">
+                                <i class="fas fa-file-pdf"></i> Descargar Catálogo
+                            </a>
+                            <a href="https://telecom.samm.com/fiber-optic-cables-indoor" target="_blank"
+                                class="product-btn btn btn-samm">
+                                <i class="fas fa-external-link-alt"></i> Samm Teknoloji
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cables de fibra para exteriores -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/outdoor.png" alt="Cables de fibra óptica para exteriores - Resistencia climática" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Cables de fibra para exteriores</h3>
+                        <p class="product-subtitle">Amplia variedad en cables para exteriores</p>
+                        <div class="product-buttons">
+                            <a href="./pdf/Fiber-Optic-Cables-Outdoor.pdf" download
+                                class="product-btn btn btn-download">
+                                <i class="fas fa-file-pdf"></i> Descargar Catálogo
+                            </a>
+                            <a href="https://telecom.samm.com/fiber-optic-cables-outdoor" target="_blank"
+                                class="product-btn btn btn-samm">
+                                <i class="fas fa-external-link-alt"></i> Samm Teknoloji
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- Cableado Estructurado -->
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="img/CableadoEstructurado2.png" alt="Estructuras para Cables - Soluciones para estructuras de cableado" loading="lazy">
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">Estructuras para Cables</h3>
+                        <p class="product-subtitle">Soluciones para las estructuras de cableado</p>
+                        <div class="product-buttons">
+                            <a href="./pdf/Data-Center-Cabling-Structures-Catalogue-Samm-Teknoloji.pdf" download
+                                class="product-btn btn btn-download">
+                                <i class="fas fa-file-pdf"></i> Descargar Catálogo
+                            </a>
+                            <a href="https://telecom.samm.com/data-center-cable-raceways" target="_blank"
+                                class="product-btn btn btn-samm">
+                                <i class="fas fa-external-link-alt"></i> Samm Teknoloji
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="samm-cta-btn-container">
+                    <a href="https://telecom.samm.com/general-catalogues" target="_blank" class="samm-cta-btn btn">Ver
+                        mas Catalogos</a>
+                </div>
+                <br>
+            </div>
+        </div>
+    </section>
+
+    <!-- Samm CTA Section -->
+    <section class="samm-cta">
+        <div class="samm-cta-container container">
+            <div class="samm-cta-content">
+                <h2 class="section-title">Descubre más productos de Samm Teknoloji</h2>
+                <p class="samm-cta-text">Nuestro socio estratégico ofrece una amplia gama de soluciones en fibra óptica
+                    de última generación.</p>
+                <div class="samm-cta-btn-container">
+                    <a href="https://www.samm.com/departments/telecom/" target="_blank" class="samm-cta-btn btn">Visitar
+                        Samm Teknoloji</a>
+                </div>
+            </div>
+
+
+        </div>
+        <div class="swiper-container">
+            <div class="swiper-wrapper">
+                <!-- Slide 3 -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./img/Sammtec3.png" alt="Productos Samm Teknoloji - Soluciones en fibra óptica" loading="lazy">
+
+                    </div>
+                </div>
+                <!-- Slide 1 -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./img/Sammtec1.png" alt="Productos Samm Teknoloji - Tecnología de punta" loading="lazy">
+
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./img/Samtec2.png" alt="Productos Samm Teknoloji - Calidad certificada" loading="lazy">
+
+                    </div>
+                </div>
+
+                <!-- Slide 4 -->
+                <div class="swiper-slide">
+                    <div class="slide-content">
+                        <img src="./img/SammTec4.png" alt="Productos Samm Teknoloji - Innovación en fibra óptica" loading="lazy">
+
+                    </div>
+                </div>
+
+            </div>
+            <!-- Add Navigation -->
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+    </section>
+
+    <!-- Representantes Section -->
+    <section class="representatives">
+        <div class="representatives-container container">
+            <div class="representatives-content">
+                <h2 class="section-title">Distribuidor Oficial</h2>
+                <p class="representatives-text">Somos los distribuidores de Samm Teknoloji en la región. Ante cualquier
+                    duda sobre sus productos, contáctate con nuestro equipo de especialistas.</p>
+                <div class="representatives-buttons">
+                    <a href="../index.html#contact" class="representatives-btn btn btn-contact">Contactar Ahora</a>
+                    <a href="Certificado-Partnership.pdf" download
+                        class="representatives-btn btn btn-certificate">Descargar Certificado de Sociedad</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Component -->
+    <div data-component="footer"></div>
+
+    <!-- WhatsApp Button Component -->
+    <div data-component="whatsapp"></div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="../component/load-components.js"></script>
+    <!-- Component Scripts - Se cargan dinámicamente por load-components.js -->
+    <script src="./js/fibra-optica.js"></script>
+    <script>
+        // Redirigir si aparece index.html en la URL
+        if (window.location.href.includes('index.html')) {
+            var nuevaURL = window.location.href.replace('index.html', '');
+            window.history.replaceState({}, document.title, nuevaURL);
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+    const modal = document.getElementById('videoModal');
+    const btn = document.getElementById('internetDayBtn');
+    const closeBtn = document.querySelector('.video-modal-close');
+    const video = document.getElementById('internetDayVideo');
+
+    // Abrir modal al hacer clic en el botón
+    btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        modal.classList.add('show');
+        document.body.style.overflow = 'hidden';
+        
+        // Reiniciar el video cada vez que se abre el modal
+        video.currentTime = 0;
+    });
+
+    // Cerrar modal al hacer clic en la X
+    closeBtn.addEventListener('click', function () {
+        modal.classList.remove('show');
+        video.pause();
+        video.currentTime = 0; // Reiniciar el video
+        document.body.style.overflow = 'auto';
+    });
+
+    // Cerrar modal al hacer clic fuera del contenido
+    modal.addEventListener('click', function (e) {
+        if (e.target === modal) {
+            modal.classList.remove('show');
+            video.pause();
+            video.currentTime = 0; // Reiniciar el video
+            document.body.style.overflow = 'auto';
+        }
+    });
+
+    // Cerrar modal con la tecla ESC
+    document.addEventListener('keydown', function (e) {
+        if (e.key === 'Escape' && modal.classList.contains('show')) {
+            modal.classList.remove('show');
+            video.pause();
+            video.currentTime = 0; // Reiniciar el video
+            document.body.style.overflow = 'auto';
+        }
+    });
+});
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,993 @@
+/* Importamos las variables y estilos base */
+@import url('../../styles/styles.css');
+
+/* Hero Section - Fibra Óptica */
+.fiber-hero {
+    height: 70vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.2)), 
+                url('fo.jpg') no-repeat center center/cover !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    transform: translateY(0);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    will-change: transform, opacity;
+}
+.fiber-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all var(--transition-medium);
+}
+
+.fiber-hero-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fiber-hero-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+.fiber-hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.fiber-hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.fiber-hero-btn {
+    animation: fadeIn 1s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.btn-special {
+    background-color: #ff6b35;
+    color: white;
+    border: 2px solid #ff6b35;
+   
+}
+
+.btn-special:hover {
+    background-color: #e65a2b;
+    border-color: #e65a2b;
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 107, 53, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+    }
+}
+
+/* Partnership Section */
+.partnership {
+    padding: 100px 0;
+    background-color: var(--color-primary);
+}
+
+.partnership-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.partnership-content {
+    flex: 1;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all var(--transition-medium);
+}
+
+.partnership-content.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.partnership-text {
+    margin-bottom: 20px;
+    color: var(--color-light-gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.partnership-list {
+    margin: 20px 0 30px;
+    padding-left: 20px;
+}
+
+.partnership-list li {
+    margin-bottom: 10px;
+    color: var(--color-light-gray);
+    position: relative;
+}
+
+.partnership-list li::before {
+    content: '✓';
+    color: var(--color-accent);
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.partnership-image {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all var(--transition-medium);
+}
+
+.partnership-image.animate {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+.partnership-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-medium);
+}
+
+.partnership-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Products Section */
+.products {
+    padding: 100px 0;
+    background-color: var(--color-dark);
+}
+
+.products-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 50px;
+}
+
+.product-card {
+    background-color: var(--color-secondary);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-medium);
+    opacity: 0;
+    transform: translateY(50px);
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.product-card:hover {
+    transform: translateY(-10px);
+    box-shadow: var(--shadow-lg);
+}
+
+.product-image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+}
+
+.product-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-medium);
+}
+
+.product-card:hover .product-image img {
+    transform: scale(1.1);
+}
+
+.product-content {
+    padding: 25px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-title {
+    font-size: 1.4rem;
+    margin-bottom: 10px;
+    color: var(--color-white);
+}
+
+.product-subtitle {
+    color: var(--color-light-gray);
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.product-buttons {
+    margin-top: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-download {
+    background-color: #e63946;
+    color: white;
+    border: none;
+}
+
+.btn-download:hover {
+    background-color: #c1121f;
+}
+
+.btn-samm {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.btn-samm:hover {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+/* Samm CTA Section */
+.samm-cta {
+    padding: 80px 0;
+    background-color: var(--color-primary);
+}
+
+.samm-cta-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.samm-cta-content {
+    align-items: center;
+    flex: 1;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all var(--transition-medium);
+}
+
+.samm-cta-content.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.samm-cta-text {
+    margin-bottom: 20px;
+    color: var(--color-light-gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.samm-cta-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 30px;
+    transition: all var(--transition-medium);
+}
+
+.samm-cta-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+.samm-cta-image {
+    flex: 1;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all var(--transition-medium);
+}
+
+.samm-cta-image.animate {
+    opacity: 1;
+    transform: translateX(0);
+    transition-delay: 0.3s;
+}
+
+.samm-cta-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+    transition: transform var(--transition-medium);
+}
+
+.samm-cta-image:hover img {
+    transform: scale(1.05);
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    from {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .products-grid {
+        grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .fiber-hero-title {
+        font-size: 2.5rem;
+    }
+    
+    .fiber-hero-subtitle {
+        font-size: 1.2rem;
+    }
+    
+    .fiber-hero-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .partnership-container,
+    .samm-cta-container {
+        flex-direction: column;
+    }
+    
+    /* Cambiar el orden visual en móviles/tablets */
+    .partnership-content {
+        order: 2; /* Esto colocará el contenido de alianza después */
+        margin-top: 40px; /* Espacio entre los logos y el contenido */
+    }
+
+    .partnership-logos {
+        order: 1; /* Esto colocará los logos primero */
+        margin-top: 0; /* Eliminar margen superior que tenía por defecto */
+    }
+
+    .samm-cta-content,
+    .partnership-image,
+    .samm-cta-image {
+        width: 100%;
+    }
+    
+    .partnership-image,
+    .samm-cta-image {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .fiber-hero-title {
+        font-size: 2rem;
+    }
+    
+    .fiber-hero-subtitle {
+        font-size: 1rem;
+    }
+    
+    .products-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .product-buttons {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    
+    .product-buttons .btn {
+        flex: 1;
+        min-width: 120px;
+    }
+}
+
+/* Partnership Section */
+.partnership {
+    padding: 100px 0;
+    background-color: var(--color-primary);
+}
+
+.partnership-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.partnership-content {
+    flex: 1;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all var(--transition-medium);
+}
+
+.partnership-content.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.partnership-logos {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    position: relative;
+}
+
+.logo-container {
+    width: 150px;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 50%;
+    padding: 20px;
+    box-shadow: var(--shadow-lg);
+}
+
+.logo-left {
+    opacity: 0;
+    transform: translateX(-100px);
+    transition: all var(--transition-medium) 0.2s;
+}
+
+.logo-right {
+    opacity: 0;
+    transform: translateX(100px);
+    transition: all var(--transition-medium) 0.2s;
+}
+
+.partnership-logos.animate .logo-left {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.partnership-logos.animate .logo-right {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.logo-x {
+    font-size: 3rem;
+    font-weight: bold;
+    color: var(--color-accent);
+    margin: 0 10px;
+    position: relative;
+    top: -10px;
+}
+
+.logo-connects, .logo-samm {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .logo-container {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+@media (max-width: 768px) {
+    .partnership-container {
+        flex-direction: column;
+    }
+    
+    .partnership-content {
+        width: 100%;
+    }
+    
+    .partnership-logos {
+        margin-top: 40px;
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .logo-container {
+        width: 100px;
+        height: 100px;
+    }
+    
+    .logo-x {
+        font-size: 2rem;
+    }
+}
+
+/* Representatives Section */
+.representatives {
+    padding: 80px 0;
+    background-color: var(--color-dark);
+    text-align: center;
+}
+
+.representatives-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.representatives-content {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all var(--transition-medium);
+}
+
+.representatives-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.representatives-text {
+    margin-bottom: 30px;
+    color: var(--color-light-gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.representatives-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.representatives-btn {
+    display: inline-block;
+    padding: 12px 30px;
+    font-size: 1rem;
+    border-radius: 30px;
+    transition: all var(--transition-medium);
+    min-width: 220px;
+}
+
+.btn-contact {
+    background-color: var(--color-accent);
+    color: white;
+}
+
+.btn-contact:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+    background-color: #2980b9; /* Un tono más oscuro para el hover */
+}
+
+.btn-certificate {
+    background-color: transparent;
+    color: var(--color-accent);
+    border: 2px solid var(--color-accent);
+}
+
+.btn-certificate:hover {
+    background-color: var(--color-accent);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 576px) {
+    .representatives-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .representatives-btn {
+        width: 100%;
+    }
+}
+
+/* Estilos para el logo en la navbar */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.logo-image {
+    height: 40px; /* Ajusta según el tamaño de tu logo */
+    width: auto;
+    transition: all var(--transition-fast);
+}
+
+/* Ajustes para navbar scrolled */
+.navbar.scrolled .logo-image {
+    height: 35px; /* Tamaño reducido cuando se hace scroll */
+}
+
+/* Ajustes responsivos */
+@media (max-width: 768px) {
+    .logo-image {
+        height: 35px;
+    }
+    
+    .navbar.scrolled .logo-image {
+        height: 30px;
+    }
+}
+
+/* Hero Section - Fibra Óptica */
+.fiber-hero {
+    height: 70vh;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--color-white);
+    margin-top: 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.fiber-hero-content {
+    position: relative;
+    z-index: 2;
+    max-width: 800px;
+    padding: 0 20px;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all var(--transition-medium);
+}
+
+.fiber-hero-content.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fiber-hero-title {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    animation: fadeInDown 1s ease-out;
+}
+
+.fiber-hero-subtitle {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    animation: fadeInUp 1s ease-out 0.3s forwards;
+    opacity: 0;
+}
+
+.fiber-hero-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.fiber-hero-btn {
+    animation: fadeIn 1s ease-out 0.6s forwards;
+    opacity: 0;
+}
+
+.btn-special {
+    background-color: #ff6b35;
+    color: white;
+    border: 2px solid #ff6b35;
+    padding: 15px 30px;
+    font-size: 1.2rem;
+    border-radius: 30px;
+    transition: all var(--transition-medium);
+}
+
+.btn-internet-day {
+    width: 100%;
+    max-width: 400px;
+    font-weight: bold;
+    font-size: 1.3rem;
+    padding: 18px 30px;
+    animation: pulse 2s infinite;
+    margin-top: 10px;
+}
+
+.btn-special:hover {
+    background-color: #e65a2b;
+    border-color: #e65a2b;
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 15px rgba(255, 107, 53, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 107, 53, 0);
+    }
+}
+
+/* Image Carousel Section */
+.image-carousel {
+    padding: 80px 0;
+    background-color: var(--color-dark);
+    text-align: center;
+}
+
+.image-carousel .section-title {
+    margin-bottom: 15px;
+}
+
+.image-carousel .section-subtitle {
+    margin-bottom: 40px;
+    color: var(--color-light-gray);
+}
+
+.swiper-container {
+    width: 60%;
+    height: 550px;
+    margin: 0 auto;
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: var(--shadow-lg);
+}
+
+.swiper-slide {
+    background-color: var(--color-secondary);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slide-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.slide-text {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 20px;
+    text-align: left;
+}
+
+.slide-text h3 {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.slide-text p {
+    font-size: 1rem;
+    color: var(--color-light-gray);
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+    color: var(--color-accent);
+    background: rgba(255, 255, 255, 0.2);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    transition: all var(--transition-fast);
+}
+
+.swiper-button-next:hover, 
+.swiper-button-prev:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Samm CTA Section */
+.samm-cta {
+    padding: 80px 0;
+    background-color: var(--color-primary);
+}
+
+.samm-cta-container {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+
+.samm-cta-content {
+    align-items: center;
+    flex: 1;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all var(--transition-medium);
+    text-align: center;
+}
+
+.samm-cta-content.animate {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.samm-cta-text {
+    margin-bottom: 20px;
+    color: var(--color-light-gray);
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.samm-cta-btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.samm-cta-btn {
+    display: inline-block;
+    padding: 15px 40px;
+    font-size: 1.2rem;
+    background-color: var(--color-accent);
+    color: white;
+    border-radius: 30px;
+    transition: all var(--transition-medium);
+    min-width: 250px;
+    text-align: center;
+}
+
+.samm-cta-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-lg);
+    background-color: #2980b9;
+}
+
+/* Resto del CSS permanece igual... */
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .swiper-container {
+        width: 90%;
+        height: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .swiper-container {
+        height: 400px;
+    }
+    
+    .samm-cta-container {
+        flex-direction: column;
+    }
+    
+    .samm-cta-content {
+        width: 100%;
+    }
+    
+    .samm-cta-image {
+        margin-top: 30px;
+    }
+}
+
+@media (max-width: 576px) {
+    .swiper-container {
+        height: 300px;
+        width: 95%;
+    }
+    
+    .slide-text h3 {
+        font-size: 1.2rem;
+    }
+    
+    .slide-text p {
+        font-size: 0.9rem;
+    }
+    
+    .btn-internet-day {
+        font-size: 1.1rem;
+        padding: 15px 20px;
+    }
+    
+    .samm-cta-btn {
+        padding: 12px 25px;
+        font-size: 1rem;
+    }
+}
+
+
+/* Optimización para animaciones */
+[class*="animate"] {
+    will-change: transform, opacity;
+}
+
+/* Estado inicial para elementos animados */
+.section-title,
+.section-subtitle,
+.product-card,
+.partnership-content,
+.partnership-logos,
+.samm-cta-content,
+.samm-cta-image,
+.representatives-content {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: transform 0.6s ease-out, opacity 0.6s ease-out;
+}
+
+/* Estado animado */
+.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
