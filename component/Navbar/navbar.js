@@ -93,9 +93,29 @@
         const navbarMenu = document.querySelector('.compo-navbar-menu');
         
         if (navbarToggle && navbarMenu) {
-            navbarToggle.addEventListener('click', function() {
-                this.classList.toggle('compo-active');
-                navbarMenu.classList.toggle('compo-active');
+            const toggleMenu = (event) => {
+                if (event && event.type === 'keydown' && !['Enter', ' '].includes(event.key)) {
+                    return;
+                }
+                if (window.innerWidth > 763) {
+                    // En desktop no usamos menú hamburguesa
+                    navbarToggle.classList.remove('compo-active');
+                    navbarMenu.classList.remove('compo-active');
+                    navbarToggle.setAttribute('aria-expanded', 'false');
+                    navbarMenu.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('compo-menu-open');
+                    return;
+                }
+                const isOpen = navbarMenu.classList.toggle('compo-active');
+                navbarToggle.classList.toggle('compo-active', isOpen);
+                navbarToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+                navbarMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
+                document.body.classList.toggle('compo-menu-open', isOpen);
+                window.dispatchEvent(new CustomEvent('menuToggle', { detail: { open: isOpen } }));
+            };
+
+            ['click', 'touchstart', 'keydown'].forEach(evt => {
+                navbarToggle.addEventListener(evt, toggleMenu, { passive: false });
             });
             
             // Cerrar menú al hacer clic en un enlace
@@ -103,8 +123,26 @@
                 link.addEventListener('click', () => {
                     navbarToggle.classList.remove('compo-active');
                     navbarMenu.classList.remove('compo-active');
+                    navbarToggle.setAttribute('aria-expanded', 'false');
+                    navbarMenu.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('compo-menu-open');
+                    window.dispatchEvent(new CustomEvent('menuToggle', { detail: { open: false } }));
                 });
             });
+
+            // Cerrar el menú si se vuelve a escritorio
+            const handleResize = () => {
+                if (window.innerWidth > 763) {
+                    navbarToggle.classList.remove('compo-active');
+                    navbarMenu.classList.remove('compo-active');
+                    navbarToggle.setAttribute('aria-expanded', 'false');
+                    navbarMenu.setAttribute('aria-hidden', 'true');
+                    document.body.classList.remove('compo-menu-open');
+                    window.dispatchEvent(new CustomEvent('menuToggle', { detail: { open: false } }));
+                }
+            };
+
+            window.addEventListener('resize', handleResize);
         }
     }
 

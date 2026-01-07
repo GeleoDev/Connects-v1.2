@@ -49,6 +49,7 @@
     list-style: none;
     margin: 0;
     padding: 0;
+    transition: left 0.3s ease;
 }
 
 .compo-navbar-item {
@@ -90,6 +91,7 @@
     justify-content: space-between;
     width: 30px;
     height: 21px;
+    z-index: 10001; /* por encima del promobanner */
 }
 
 .compo-bar {
@@ -112,7 +114,7 @@
 }
 
 /* Responsive */
-@media (max-width: 768px) {
+@media (max-width: 763px) {
     .compo-navbar-menu {
         position: fixed;
         top: 80px;
@@ -124,10 +126,13 @@
         align-items: center;
         justify-content: center;
         z-index: 999;
+        pointer-events: none;
+        transition: left 0.3s ease;
     }
 
     .compo-navbar-menu.compo-active {
         left: 0;
+        pointer-events: auto;
     }
 
     .compo-navbar-item {
@@ -145,4 +150,9 @@
     .compo-navbar.compo-scrolled .compo-logo-image {
         height: 30px;
     }
+}
+
+/* Bloquear scroll cuando el menú móvil está abierto */
+body.compo-menu-open {
+    overflow: hidden;
 }

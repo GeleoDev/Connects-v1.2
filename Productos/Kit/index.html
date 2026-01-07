@@ -46,15 +46,14 @@
                             <button class="image-nav-btn image-nav-prev" onclick="changeImagePrev()">
                                 <i class="fas fa-chevron-left"></i>
                             </button>
-                            <img src="../../Energias-renovables/img/bateri.png" alt="Kit Solar" id="mainImage" loading="eager">
+                            <img src="../../Energias-renovables/img/Kit.jpg" alt="Kit Solar" id="mainImage" loading="eager">
                             <button class="image-nav-btn image-nav-next" onclick="changeImageNext()">
                                 <i class="fas fa-chevron-right"></i>
                             </button>
                         </div>
                         <div class="product-thumbnails">
-                            <img src="../../Energias-renovables/img/bateri.png" alt="Vista 1" class="thumbnail active" onclick="changeImageByIndex(0)" loading="lazy">
-                            <img src="../../Energias-renovables/img/bateri1.png" alt="Vista 2" class="thumbnail" onclick="changeImageByIndex(1)" loading="lazy">
-                            <img src="../../Energias-renovables/img/bateri2.png" alt="Vista 3" class="thumbnail" onclick="changeImageByIndex(2)" loading="lazy">
+                            <img src="../../Energias-renovables/img/Kit.jpg" alt="Vista 1" class="thumbnail active" onclick="changeImageByIndex(0)" loading="lazy">
+                            <img src="../../Energias-renovables/img/Kit2.jpg" alt="Vista 2" class="thumbnail" onclick="changeImageByIndex(1)" loading="lazy">
                         </div>
                     </div>
 
@@ -132,24 +131,17 @@
                 <!-- Right Column: Product Info -->
                 <div class="product-info">
                     <h1 class="product-title">Kit Solar Completo</h1>
-                    <div class="product-rating">
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <i class="fas fa-star"></i>
-                        <span>(4.9)</span>
-                    </div>
+                    
                     
                     <!-- Price Section with Payment Icons -->
                     <div class="product-price">
                         <div class="price-header">
                             <span class="price-label">$6.600.000</span>
-                            <div class="payment-icons">
-                                <i class="fab fa-cc-visa"></i>
-                                <i class="fab fa-cc-mastercard"></i>
-                                <i class="fab fa-cc-amex"></i>
-                                <i class="fas fa-credit-card"></i>
+                            <div class="payment-icons" aria-label="Tarjetas disponibles">
+                                <i class="fab fa-cc-visa" data-card-name="Visa" data-card-icon="fab fa-cc-visa" role="button" tabindex="0" aria-label="Visa"></i>
+                                <i class="fab fa-cc-mastercard" data-card-name="Mastercard" data-card-icon="fab fa-cc-mastercard" role="button" tabindex="0" aria-label="Mastercard"></i>
+                                <i class="fab fa-cc-amex" data-card-name="American Express" data-card-icon="fab fa-cc-amex" role="button" tabindex="0" aria-label="American Express"></i>
+                                <i class="fas fa-credit-card" data-card-name="Tarjeta de crédito" data-card-icon="fas fa-credit-card" role="button" tabindex="0" aria-label="Tarjeta de crédito"></i>
                             </div>
                         </div>
                         <p class="price-note">Precio en Efectivo o Transferencia</p>
@@ -160,19 +152,23 @@
                         Consultar opciones de financiación
                     </button>
 
-                    <!-- Transferencia Button -->
-                    <button class="btn btn-transfer" type="button" data-FORM-open="transfer">
-                        Abonar con transferencia
-                    </button>
+                    <!-- Botón de compra a WhatsApp -->
+                    <a class="btn btn-transfer" href="https://wa.me/5491123456789?text=Hola%2C%20quiero%20comprar%20el%20Kit%20Solar%20Completo." target="_blank" rel="noopener noreferrer" role="button">
+                        <i class="fas fa-cart-shopping" aria-hidden="true"></i> Comprar
+                    </a>
+                    <p class="transfer-note">(Te redirigiremos con nuestro equipo de ventas a WhatsApp para que puedas realizar la compra de forma segura)</p>
 
                     <!-- Aclaraciones -->
                     <div class="product-clarifications">
-                        <h3>Garantía</h3>
-                        <p><i class="fas fa-check-circle"></i> El inversor cuenta con 2 años y las baterías con 5 años.
-                            Garantía de los componentes
-                            El equipo ha sido homologado eléctricamente en Argentina.
-                            Certificación Eléctrica Nacional</p>
-                        
+                        <h3><i class="fas fa-shield-halved"></i> Garantía de los componentes</h3>
+                        <ul class="clarifications-list">
+                            <li></i> El inversor cuenta con 2 años y las baterías con 5 años.</li>
+                        </ul>
+                    </div>
+
+                    <div class="product-clarifications">
+                        <h3><i class="fas fa-bolt"></i> Certificación Eléctrica Nacional</h3>
+                        <p>El equipo ha sido homologado eléctricamente en Argentina.</p>
                     </div>
 
                     <!-- Artículos Opcionales -->
@@ -184,6 +180,111 @@
                             <li><i class="fas fa-tools"></i> Instalación Profesional</li>
                         </ul>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+            <div class="faq-card">
+                <button class="faq-toggle" type="button" aria-expanded="false">
+                    <div class="faq-toggle__title">
+                        <i class="fas fa-circle-question"></i>
+                        <span>Preguntas frecuentes</span>
+                    </div>
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+                <div class="faq-collapse" aria-hidden="true">
+                    <div class="faq-list">
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span><i class="fas fa-circle-check"></i> ¿Cuánta energía necesito generar?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Depende del consumo diario en kWh. Calcula la suma de los electrodomésticos que quieres alimentar y sus horas de uso. Por ejemplo, una casa promedio puede consumir entre 15 y 30 kWh/día. Si solo quieres respaldo para luces y dispositivos pequeños, bastará con 1–2 kWh/día.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span><i class="fas fa-circle-check"></i> ¿Qué capacidad debe tener el generador solar?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>La capacidad se mide en Watts (W) o kilowatts (kW). Para una casa completa, se recomienda entre 3 y 5 kW de potencia instalada. Si es para emergencias o camping, 500–2000 W puede ser suficiente.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span><i class="fas fa-circle-check"></i> ¿Incluye baterías?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Muchos generadores solares incluyen baterías de litio (más duraderas) o AGM/gel. La capacidad se mide en kWh; por ejemplo, una batería de 2 kWh puede alimentar luces y pequeños electrodomésticos por varias horas. Verifica la cantidad de ciclos (ideal &gt;2000).</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span><i class="fas fa-circle-check"></i> ¿Es portátil o fijo?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Los portátiles son ideales para camping o emergencias, pero no para alimentar toda la casa. Los sistemas fijos se instalan con paneles solares y baterías más grandes.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span><i class="fas fa-circle-check"></i> ¿Qué tipo de salida tiene?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Debe ofrecer corriente alterna (AC) para electrodomésticos y corriente continua (DC) para dispositivos electrónicos. Verifica cuántos enchufes, puertos USB y si soporta equipos de alto consumo como aire acondicionado.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span><i class="fas fa-circle-check"></i> ¿Cuál es la vida útil y garantía?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>Los paneles solares suelen durar 20–25 años. Las baterías de litio duran entre 8 y 12 años. Busca garantías mínimas de 2–5 años para el equipo completo.</p>
+                            </div>
+                        </div>
+                        <div class="faq-item">
+                            <button class="faq-question" type="button">
+                                <span><i class="fas fa-circle-check"></i> ¿Qué pasa en días nublados o sin sol?</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            <div class="faq-answer">
+                                <p>El generador puede tardar más en recargarse. Algunos modelos permiten carga por red eléctrica o generador auxiliar para asegurar autonomía.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Social Media Mini Section (centrado, debajo de FAQs) -->
+    <section class="product-social">
+        <div class="container">
+            <div class="product-social__card">
+                <h3><i class="fas fa-hashtag"></i> Seguinos en redes</h3>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61584605927833" target="_blank" rel="noopener noreferrer" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://www.instagram.com/connects.ar/" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/nia-connects-26b8b23a0/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://pin.it/6niYQjteq" target="_blank" rel="noopener noreferrer" aria-label="Pinterest">
+                        <i class="fab fa-pinterest-p"></i>
+                    </a>
                 </div>
             </div>
         </div>
@@ -215,7 +316,7 @@
                 </div>
 
                 <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-doc">CUIT/CUIL/DNI</label>
+                    <label class="FORM-label" for="FORM-fin-doc">CUIT</label>
                     <input class="FORM-input" type="text" id="FORM-fin-doc" name="cuit_cuil_dni" required>
                 </div>
 
@@ -292,15 +393,25 @@
         </div>
     </div>
 
+    <!-- Popup para íconos de tarjetas -->
+    <div class="card-popup" id="cardPopup" aria-live="polite" aria-hidden="true">
+        <div class="card-popup__content">
+            <button class="card-popup__close" type="button" aria-label="Cerrar">&times;</button>
+            <div class="card-popup__icon" id="cardPopupIcon" aria-hidden="true">
+                <i class="fas fa-credit-card"></i>
+            </div>
+            <p id="cardPopupText"></p>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="../../component/load-components.js"></script>
     <script src="../FORM-modal.js"></script>
     <script>
         // Sistema optimizado de cambio de imágenes con throttling
         const images = [
-            '../../Energias-renovables/img/bateri.png',
-            '../../Energias-renovables/img/bateri1.png',
-            '../../Energias-renovables/img/bateri2.png'
+            '../../Energias-renovables/img/Kit.jpg',
+            '../../Energias-renovables/img/Kit2.jpg'
         ];
         let currentImageIndex = 0;
         let imageChangeTimeout = null;
@@ -391,6 +502,119 @@
                 icon.classList.toggle('fa-chevron-up');
             });
         }
+
+        // Popup informativo para tarjetas
+        const cardPopup = document.getElementById('cardPopup');
+        const cardPopupText = document.getElementById('cardPopupText');
+        const cardPopupIcon = document.getElementById('cardPopupIcon');
+        const cardPopupClose = document.querySelector('.card-popup__close');
+        let cardPopupTimeout = null;
+
+        function hideCardPopup() {
+            if (!cardPopup) return;
+            cardPopup.classList.remove('is-visible');
+            cardPopup.setAttribute('aria-hidden', 'true');
+        }
+
+        function showCardPopup(cardName, cardIcon) {
+            if (!cardPopup || !cardPopupText) return;
+            cardPopupText.textContent = `Con esta tarjeta ${cardName}, tenés 6 cuotas sin interés.`;
+            cardPopup.classList.add('is-visible');
+            cardPopup.setAttribute('aria-hidden', 'false');
+
+            if (cardPopupIcon) {
+                const iconEl = cardPopupIcon.querySelector('i');
+                if (iconEl && cardIcon) {
+                    iconEl.className = cardIcon;
+                }
+            }
+
+            clearTimeout(cardPopupTimeout);
+            cardPopupTimeout = setTimeout(hideCardPopup, 5000);
+        }
+
+        document.querySelectorAll('.payment-icons i').forEach(icon => {
+            const cardName = icon.dataset.cardName || 'seleccionada';
+            const cardIcon = icon.dataset.cardIcon || icon.className;
+
+            icon.addEventListener('click', () => showCardPopup(cardName, cardIcon));
+            icon.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    showCardPopup(cardName, cardIcon);
+                }
+            });
+        });
+
+        if (cardPopupClose) {
+            cardPopupClose.addEventListener('click', hideCardPopup);
+        }
+
+        if (cardPopup) {
+            cardPopup.addEventListener('click', (e) => {
+                if (e.target === cardPopup) hideCardPopup();
+            });
+        }
+
+        // FAQ acordeón
+        const faqItems = document.querySelectorAll('.faq-item');
+        const faqCard = document.querySelector('.faq-card');
+        const faqToggle = document.querySelector('.faq-toggle');
+        const faqCollapse = document.querySelector('.faq-collapse');
+
+        function toggleFaq(item) {
+            const isActive = item.classList.contains('active');
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (!isActive) {
+                item.classList.add('active');
+            }
+        }
+
+        function openAllFaq() {
+            faqItems.forEach(i => i.classList.add('active'));
+            if (faqCard) faqCard.classList.add('is-open');
+            if (faqCollapse) {
+                faqCollapse.setAttribute('aria-hidden', 'false');
+            }
+            if (faqToggle) {
+                faqToggle.setAttribute('aria-expanded', 'true');
+            }
+        }
+
+        function closeAllFaq() {
+            faqItems.forEach(i => i.classList.remove('active'));
+            if (faqCard) faqCard.classList.remove('is-open');
+            if (faqCollapse) {
+                faqCollapse.setAttribute('aria-hidden', 'true');
+            }
+            if (faqToggle) {
+                faqToggle.setAttribute('aria-expanded', 'false');
+            }
+        }
+
+        if (faqToggle) {
+            faqToggle.addEventListener('click', () => {
+                const isOpen = faqCard && faqCard.classList.contains('is-open');
+                if (isOpen) {
+                    closeAllFaq();
+                } else {
+                    openAllFaq();
+                }
+            });
+        }
+
+        faqItems.forEach(item => {
+            const questionBtn = item.querySelector('.faq-question');
+            if (!questionBtn) return;
+
+            questionBtn.addEventListener('click', () => toggleFaq(item));
+            questionBtn.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleFaq(item);
+                }
+            });
+        });
 
         // FORM- Modal controller (JS en archivo dedicado)
 

@@ -48,29 +48,14 @@ function initCriticalComponents() {
             init: function() {
                 const activeSlide = this.slides[this.activeIndex];
                 const content = activeSlide.querySelector('.hero-content');
-                content.classList.add('animate');
+                if (content) {
+                    content.classList.add('animate');
+                }
+                updateAutoplayDelay(this, activeSlide);
             },
             slideChange: function() {
-                // Detectar cuando estamos en la cuarta slide (índice 3)
-                // En modo loop, necesitamos verificar el índice real
-                const realIndex = this.realIndex;
-                const totalSlides = this.slides.length;
-                
-                // La cuarta slide es el índice 3 (0, 1, 2, 3)
-                if (realIndex === 3) {
-                    // Cambiar delay a 10000ms (el doble)
-                    this.autoplay.stop();
-                    this.params.autoplay.delay = 10000;
-                    this.autoplay.start();
-                } else {
-                    // Restaurar delay normal de 5000ms para las demás slides
-                    this.autoplay.stop();
-                    this.params.autoplay.delay = 5000;
-                    this.autoplay.start();
-                }
-                
-                // Animar contenido del slide activo
                 const activeSlide = this.slides[this.activeIndex];
+                updateAutoplayDelay(this, activeSlide);
                 const content = activeSlide.querySelector('.hero-content');
                 if (content) {
                     content.classList.add('animate');
@@ -83,6 +68,18 @@ function initCriticalComponents() {
     document.querySelector('.hero-content')?.classList.add('animate');
 }
 
+function updateAutoplayDelay(swiperInstance, activeSlide) {
+    if (!swiperInstance || !activeSlide || !swiperInstance.params.autoplay) return;
+    const isPrioritySlide = activeSlide.classList.contains('slide-4') || activeSlide.dataset.slideId === 'slide-4';
+    const desiredDelay = isPrioritySlide ? 10000 : 5000;
+
+    if (swiperInstance.params.autoplay.delay !== desiredDelay) {
+        swiperInstance.autoplay.stop();
+        swiperInstance.params.autoplay.delay = desiredDelay;
+        swiperInstance.autoplay.start();
+    }
+}
+
 function initSecondaryComponents() {
     // Registrar ScrollTrigger solo cuando sea necesario
     if (typeof ScrollTrigger !== 'undefined') {
@@ -90,6 +87,9 @@ function initSecondaryComponents() {
         
         // Animaciones de secciones con ScrollTrigger
         gsap.utils.toArray('section').forEach(section => {
+            if (section.classList.contains('services')) {
+                return; // Sin animación en la sección "Ofrecemos"
+            }
             gsap.from(section, {
                 scrollTrigger: {
                     trigger: section,
@@ -149,6 +149,12 @@ function initAnimations() {
         const elements = document.querySelectorAll('.section-title, .section-subtitle, .service-card, .contact-form, .contact-map, .about-content, .about-image');
         
         elements.forEach(element => {
+            if (element.closest('.services')) {
+                // Sin animación para la sección "Ofrecemos"
+                element.classList.add('animate');
+                return;
+            }
+
             const elementPosition = element.getBoundingClientRect().top;
             const windowHeight = window.innerHeight;
             
@@ -190,27 +196,7 @@ function initEventListeners() {
     // No duplicar aquí para evitar conflictos
 
     // Modal redes sociales
-    const socialModal = document.getElementById('socialModal');
-    if (socialModal) {
-        const closeModal = socialModal.querySelector('.close-modal');
-        
-        document.querySelectorAll('#facebook-link, #instagram-link, #linkedin-link').forEach(link => {
-            link.addEventListener('click', (e) => {
-                e.preventDefault();
-                socialModal.classList.add('active');
-            });
-        });
-
-        closeModal.addEventListener('click', () => {
-            socialModal.classList.remove('active');
-        });
-
-        socialModal.addEventListener('click', (e) => {
-            if (e.target === socialModal) {
-                socialModal.classList.remove('active');
-            }
-        });
-    }
+    // Eliminado: los enlaces ahora apuntan a las redes reales
 
     // Modal de agradecimiento
     const thankYouModal = document.getElementById('thankYouModal');

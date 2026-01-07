@@ -35,9 +35,58 @@
         }
     }
 
+    function initVisibilityHandlers() {
+        const promoBanner = document.querySelector('.promo-banner');
+        if (!promoBanner) return;
+
+        const HIDE_SCROLL_OFFSET = 50;
+        const MOBILE_MAX_WIDTH = 800;
+
+        const updateByScroll = () => {
+            if (window.innerWidth > MOBILE_MAX_WIDTH) {
+                promoBanner.classList.remove('promo-hidden');
+                return;
+            }
+            if (window.scrollY > HIDE_SCROLL_OFFSET) {
+                promoBanner.classList.add('promo-hidden');
+            } else if (!document.body.classList.contains('compo-menu-open')) {
+                promoBanner.classList.remove('promo-hidden');
+            }
+        };
+
+        const handleMenuToggle = (event) => {
+            const isOpen = event?.detail?.open;
+            if (window.innerWidth > MOBILE_MAX_WIDTH) {
+                promoBanner.classList.remove('promo-hidden');
+                return;
+            }
+            if (isOpen) {
+                promoBanner.classList.add('promo-hidden');
+            } else if (window.scrollY <= HIDE_SCROLL_OFFSET) {
+                promoBanner.classList.remove('promo-hidden');
+            }
+        };
+
+        const handleResize = () => {
+            if (window.innerWidth > MOBILE_MAX_WIDTH) {
+                promoBanner.classList.remove('promo-hidden');
+                return;
+            }
+            updateByScroll();
+        };
+
+        window.addEventListener('scroll', updateByScroll, { passive: true });
+        window.addEventListener('menuToggle', handleMenuToggle);
+        window.addEventListener('resize', handleResize);
+
+        // Estado inicial
+        updateByScroll();
+    }
+
     // Inicializar promo banner
     function initPromoBanner() {
         setupPromoBanner();
+        initVisibilityHandlers();
     }
 
     // Ejecutar cuando el DOM esté listo

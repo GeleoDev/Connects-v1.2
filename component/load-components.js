@@ -233,6 +233,16 @@
                         }
                     }, 10);
                 }
+
+                // Disparar evento cuando el botón Back To Top se carga
+                if (componentName === 'BackToTop') {
+                    setTimeout(() => {
+                        const backToTopButton = document.querySelector('.backtotop-button');
+                        if (backToTopButton) {
+                            window.dispatchEvent(new CustomEvent('backToTopLoaded'));
+                        }
+                    }, 10);
+                }
             })
             .catch(error => {
                 console.error(`Error cargando componente ${componentName}:`, error);
@@ -279,6 +289,15 @@
         if (whatsappPlaceholder) {
             loadComponent('WhatsApp', '[data-component="whatsapp"]');
         }
+
+        // Cargar BackToTop (crear placeholder si no existe para asegurar presencia en todas las páginas)
+        let backToTopPlaceholder = document.querySelector('[data-component="backtotop"]');
+        if (!backToTopPlaceholder) {
+            backToTopPlaceholder = document.createElement('div');
+            backToTopPlaceholder.setAttribute('data-component', 'backtotop');
+            document.body.appendChild(backToTopPlaceholder);
+        }
+        loadComponent('BackToTop', '[data-component="backtotop"]');
     }
 
     // Ejecutar cuando el DOM esté listo

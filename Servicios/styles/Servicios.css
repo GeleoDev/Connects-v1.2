@@ -213,7 +213,7 @@ img {
 
 /* Services Hero Section */
 .services-hero {
-    height: 60vh;
+    height: 80vh;
     background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
                 url('../img/datacenter-moderno.jpg');
     background-size: cover;
@@ -222,7 +222,9 @@ img {
     align-items: center;
     justify-content: center;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 140px; /* Alineado con hero principal */
+    position: relative;
+    overflow: hidden;
 }
 
 .services-hero-content {
@@ -230,6 +232,47 @@ img {
     padding: 0 20px;
 }
 
+.redes-social-floating {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 10;
+}
+
+.redes-social-link {
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--color-white);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: var(--shadow-md);
+    transition: all var(--transition-fast);
+    backdrop-filter: blur(6px);
+    font-size: 18px;
+}
+
+.redes-social-link:hover {
+    background: var(--color-accent);
+    transform: translateY(-3px) scale(1.05);
+}
+
+@media (max-width: 768px) {
+    .redes-social-floating {
+        right: 12px;
+        bottom: 12px;
+        gap: 8px;
+    }
+    .redes-social-link {
+        width: 36px;
+        height: 36px;
+    }
+}
 .services-hero-title {
     font-size: 3rem;
     margin-bottom: 20px;

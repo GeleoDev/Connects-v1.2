@@ -1,0 +1,56 @@
+/* Back To Top Button Component Styles */
+.backtotop-button {
+    position: fixed;
+    bottom: 95px; /* por encima del botón de WhatsApp */
+    right: 20px;
+    width: 52px;
+    height: 52px;
+    border: none;
+    border-radius: 50%;
+    background: #2c3e50;
+    color: #ffffff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+    cursor: pointer;
+    z-index: 9999; /* encima del botón de WhatsApp (9998) */
+    opacity: 0;
+    transform: translateY(10px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+.backtotop-button i {
+    font-size: 20px;
+}
+
+.backtotop-button.visible {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.backtotop-button:hover {
+    background: #34495e;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.45);
+    transform: translateY(-2px);
+}
+
+.backtotop-button:active {
+    transform: translateY(1px);
+}
+
+@media (max-width: 768px) {
+    .backtotop-button {
+        bottom: 80px;
+        right: 15px;
+        width: 48px;
+        height: 48px;
+    }
+
+    .backtotop-button i {
+        font-size: 18px;
+    }
+}
+
