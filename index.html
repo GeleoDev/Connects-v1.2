@@ -128,13 +128,6 @@
     <section class="hero">
         <div class="swiper hero-swiper">
             <div class="swiper-wrapper">
-                <div class="swiper-slide eslaid slide-4" data-slide-id="slide-4" role="img" aria-label="Tecnología de vanguardia - Innovación y calidad en cada solución">
-                    <div class="hero-content">
-                        <h2 class="hero-title">Tecnología de vanguardia</h2>
-                        <p class="hero-subtitle">La evolucion del grupo electrógeno</p>
-                        <a href="./Energias-renovables/index.html" class="hero-cta btn btn-blink-orange">Ver productos</a>
-                    </div>
-                </div>
                 <div class="swiper-slide eslaid slide-1" data-slide-id="slide-1" role="img" aria-label="Conectando el futuro - Soluciones integrales en telecomunicaciones">
                     <div class="hero-content">
                         <h1 class="hero-title">Conectando el futuro</h1>
@@ -305,6 +298,20 @@
         </div>
     </div>
 
+    <!-- Modal Promocional de inicio -->
+    <div class="modal promo-modal" id="promoModal">
+        <div class="modal-content promo-modal-content">
+            <span class="close-modal" id="promoClose">&times;</span>
+            <div class="promo-hero">
+                <div class="hero-content">
+                    <h2 class="hero-title">Tecnología de vanguardia</h2>
+                    <p class="hero-subtitle">La evolucion del grupo electrógeno</p>
+                    <a href="./Energias-renovables/index.html" class="hero-cta btn btn-blink-orange">Ver productos</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
@@ -312,6 +319,31 @@
     <script src="./component/load-components.js"></script>
     <!-- Component Scripts - Se cargan dinámicamente por load-components.js -->
     <script src="./js/main.js"></script>
+    <script>
+        // Abrir modal promocional al cargar
+        document.addEventListener('DOMContentLoaded', function () {
+            const promoModal = document.getElementById('promoModal');
+            const closeBtn = document.getElementById('promoClose');
+            if (!promoModal) return;
+
+            const showModal = () => {
+                promoModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            };
+
+            const hideModal = () => {
+                promoModal.classList.remove('active');
+                document.body.style.overflow = '';
+            };
+
+            showModal();
+
+            closeBtn?.addEventListener('click', hideModal);
+            promoModal.addEventListener('click', (e) => {
+                if (e.target === promoModal) hideModal();
+            });
+        });
+    </script>
     <script>
         // Redirigir si aparece index.html en la URL (solo si no es file://)
         if (window.location.protocol !== 'file:' && window.location.href.includes('index.html')) {
