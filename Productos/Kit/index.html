@@ -393,14 +393,67 @@
         </div>
     </div>
 
-    <!-- Popup para íconos de tarjetas -->
-    <div class="card-popup" id="cardPopup" aria-live="polite" aria-hidden="true">
-        <div class="card-popup__content">
-            <button class="card-popup__close" type="button" aria-label="Cerrar">&times;</button>
-            <div class="card-popup__icon" id="cardPopupIcon" aria-hidden="true">
-                <i class="fas fa-credit-card"></i>
+    <!-- Modal de beneficios con tarjetas -->
+    <div class="card-benefits-modal" id="cardBenefitsModal" aria-hidden="true">
+        <div class="card-benefits__overlay" data-card-benefits-close></div>
+        <div class="card-benefits__dialog" role="dialog" aria-modal="true" aria-labelledby="cardBenefitsTitle" tabindex="-1">
+            <button class="card-benefits__close" type="button" aria-label="Cerrar" data-card-benefits-close>&times;</button>
+            <div class="card-benefits__header">
+                <div class="card-benefits__icon" aria-hidden="true">
+                    <i class="fas fa-credit-card"></i>
+                </div>
+                <div>
+                    <h3 class="card-benefits__title" id="cardBenefitsTitle">Financiación con tarjetas</h3>
+                    <p class="card-benefits__subtitle">Elegí tu tarjeta y conocé las opciones disponibles.</p>
+                </div>
             </div>
-            <p id="cardPopupText"></p>
+            <div class="card-benefits__grid">
+                <div class="card-benefits__item">
+                    <div class="card-benefits__card">
+                        <i class="fab fa-cc-visa" aria-hidden="true"></i>
+                        <span>Visa</span>
+                    </div>
+                    <ul class="card-benefits__list">
+                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
+                        <li>12 y 18 cuotas fijas (consultar CFT)</li>
+                        <li>Promociones bancarias vigentes</li>
+                    </ul>
+                </div>
+                <div class="card-benefits__item">
+                    <div class="card-benefits__card">
+                        <i class="fab fa-cc-mastercard" aria-hidden="true"></i>
+                        <span>Mastercard</span>
+                    </div>
+                    <ul class="card-benefits__list">
+                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
+                        <li>12 y 18 cuotas fijas (consultar CFT)</li>
+                        <li>Beneficios por banco emisor</li>
+                    </ul>
+                </div>
+                <div class="card-benefits__item">
+                    <div class="card-benefits__card">
+                        <i class="fab fa-cc-amex" aria-hidden="true"></i>
+                        <span>American Express</span>
+                    </div>
+                    <ul class="card-benefits__list">
+                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
+                        <li>12 y 18 cuotas fijas (consultar CFT)</li>
+                        <li>Planes especiales Amex</li>
+                    </ul>
+                </div>
+                <div class="card-benefits__item">
+                    <div class="card-benefits__card">
+                        <i class="fas fa-credit-card" aria-hidden="true"></i>
+                        <span>Otras tarjetas</span>
+                    </div>
+                    <ul class="card-benefits__list">
+                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
+                        <li>12 y 18 cuotas fijas (consultar CFT)</li>
+                        <li>Consultar disponibilidad por emisor</li>
+                    </ul>
+                </div>
+            </div>
+            <p class="card-benefits__note">Los planes pueden variar según el banco emisor y disponibilidad. Confirmá la promoción vigente antes de finalizar la compra.</p>
         </div>
     </div>
 
@@ -503,58 +556,47 @@
             });
         }
 
-        // Popup informativo para tarjetas
-        const cardPopup = document.getElementById('cardPopup');
-        const cardPopupText = document.getElementById('cardPopupText');
-        const cardPopupIcon = document.getElementById('cardPopupIcon');
-        const cardPopupClose = document.querySelector('.card-popup__close');
-        let cardPopupTimeout = null;
+        // Modal único de beneficios con tarjetas
+        const cardBenefitsModal = document.getElementById('cardBenefitsModal');
+        const cardBenefitsDialog = cardBenefitsModal?.querySelector('.card-benefits__dialog');
+        const cardBenefitsClosers = cardBenefitsModal ? cardBenefitsModal.querySelectorAll('[data-card-benefits-close]') : [];
 
-        function hideCardPopup() {
-            if (!cardPopup) return;
-            cardPopup.classList.remove('is-visible');
-            cardPopup.setAttribute('aria-hidden', 'true');
+        function openCardBenefits() {
+            if (!cardBenefitsModal) return;
+            cardBenefitsModal.classList.add('is-open');
+            cardBenefitsModal.setAttribute('aria-hidden', 'false');
+            document.body.style.overflow = 'hidden';
+            cardBenefitsDialog?.focus();
         }
 
-        function showCardPopup(cardName, cardIcon) {
-            if (!cardPopup || !cardPopupText) return;
-            cardPopupText.textContent = `Con esta tarjeta ${cardName}, tenés 6 cuotas sin interés.`;
-            cardPopup.classList.add('is-visible');
-            cardPopup.setAttribute('aria-hidden', 'false');
-
-            if (cardPopupIcon) {
-                const iconEl = cardPopupIcon.querySelector('i');
-                if (iconEl && cardIcon) {
-                    iconEl.className = cardIcon;
-                }
-            }
-
-            clearTimeout(cardPopupTimeout);
-            cardPopupTimeout = setTimeout(hideCardPopup, 5000);
+        function closeCardBenefits() {
+            if (!cardBenefitsModal) return;
+            cardBenefitsModal.classList.remove('is-open');
+            cardBenefitsModal.setAttribute('aria-hidden', 'true');
+            document.body.style.overflow = '';
         }
 
         document.querySelectorAll('.payment-icons i').forEach(icon => {
-            const cardName = icon.dataset.cardName || 'seleccionada';
-            const cardIcon = icon.dataset.cardIcon || icon.className;
-
-            icon.addEventListener('click', () => showCardPopup(cardName, cardIcon));
+            icon.addEventListener('click', openCardBenefits);
             icon.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    showCardPopup(cardName, cardIcon);
+                    openCardBenefits();
                 }
             });
         });
 
-        if (cardPopupClose) {
-            cardPopupClose.addEventListener('click', hideCardPopup);
-        }
+        cardBenefitsClosers.forEach(el => el.addEventListener('click', closeCardBenefits));
 
-        if (cardPopup) {
-            cardPopup.addEventListener('click', (e) => {
-                if (e.target === cardPopup) hideCardPopup();
-            });
-        }
+        cardBenefitsModal?.addEventListener('click', (e) => {
+            if (e.target === cardBenefitsModal) closeCardBenefits();
+        });
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && cardBenefitsModal?.classList.contains('is-open')) {
+                closeCardBenefits();
+            }
+        });
 
         // FAQ acordeón
         const faqItems = document.querySelectorAll('.faq-item');
