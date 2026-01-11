@@ -990,7 +990,7 @@ html, body {
 /* E-commerce Product Cards - Rediseñadas */
 .products-grid-ecommerce {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    grid-template-columns: repeat(2, 1fr);
     gap: 40px;
     margin-top: 60px;
     max-width: 1200px;
@@ -1210,6 +1210,13 @@ html, body {
         grid-template-columns: 1fr;
         gap: 30px;
         margin-top: 40px;
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    .products-grid-ecommerce {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
     }
     
     .product-card-ecommerce {
