@@ -320,27 +320,58 @@
     <!-- Component Scripts - Se cargan dinámicamente por load-components.js -->
     <script src="./js/main.js"></script>
     <script>
-        // Abrir modal promocional al cargar
+        // Abrir modal promocional al cargar con localStorage
         document.addEventListener('DOMContentLoaded', function () {
             const promoModal = document.getElementById('promoModal');
             const closeBtn = document.getElementById('promoClose');
             if (!promoModal) return;
 
+            const STORAGE_KEY = 'promoModalLastShown';
+            const COOLDOWN_MINUTES = 15;
+
+            const shouldShowModal = () => {
+                const lastShown = localStorage.getItem(STORAGE_KEY);
+                
+                // Si nunca se ha mostrado, mostrar
+                if (!lastShown) {
+                    return true;
+                }
+
+                // Verificar si han pasado 15 minutos
+                const lastShownTime = parseInt(lastShown, 10);
+                const now = Date.now();
+                const minutesPassed = (now - lastShownTime) / (1000 * 60);
+
+                // Si han pasado más de 15 minutos, mostrar de nuevo
+                return minutesPassed >= COOLDOWN_MINUTES;
+            };
+
             const showModal = () => {
                 promoModal.classList.add('active');
-                document.body.style.overflow = 'hidden';
+                // NO bloqueamos el scroll del body para que el hero siga funcionando
+                // document.body.style.overflow = 'hidden'; // REMOVIDO
+                
+                // Guardar en localStorage la fecha/hora actual
+                localStorage.setItem(STORAGE_KEY, Date.now().toString());
             };
 
             const hideModal = () => {
                 promoModal.classList.remove('active');
-                document.body.style.overflow = '';
+                // Guardar en localStorage cuando se cierra manualmente para que no se muestre durante 15 minutos
+                localStorage.setItem(STORAGE_KEY, Date.now().toString());
             };
 
-            showModal();
+            // Verificar si debe mostrarse el modal
+            if (shouldShowModal()) {
+                showModal();
+            }
 
             closeBtn?.addEventListener('click', hideModal);
             promoModal.addEventListener('click', (e) => {
-                if (e.target === promoModal) hideModal();
+                // Solo cerrar si se hace clic en el fondo del modal (no en el contenido)
+                if (e.target === promoModal) {
+                    hideModal();
+                }
             });
         });
     </script>

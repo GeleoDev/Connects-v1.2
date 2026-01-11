@@ -824,12 +824,18 @@ background-color: rgba(0, 0, 0, 0.3);
 }
 
 /* Modal promocional estilo hero */
+.promo-modal {
+    /* El modal está visible pero no bloquea completamente la interacción */
+    /* El hero swiper seguirá funcionando automáticamente ya que no bloqueamos el body */
+}
+
 .promo-modal .modal-content {
     background: none;
     padding: 0;
     max-width: 1000px;
     width: min(95vw, 1100px);
     overflow: hidden;
+    pointer-events: auto; /* El contenido del modal sí recibe eventos */
 }
 
 .promo-modal-content .close-modal {

@@ -89,12 +89,6 @@ html, body {
 
 .mission-content {
     flex: 1;
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all var(--transition-medium);
-}
-
-.mission-content.animate {
     opacity: 1;
     transform: translateX(0);
 }
@@ -129,15 +123,8 @@ html, body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all var(--transition-medium);
-}
-
-.mission-image.animate {
     opacity: 1;
     transform: translateX(0);
-    transition-delay: 0.3s;
 }
 
 .mission-image img {
@@ -354,11 +341,6 @@ html, body {
     box-shadow: var(--shadow-md);
     transition: all var(--transition-medium);
     text-align: center;
-    opacity: 0;
-    transform: translateY(50px);
-}
-
-.benefit-card.animate {
     opacity: 1;
     transform: translateY(0);
 }
@@ -419,15 +401,10 @@ html, body {
     overflow: hidden;
     box-shadow: var(--shadow-md);
     transition: all var(--transition-medium);
-    opacity: 0;
-    transform: translateY(50px);
-    position: relative;
-    z-index: 1;
-}
-
-.product-card.animate {
     opacity: 1;
     transform: translateY(0);
+    position: relative;
+    z-index: 1;
 }
 
 .product-card:hover {
@@ -787,12 +764,6 @@ html, body {
 
 .consultation-content {
     flex: 1;
-    opacity: 0;
-    transform: translateX(-50px);
-    transition: all var(--transition-medium);
-}
-
-.consultation-content.animate {
     opacity: 1;
     transform: translateX(0);
 }
@@ -831,15 +802,8 @@ html, body {
     border-radius: 15px;
     overflow: hidden;
     box-shadow: var(--shadow-lg);
-    opacity: 0;
-    transform: translateX(50px);
-    transition: all var(--transition-medium);
-}
-
-.consultation-image.animate {
     opacity: 1;
     transform: translateX(0);
-    transition-delay: 0.3s;
 }
 
 .consultation-image img {

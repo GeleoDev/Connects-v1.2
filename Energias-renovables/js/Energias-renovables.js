@@ -59,53 +59,6 @@ document.addEventListener('DOMContentLoaded', function() {
         energyHeroContent.classList.add('animate');
     }
     
-    // Initialize GSAP animations
-    gsap.registerPlugin(ScrollTrigger);
-    
-    // Animate sections on scroll
-    const sections = document.querySelectorAll('.mission, .benefits, .products, .consultation');
-    sections.forEach(section => {
-        gsap.from(section, {
-            scrollTrigger: {
-                trigger: section,
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: 'power2.out'
-        });
-    });
-    
-    // Animate individual elements con throttling para mejor performance
-    let ticking = false;
-    const animateElements = () => {
-        if (!ticking) {
-            window.requestAnimationFrame(() => {
-                const elements = document.querySelectorAll('.section-title, .section-subtitle, .benefit-card, .product-card, .mission-content, .mission-image, .consultation-content, .consultation-image');
-                
-                elements.forEach(element => {
-                    const elementPosition = element.getBoundingClientRect().top;
-                    const windowHeight = window.innerHeight;
-                    
-                    if (elementPosition < windowHeight - 100) {
-                        element.classList.add('animate');
-                    }
-                });
-                
-                ticking = false;
-            });
-            ticking = true;
-        }
-    };
-    
-    // Initial check
-    animateElements();
-    
-    // Check on scroll con throttling
-    window.addEventListener('scroll', animateElements, { passive: true });
-    
     // Product card hover effect - Optimizado con requestAnimationFrame
     const productCards = document.querySelectorAll('.product-card');
     let rafId = null;

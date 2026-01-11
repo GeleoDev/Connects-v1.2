@@ -47,11 +47,6 @@ document.addEventListener('DOMContentLoaded', function() {
         fiberHeroContent.classList.add('animate');
     }
     
-    // Initialize GSAP animations
-    gsap.registerPlugin(ScrollTrigger);
-    
-
-    
     // Initialize Swiper Carousel
     const swiper = new Swiper('.swiper-container', {
         loop: true,
@@ -66,49 +61,6 @@ document.addEventListener('DOMContentLoaded', function() {
         effect: 'slide',
         speed: 800,
     });
-
-    
-    // Animate sections on scroll
-    const sections = document.querySelectorAll('.partnership, .products, .samm-cta, .representatives');
-    sections.forEach(section => {
-        gsap.from(section, {
-            scrollTrigger: {
-                trigger: section,
-                start: 'top 80%',
-                toggleActions: 'play none none none'
-            },
-            opacity: 0,
-            y: 50,
-            duration: 1,
-            ease: 'power2.out'
-        });
-    });
-    
-   // En la función animateElements(), actualizar para incluir los logos
-// En la función animateElements(), agregar la nueva sección
-const animateElements = () => {
-    const elements = document.querySelectorAll(
-        '.section-title, .section-subtitle, .product-card, ' +
-        '.partnership-content, .partnership-logos, ' +
-        '.samm-cta-content, .samm-cta-image, ' +
-        '.representatives-content'
-    );
-    
-    elements.forEach(element => {
-        const elementPosition = element.getBoundingClientRect().top;
-        const windowHeight = window.innerHeight;
-        
-        if (elementPosition < windowHeight - 100) {
-            element.classList.add('animate');
-        }
-    });
-};
-    
-    // Initial check
-    animateElements();
-    
-    // Check on scroll
-    window.addEventListener('scroll', animateElements);
     
     // Product card hover effect
     const productCards = document.querySelectorAll('.product-card');
