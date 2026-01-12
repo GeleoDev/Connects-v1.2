@@ -603,8 +603,8 @@
             }
         }
 
-        function openAllFaq() {
-            faqItems.forEach(i => i.classList.add('active'));
+        function openFaqContainer() {
+            // Solo abre el contenedor, NO todas las preguntas
             if (faqCard) faqCard.classList.add('is-open');
             if (faqCollapse) {
                 faqCollapse.setAttribute('aria-hidden', 'false');
@@ -612,9 +612,12 @@
             if (faqToggle) {
                 faqToggle.setAttribute('aria-expanded', 'true');
             }
+            // Asegurar que todas las preguntas empiecen cerradas
+            faqItems.forEach(i => i.classList.remove('active'));
         }
 
-        function closeAllFaq() {
+        function closeFaqContainer() {
+            // Cierra el contenedor y todas las preguntas
             faqItems.forEach(i => i.classList.remove('active'));
             if (faqCard) faqCard.classList.remove('is-open');
             if (faqCollapse) {
@@ -629,9 +632,9 @@
             faqToggle.addEventListener('click', () => {
                 const isOpen = faqCard && faqCard.classList.contains('is-open');
                 if (isOpen) {
-                    closeAllFaq();
+                    closeFaqContainer();
                 } else {
-                    openAllFaq();
+                    openFaqContainer();
                 }
             });
         }
