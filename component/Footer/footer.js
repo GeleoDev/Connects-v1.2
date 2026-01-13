@@ -14,13 +14,20 @@
         return pathParts.length;
     }
 
-    // Generar ruta relativa hacia la raíz
-    function getRelativePathToRoot() {
+    // Generar ruta base considerando GitHub Pages
+    function getFooterBasePath() {
+        // En GitHub Pages necesitamos anteponer el nombre del repositorio
+        if (window.location.hostname.includes('github.io')) {
+            const pathParts = window.location.pathname.split('/').filter(p => p);
+            const repoName = pathParts[0] || '';
+            return repoName ? `/${repoName}/` : '/';
+        }
+
+        // Entorno local: calcular ruta relativa a la raíz
         const depth = getPageDepth();
         if (depth === 0) {
             return './';
         }
-        // Generar '../' repetido según la profundidad
         return '../'.repeat(depth);
     }
 
@@ -29,7 +36,7 @@
         const footer = document.querySelector('.footer');
         if (!footer) return;
 
-        const rootPath = getRelativePathToRoot();
+        const rootPath = getFooterBasePath();
 
         // Configurar enlaces del footer con rutas relativas correctas
         const links = {
