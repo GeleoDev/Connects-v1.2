@@ -1000,6 +1000,33 @@
     .payment-icons {
         flex-wrap: wrap;
     }
+    
+    /* Reordenar bloques en mobile para mostrar el precio después de la imagen */
+    .product-layout {
+        display: flex;
+        gap: 32px;
+    }
+    
+    .product-left-column {
+        display: contents;
+    }
+    
+    .product-images {
+        order: 1;
+    }
+    
+    .product-info {
+        order: 2;
+        width: 100%;
+    }
+    
+    .product-description-full {
+        order: 3;
+    }
+    
+    .dropdown-section {
+        order: 4;
+    }
 }
 
 /* FORM- Modal (desde 0) */

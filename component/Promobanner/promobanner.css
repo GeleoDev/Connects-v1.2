@@ -41,6 +41,21 @@
     z-index: 1;
 }
 
+.promo-banner-media {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-height: 50px;
+}
+
+.promo-banner-media img {
+    height: 50px;
+    width: auto;
+    object-fit: contain;
+    display: block;
+    filter: drop-shadow(0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
 .promo-banner-text {
     display: flex;
     align-items: center;
@@ -139,10 +154,15 @@
         gap: 10px;
     }
     
+    .promo-banner-media img {
+        height: 40px;
+    }
+    
     .promo-banner-text {
         font-size: 0.9rem;
         flex-direction: column;
         gap: 5px;
+        align-items: flex-start;
     }
     
     .promo-icon {
