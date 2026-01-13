@@ -91,59 +91,71 @@
     function initMobileMenu() {
         const navbarToggle = document.querySelector('.compo-navbar-toggle');
         const navbarMenu = document.querySelector('.compo-navbar-menu');
+        const navbar = document.querySelector('.compo-navbar');
         
-        if (navbarToggle && navbarMenu) {
-            const toggleMenu = (event) => {
-                if (event && event.type === 'keydown' && !['Enter', ' '].includes(event.key)) {
-                    return;
-                }
-                if (window.innerWidth > 763) {
-                    // En desktop no usamos menú hamburguesa
-                    navbarToggle.classList.remove('compo-active');
-                    navbarMenu.classList.remove('compo-active');
-                    navbarToggle.setAttribute('aria-expanded', 'false');
-                    navbarMenu.setAttribute('aria-hidden', 'true');
-                    document.body.classList.remove('compo-menu-open');
-                    return;
-                }
-                const isOpen = navbarMenu.classList.toggle('compo-active');
-                navbarToggle.classList.toggle('compo-active', isOpen);
-                navbarToggle.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-                navbarMenu.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
-                document.body.classList.toggle('compo-menu-open', isOpen);
-                window.dispatchEvent(new CustomEvent('menuToggle', { detail: { open: isOpen } }));
-            };
+        if (!navbarToggle || !navbarMenu || !navbar) return;
 
-            ['click', 'touchstart', 'keydown'].forEach(evt => {
-                navbarToggle.addEventListener(evt, toggleMenu, { passive: false });
-            });
-            
-            // Cerrar menú al hacer clic en un enlace
-            document.querySelectorAll('.compo-navbar-link').forEach(link => {
-                link.addEventListener('click', () => {
-                    navbarToggle.classList.remove('compo-active');
-                    navbarMenu.classList.remove('compo-active');
-                    navbarToggle.setAttribute('aria-expanded', 'false');
-                    navbarMenu.setAttribute('aria-hidden', 'true');
-                    document.body.classList.remove('compo-menu-open');
-                    window.dispatchEvent(new CustomEvent('menuToggle', { detail: { open: false } }));
-                });
-            });
+        // Evitar registros duplicados si initMobileMenu se ejecuta varias veces
+        if (navbarToggle.dataset.bound === 'true') return;
+        navbarToggle.dataset.bound = 'true';
 
-            // Cerrar el menú si se vuelve a escritorio
-            const handleResize = () => {
-                if (window.innerWidth > 763) {
-                    navbarToggle.classList.remove('compo-active');
-                    navbarMenu.classList.remove('compo-active');
-                    navbarToggle.setAttribute('aria-expanded', 'false');
-                    navbarMenu.setAttribute('aria-hidden', 'true');
-                    document.body.classList.remove('compo-menu-open');
-                    window.dispatchEvent(new CustomEvent('menuToggle', { detail: { open: false } }));
-                }
-            };
+        const setMenuState = (open) => {
+            navbarToggle.classList.toggle('compo-active', open);
+            navbarMenu.classList.toggle('compo-active', open);
+            navbarToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+            navbarMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+            document.body.classList.toggle('compo-menu-open', open);
+            window.dispatchEvent(new CustomEvent('menuToggle', { detail: { open } }));
+        };
 
-            window.addEventListener('resize', handleResize);
-        }
+        const closeMenu = () => setMenuState(false);
+
+        const toggleMenu = (event) => {
+            if (event && event.type === 'keydown') {
+                if (!['Enter', ' '].includes(event.key)) return;
+                event.preventDefault();
+            }
+            if (window.innerWidth > 763) {
+                closeMenu();
+                return;
+            }
+            const isOpen = navbarMenu.classList.contains('compo-active');
+            setMenuState(!isOpen);
+        };
+
+        const handleOutsideClick = (event) => {
+            if (!navbarMenu.classList.contains('compo-active')) return;
+            if (navbar.contains(event.target)) return;
+            closeMenu();
+        };
+
+        const handleResize = () => {
+            if (window.innerWidth > 763) {
+                closeMenu();
+            }
+        };
+
+        const handleEsc = (event) => {
+            if (event.key === 'Escape') {
+                closeMenu();
+            }
+        };
+
+        // Estado inicial
+        setMenuState(false);
+
+        // Solo click y keydown para evitar doble disparo touch+click
+        ['click', 'keydown'].forEach(evt => {
+            navbarToggle.addEventListener(evt, toggleMenu);
+        });
+        document.addEventListener('click', handleOutsideClick);
+        window.addEventListener('resize', handleResize);
+        document.addEventListener('keydown', handleEsc);
+
+        // Cerrar menú al navegar
+        document.querySelectorAll('.compo-navbar-link').forEach(link => {
+            link.addEventListener('click', closeMenu);
+        });
     }
 
     // SIN EFECTO SCROLL - Removido completamente

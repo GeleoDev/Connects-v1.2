@@ -1,6 +1,13 @@
 /* Importamos las variables y estilos base */
 @import url('../../styles/styles.css');
 
+/* Forzar visibilidad inmediata de títulos/subtítulos en esta landing */
+.section-title,
+.section-subtitle {
+    opacity: 1;
+    transform: none;
+}
+
 html, body {
     width: 100%;
     height: auto;
@@ -954,29 +961,23 @@ html, body {
 /* E-commerce Product Cards - Rediseñadas */
 .products-grid-ecommerce {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 40px;
-    margin-top: 60px;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 22px;
+    margin: 40px auto 0;
+    max-width: 1100px;
+    padding: 0 12px;
 }
 
 .product-card-ecommerce {
-    background: linear-gradient(145deg, var(--color-secondary) 0%, rgba(52, 73, 94, 0.8) 100%);
-    border-radius: 24px;
+    background: linear-gradient(155deg, rgba(20, 27, 36, 0.98) 0%, rgba(14, 18, 25, 0.98) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 
-                0 0 0 1px rgba(255, 255, 255, 0.05);
-    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), 
-                box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 12px 28px rgba(0, 0, 0, 0.26);
+    transition: transform 0.22s ease, box-shadow 0.22s ease, border-color 0.22s ease;
     display: flex;
     flex-direction: column;
-    height: 100%;
     position: relative;
-    transform: translateZ(0);
-    will-change: transform;
-    contain: layout style paint;
 }
 
 .product-card-ecommerce::before {
@@ -1020,12 +1021,16 @@ html, body {
 
 .product-image-ecommerce {
     width: 100%;
-    height: 280px;
+    aspect-ratio: 4 / 3;
+    min-height: 260px;
     overflow: hidden;
     background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-dark) 100%);
     position: relative;
     transform: translateZ(0);
     will-change: transform;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .product-image-ecommerce::after {
@@ -1047,18 +1052,19 @@ html, body {
 .product-image-ecommerce img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    object-fit: cover; /* Llenar contenedor sin dejar espacios */
+    padding: 0;
+    transition: transform 0.25s ease;
     transform: translateZ(0);
     will-change: transform;
 }
 
 .product-card-ecommerce:hover .product-image-ecommerce img {
-    transform: scale(1.1) translateZ(0);
+    transform: scale(1.01) translateZ(0); /* Hover sutil sin recorte */
 }
 
 .product-content-ecommerce {
-    padding: 30px;
+    padding: 18px 18px 14px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -1066,8 +1072,8 @@ html, body {
 }
 
 .product-title-ecommerce {
-    font-size: 1.75rem;
-    margin-bottom: 12px;
+    font-size: 1.25rem;
+    margin-bottom: 6px;
     color: var(--color-white);
     font-weight: 700;
     letter-spacing: -0.5px;
@@ -1081,22 +1087,26 @@ html, body {
 
 .product-description-ecommerce {
     color: var(--color-light-gray);
-    font-size: 1rem;
-    margin-bottom: 24px;
-    line-height: 1.7;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.45;
     flex-grow: 1;
     opacity: 0.9;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
 }
 
 .product-price-ecommerce {
-    margin-bottom: 24px;
-    padding: 12px 0;
+    margin-bottom: 14px;
+    padding: 8px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .price-label {
-    font-size: 1.5rem;
+    font-size: 1.35rem;
     color: var(--color-accent);
     font-weight: 700;
     display: inline-flex;
@@ -1107,13 +1117,13 @@ html, body {
 
 .product-actions-ecommerce {
     display: flex;
-    gap: 12px;
+    gap: 10px;
     flex-wrap: wrap;
 }
 
 .btn-info-ecommerce {
     flex: 1;
-    min-width: 160px;
+    min-width: 140px;
     background: linear-gradient(135deg, var(--color-accent) 0%, var(--btn-hover) 100%);
     color: var(--color-white);
     text-align: center;
@@ -1122,10 +1132,10 @@ html, body {
     align-items: center;
     justify-content: center;
     gap: 8px;
-    padding: 14px 24px;
-    border-radius: 12px;
-    font-weight: 600;
-    font-size: 1rem;
+    padding: 12px 18px;
+    border-radius: 10px;
+    font-weight: 650;
+    font-size: 0.93rem;
     transition: transform 0.2s cubic-bezier(0.4, 0, 0.2, 1), 
                 box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1),
                 background 0.2s ease;
@@ -1188,19 +1198,19 @@ html, body {
     }
     
     .product-image-ecommerce {
-        height: 240px;
+        height: 320px;
     }
     
     .product-content-ecommerce {
-        padding: 24px;
+        padding: 20px;
     }
     
     .product-title-ecommerce {
-        font-size: 1.5rem;
+        font-size: 1.35rem;
     }
     
     .product-description-ecommerce {
-        font-size: 0.95rem;
+        font-size: 0.9rem;
     }
     
     .product-actions-ecommerce {
@@ -1214,5 +1224,24 @@ html, body {
     
     .products {
         padding: 40px 0 80px 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .product-image-ecommerce {
+        height: 200px;
+    }
+    
+    .product-content-ecommerce {
+        padding: 16px 14px 12px;
+    }
+    
+    .product-title-ecommerce {
+        font-size: 1.15rem;
+    }
+    
+    .product-description-ecommerce {
+        font-size: 0.88rem;
+        -webkit-line-clamp: 2;
     }
 }

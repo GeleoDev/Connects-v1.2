@@ -37,7 +37,8 @@
             fibra: `${rootPath}fibra-optica/index.html`,
             energias: `${rootPath}Energias-renovables/index.html`,
             sobre: `${rootPath}Sobre-nosotros/index.html`,
-            contacto: `${rootPath}index.html#contact`
+            contacto: `${rootPath}index.html#contact`,
+            terminos: `${rootPath}TerminosCondiciones/index.html`
         };
 
         Object.keys(links).forEach(key => {
