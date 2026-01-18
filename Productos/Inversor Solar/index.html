@@ -293,7 +293,7 @@
             <h3 class="FORM-modal__title" id="FORM-modal-title">Formulario</h3>
 
             <!-- Financiamiento -->
-            <form class="FORM-form" data-FORM-form="financing" action="https://formsubmit.co/ventas@connects.com.ar" method="POST" enctype="multipart/form-data" novalidate>
+            <form class="FORM-form" data-FORM-form="financing" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST" enctype="multipart/form-data" novalidate>
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_subject" value="Consulta de Financiamiento - Inversor Solar">
                 <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-consulta/">
@@ -303,7 +303,11 @@
                     <label class="FORM-label" for="FORM-fin-product"></label>
                     <select class="FORM-select" id="FORM-fin-product" name="producto" required>
                         <option value="Inversor Solar" selected>Inversor Solar</option>
-                        <option value="Kit Solar">Kit Solar</option>
+                        <option value="Kit Solar Completo">Kit Solar Completo</option>
+                        <option value="Panel Solar">Panel Solar</option>
+                        <option value="Portable Power Station">Portable Power Station</option>
+                        <option value="Cables Fotovoltaicos">Cables Fotovoltaicos</option>
+                        <option value="Soportes Colplanar">Soportes Colplanar</option>
                     </select>
                 </div>
 
@@ -336,7 +340,7 @@
             </form>
 
             <!-- Transferencia -->
-            <form class="FORM-form" data-FORM-form="transfer" action="https://formsubmit.co/ventas@connects.com.ar" method="POST" enctype="multipart/form-data" novalidate>
+            <form class="FORM-form" data-FORM-form="transfer" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST" enctype="multipart/form-data" novalidate>
                 <input type="hidden" name="_captcha" value="false">
                 <input type="hidden" name="_subject" value="Pago por Transferencia - Inversor Solar">
                 <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-transferencia/">
@@ -346,7 +350,11 @@
                     <label class="FORM-label" for="FORM-tr-product"></label>
                     <select class="FORM-select" id="FORM-tr-product" name="producto" required>
                         <option value="Inversor Solar" selected>Inversor Solar</option>
-                        <option value="Kit Solar">Kit Solar</option>
+                        <option value="Kit Solar Completo">Kit Solar Completo</option>
+                        <option value="Panel Solar">Panel Solar</option>
+                        <option value="Portable Power Station">Portable Power Station</option>
+                        <option value="Cables Fotovoltaicos">Cables Fotovoltaicos</option>
+                        <option value="Soportes Colplanar">Soportes Colplanar</option>
                     </select>
                 </div>
 
@@ -385,67 +393,128 @@
         </div>
     </div>
 
-    <!-- Modal de beneficios con tarjetas -->
-    <div class="card-benefits-modal" id="cardBenefitsModal" aria-hidden="true">
-        <div class="card-benefits__overlay" data-card-benefits-close></div>
-        <div class="card-benefits__dialog" role="dialog" aria-modal="true" aria-labelledby="cardBenefitsTitle" tabindex="-1">
-            <button class="card-benefits__close" type="button" aria-label="Cerrar" data-card-benefits-close>&times;</button>
-            <div class="card-benefits__header">
-                <div class="card-benefits__icon" aria-hidden="true">
-                    <i class="fas fa-credit-card"></i>
+    <!-- Modal de medios de pago -->
+    <div class="payment-methods-modal" id="paymentMethodsModal" aria-hidden="true">
+        <div class="payment-methods__overlay" data-payment-methods-close></div>
+        <div class="payment-methods__dialog" role="dialog" aria-modal="true" aria-labelledby="paymentMethodsTitle" tabindex="-1">
+            <button class="payment-methods__close" type="button" aria-label="Cerrar" data-payment-methods-close>
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="payment-methods__title" id="paymentMethodsTitle">Medios de pago para este producto</h2>
+            
+            <p class="payment-methods__description">Podés pagar tus compras con cualquiera de estos medios. Es rápido y seguro, siempre.</p>
+            
+            <a href="#" class="payment-methods__learn-more">Conoce más</a>
+            
+            <hr class="payment-methods__divider">
+            
+            <!-- Tarjetas de crédito -->
+            <div class="payment-methods__section">
+                <h3 class="payment-methods__section-title">Tarjetas de crédito</h3>
+                <p class="payment-methods__section-subtitle">Acreditación instantánea.</p>
+                
+                <p class="payment-methods__promo-text">Mismo precio en hasta 6 cuotas con estos bancos</p>
+                
+                <div class="payment-methods__banks-grid">
+                    <div class="payment-methods__bank-item">
+                        <div class="payment-methods__bank-logo">
+                            <span class="bank-name">Galicia Más</span>
+                        </div>
+                        <span class="payment-methods__installments">6 cuotas</span>
+                    </div>
+                    <div class="payment-methods__bank-item">
+                        <div class="payment-methods__bank-logo">
+                            <span class="bank-name">BanCo</span>
+                        </div>
+                        <span class="payment-methods__installments">3 cuotas</span>
+                    </div>
+                    <div class="payment-methods__bank-item">
+                        <div class="payment-methods__bank-logo">
+                            <span class="bank-name">Banco</span>
+                        </div>
+                        <span class="payment-methods__installments">3 cuotas</span>
+                    </div>
+                    <div class="payment-methods__bank-item">
+                        <div class="payment-methods__bank-logo">
+                            <span class="bank-name">SUPERVIELLE</span>
+                            <span class="bank-subtitle">Visa</span>
+                        </div>
+                        <span class="payment-methods__installments">3 cuotas</span>
+                    </div>
                 </div>
-                <div>
-                    <h3 class="card-benefits__title" id="cardBenefitsTitle">Financiación con tarjetas</h3>
-                    <p class="card-benefits__subtitle">Elegí tu tarjeta y conocé las opciones disponibles.</p>
+                
+                <a href="#" class="payment-methods__conditions-link">Ver condiciones</a>
+            </div>
+            
+            <hr class="payment-methods__divider">
+            
+            <!-- Tarjetas de débito -->
+            <div class="payment-methods__section">
+                <h3 class="payment-methods__section-title">Tarjetas de débito</h3>
+                <p class="payment-methods__section-subtitle">Acreditación instantánea.</p>
+                
+                <div class="payment-methods__debit-cards">
+                    <div class="payment-methods__debit-card">
+                        <i class="fab fa-cc-maestro"></i>
+                        <span>maestro.</span>
+                    </div>
+                    <div class="payment-methods__debit-card">
+                        <i class="fas fa-credit-card"></i>
+                        <span>CABAL DÉBITO</span>
+                    </div>
+                    <div class="payment-methods__debit-card">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span>mastercard DÉBITO</span>
+                    </div>
+                    <div class="payment-methods__debit-card">
+                        <i class="fab fa-cc-visa"></i>
+                        <span>VISA DÉBITO</span>
+                    </div>
                 </div>
             </div>
-            <div class="card-benefits__grid">
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fab fa-cc-visa" aria-hidden="true"></i>
-                        <span>Visa</span>
+            
+            <hr class="payment-methods__divider">
+            
+            <!-- Cuotas con interés -->
+            <div class="payment-methods__section">
+                <p class="payment-methods__promo-text-large">O hasta 24 cuotas con interés</p>
+                
+                <div class="payment-methods__credit-cards-grid">
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fab fa-cc-visa"></i>
+                        <span class="payment-methods__installments">24 cuotas</span>
                     </div>
-                    <ul class="card-benefits__list">
-                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
-                        <li>12 y 18 cuotas fijas</li>
-                        <li>Promociones bancarias vigentes</li>
-                    </ul>
-                </div>
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fab fa-cc-mastercard" aria-hidden="true"></i>
-                        <span>Mastercard</span>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span class="payment-methods__installments">24 cuotas</span>
                     </div>
-                    <ul class="card-benefits__list">
-                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
-                        <li>12 y 18 cuotas fijas</li>
-                        <li>Beneficios por banco emisor</li>
-                    </ul>
-                </div>
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fab fa-cc-amex" aria-hidden="true"></i>
-                        <span>American Express</span>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="payment-methods__installments">24 cuotas</span>
                     </div>
-                    <ul class="card-benefits__list">
-                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
-                        <li>12 y 18 cuotas fijas</li>
-                        <li>Planes especiales Amex</li>
-                    </ul>
-                </div>
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fas fa-credit-card" aria-hidden="true"></i>
-                        <span>Otras tarjetas</span>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="payment-methods__installments">24 cuotas</span>
                     </div>
-                    <ul class="card-benefits__list">
-                        <li>Hasta <strong>6 cuotas sin interés</strong></li>
-                        <li>12 y 18 cuotas fijas</li>
-                        <li>Consultar disponibilidad por emisor</li>
-                    </ul>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="payment-methods__installments">24 cuotas</span>
+                    </div>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fab fa-cc-amex"></i>
+                        <span class="payment-methods__installments">12 cuotas</span>
+                    </div>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="payment-methods__installments">6 cuotas</span>
+                    </div>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fas fa-credit-card"></i>
+                        <span class="payment-methods__installments">3 cuotas</span>
+                    </div>
                 </div>
             </div>
-            <p class="card-benefits__note">Los planes pueden variar según el banco emisor y disponibilidad. Confirmá la promoción vigente antes de finalizar la compra.</p>
         </div>
     </div>
 
@@ -550,45 +619,45 @@
             });
         }
 
-        // Modal único de beneficios con tarjetas
-        const cardBenefitsModal = document.getElementById('cardBenefitsModal');
-        const cardBenefitsDialog = cardBenefitsModal?.querySelector('.card-benefits__dialog');
-        const cardBenefitsClosers = cardBenefitsModal ? cardBenefitsModal.querySelectorAll('[data-card-benefits-close]') : [];
+        // Modal de medios de pago
+        const paymentMethodsModal = document.getElementById('paymentMethodsModal');
+        const paymentMethodsDialog = paymentMethodsModal?.querySelector('.payment-methods__dialog');
+        const paymentMethodsClosers = paymentMethodsModal ? paymentMethodsModal.querySelectorAll('[data-payment-methods-close]') : [];
 
-        function openCardBenefits() {
-            if (!cardBenefitsModal) return;
-            cardBenefitsModal.classList.add('is-open');
-            cardBenefitsModal.setAttribute('aria-hidden', 'false');
+        function openPaymentMethods() {
+            if (!paymentMethodsModal) return;
+            paymentMethodsModal.classList.add('is-open');
+            paymentMethodsModal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
-            cardBenefitsDialog?.focus();
+            paymentMethodsDialog?.focus();
         }
 
-        function closeCardBenefits() {
-            if (!cardBenefitsModal) return;
-            cardBenefitsModal.classList.remove('is-open');
-            cardBenefitsModal.setAttribute('aria-hidden', 'true');
+        function closePaymentMethods() {
+            if (!paymentMethodsModal) return;
+            paymentMethodsModal.classList.remove('is-open');
+            paymentMethodsModal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
         document.querySelectorAll('.payment-icons i').forEach(icon => {
-            icon.addEventListener('click', openCardBenefits);
+            icon.addEventListener('click', openPaymentMethods);
             icon.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    openCardBenefits();
+                    openPaymentMethods();
                 }
             });
         });
 
-        cardBenefitsClosers.forEach(el => el.addEventListener('click', closeCardBenefits));
+        paymentMethodsClosers.forEach(el => el.addEventListener('click', closePaymentMethods));
 
-        cardBenefitsModal?.addEventListener('click', (e) => {
-            if (e.target === cardBenefitsModal) closeCardBenefits();
+        paymentMethodsModal?.addEventListener('click', (e) => {
+            if (e.target === paymentMethodsModal) closePaymentMethods();
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && cardBenefitsModal?.classList.contains('is-open')) {
-                closeCardBenefits();
+            if (e.key === 'Escape' && paymentMethodsModal?.classList.contains('is-open')) {
+                closePaymentMethods();
             }
         });
 

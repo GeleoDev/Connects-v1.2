@@ -827,6 +827,7 @@ background-color: rgba(0, 0, 0, 0.3);
 .promo-modal {
     /* El modal está visible pero no bloquea completamente la interacción */
     /* El hero swiper seguirá funcionando automáticamente ya que no bloqueamos el body */
+    z-index: 10001 !important; /* Por encima del navbar (10000) y promobanner (9999) */
 }
 
 .promo-modal .modal-content {

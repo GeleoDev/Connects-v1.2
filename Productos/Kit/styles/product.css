@@ -209,13 +209,16 @@
 .payment-icons i {
     font-size: 1.5rem;
     color: var(--color-light-gray);
-    transition: all var(--transition-fast);
+    transition: all 0.3s ease;
     cursor: pointer;
+    padding: 8px;
+    border-radius: 8px;
 }
 
 .payment-icons i:hover {
-    color: var(--color-accent);
-    transform: scale(1.15);
+    color: #ffffff;
+    background-color: rgba(255, 255, 255, 0.15);
+    transform: scale(1.1);
 }
 
 .price-note {
@@ -826,8 +829,8 @@
     line-height: 1.6;
 }
 
-/* Modal de beneficios de tarjetas */
-.card-benefits-modal {
+/* Modal de medios de pago */
+.payment-methods-modal {
     position: fixed;
     inset: 0;
     z-index: 100000;
@@ -840,119 +843,238 @@
     transition: opacity 0.25s ease;
 }
 
-.card-benefits-modal.is-open {
+.payment-methods-modal.is-open {
     display: flex;
     opacity: 1;
 }
 
-.card-benefits__overlay {
+.payment-methods__overlay {
     position: absolute;
     inset: 0;
 }
 
-.card-benefits__dialog {
-    background: var(--color-secondary);
-    color: var(--color-white);
-    width: min(95vw, 1000px);
+.payment-methods__dialog {
+    background: #ffffff;
+    color: #000000;
+    width: min(95vw, 600px);
     max-height: 90vh;
-    overflow: auto;
-    border-radius: 18px;
+    overflow-y: auto;
+    border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
-    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 32px;
     position: relative;
 }
 
-.card-benefits__close {
+.payment-methods__close {
     position: absolute;
-    top: 14px;
-    right: 14px;
+    top: 20px;
+    right: 20px;
     background: transparent;
     border: none;
-    color: var(--color-white);
-    font-size: 1.4rem;
-    cursor: pointer;
-}
-
-.card-benefits__header {
-    display: flex;
-    gap: 16px;
-    align-items: center;
-    margin-bottom: 18px;
-}
-
-.card-benefits__icon {
-    width: 56px;
-    height: 56px;
-    border-radius: 14px;
-    display: grid;
-    place-items: center;
-    background: rgba(255, 255, 255, 0.1);
-    color: var(--color-white);
-    font-size: 1.6rem;
-}
-
-.card-benefits__title {
-    margin: 0;
+    color: #3498db;
     font-size: 1.5rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
 }
 
-.card-benefits__subtitle {
-    margin: 4px 0 0;
-    color: var(--color-light-gray);
+.payment-methods__close:hover {
+    transform: scale(1.1);
+}
+
+.payment-methods__title {
+    margin: 0 0 16px 0;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.payment-methods__description {
+    margin: 0 0 12px 0;
+    color: #000000;
     font-size: 0.95rem;
+    line-height: 1.5;
 }
 
-.card-benefits__grid {
+.payment-methods__learn-more {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.9rem;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: color 0.2s ease;
+}
+
+.payment-methods__learn-more:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.payment-methods__divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 20px 0;
+}
+
+.payment-methods__section {
+    margin-bottom: 24px;
+}
+
+.payment-methods__section-title {
+    margin: 0 0 4px 0;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #000000;
+}
+
+.payment-methods__section-subtitle {
+    margin: 0 0 16px 0;
+    font-size: 0.85rem;
+    color: #666666;
+}
+
+.payment-methods__promo-text {
+    color: #27ae60;
+    font-size: 0.9rem;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.payment-methods__promo-text-large {
+    color: #000000;
+    font-size: 1rem;
+    font-weight: 500;
+    margin: 0 0 16px 0;
+}
+
+.payment-methods__banks-grid {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
+    gap: 16px;
+    margin-bottom: 16px;
 }
 
-@media (max-width: 640px) {
-    .card-benefits__grid {
-        grid-template-columns: 1fr;
-    }
-}
-
-.card-benefits__item {
-    background: rgba(255, 255, 255, 0.03);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-    border-radius: 12px;
-    padding: 14px;
-    display: grid;
-    gap: 10px;
-}
-
-.card-benefits__card {
+.payment-methods__bank-item {
     display: flex;
+    flex-direction: column;
     align-items: center;
-    gap: 10px;
+    gap: 8px;
+    padding: 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 8px;
+    background: #ffffff;
+}
+
+.payment-methods__bank-logo {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+}
+
+.bank-name {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #000000;
+}
+
+.bank-subtitle {
+    font-size: 0.75rem;
+    color: #666666;
+}
+
+.payment-methods__installments {
+    color: #27ae60;
+    font-size: 0.85rem;
     font-weight: 600;
 }
 
-.card-benefits__card i {
-    font-size: 1.6rem;
+.payment-methods__conditions-link {
+    color: #3498db;
+    text-decoration: none;
+    font-size: 0.85rem;
+    display: inline-block;
+    margin-top: 8px;
+    transition: color 0.2s ease;
 }
 
-.card-benefits__list {
-    margin: 0;
-    padding-left: 18px;
-    color: var(--color-light-gray);
+.payment-methods__conditions-link:hover {
+    color: #2980b9;
+    text-decoration: underline;
+}
+
+.payment-methods__debit-cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.payment-methods__debit-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+    min-width: 100px;
+}
+
+.payment-methods__debit-card i {
+    font-size: 2rem;
+    color: #000000;
+}
+
+.payment-methods__debit-card span {
+    font-size: 0.75rem;
+    color: #000000;
+    text-align: center;
+}
+
+.payment-methods__credit-cards-grid {
     display: grid;
-    gap: 6px;
-    font-size: 0.95rem;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    margin-top: 16px;
 }
 
-.card-benefits__note {
-    margin: 18px 0 4px;
-    color: var(--color-light-gray);
-    font-size: 0.9rem;
+.payment-methods__credit-card-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    padding: 12px;
+}
+
+.payment-methods__credit-card-item i {
+    font-size: 2rem;
+    color: #000000;
+}
+
+@media (max-width: 768px) {
+    .payment-methods__banks-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .payment-methods__credit-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    
+    .payment-methods__debit-cards {
+        justify-content: center;
+    }
 }
 
 @media (max-width: 640px) {
-    .card-benefits__dialog {
+    .payment-methods__dialog {
         padding: 24px 18px 20px;
+    }
+    
+    .payment-methods__credit-cards-grid {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
