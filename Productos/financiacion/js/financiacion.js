@@ -20,7 +20,7 @@ const productos = [
         id: 'kit-solar',
         nombre: 'Kit Solar Completo',
         precio: '$6.900.000',
-        precioConIva: '$7.200.000 con IVA en transferencia/debito/credito',
+        precioConIva: '$7.800.000 con IVA en transferencia/debito/credito',
         imagen: '../../Energias-renovables/img/Equipo_todo_en_uno.jpg',
         descripcion: 'Kit completo de energía solar con paneles, inversor y baterías. Solución todo en uno para tu hogar o negocio.'
     },

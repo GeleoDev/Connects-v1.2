@@ -233,6 +233,126 @@
     margin: 5px 0 0 0;
 }
 
+/* Promoción Banner */
+.promo-banner {
+    margin-top: 20px;
+    padding: 16px 20px;
+    background: linear-gradient(135deg, #e67e22 0%, #f39c12 100%);
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    animation: promoPulse 2s ease-in-out infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+.promo-banner::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+    animation: promoShine 3s linear infinite;
+}
+
+@keyframes promoPulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+    }
+    50% {
+        box-shadow: 0 6px 20px rgba(230, 126, 34, 0.5);
+    }
+}
+
+@keyframes promoShine {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
+
+.promo-banner__content {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    position: relative;
+    z-index: 1;
+}
+
+.promo-banner__icon {
+    font-size: 1.5rem;
+    color: #ffffff;
+    flex-shrink: 0;
+    animation: iconBounce 2s ease-in-out infinite;
+}
+
+@keyframes iconBounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-3px);
+    }
+}
+
+.promo-banner__text {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+.promo-banner__dates {
+    color: #ffffff;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+}
+
+.promo-banner__message {
+    color: #ffffff;
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.promo-banner__message strong {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.05rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .promo-banner {
+        padding: 14px 16px;
+    }
+    
+    .promo-banner__content {
+        gap: 12px;
+    }
+    
+    .promo-banner__icon {
+        font-size: 1.3rem;
+    }
+    
+    .promo-banner__dates {
+        font-size: 0.85rem;
+    }
+    
+    .promo-banner__message {
+        font-size: 0.9rem;
+    }
+    
+    .promo-banner__message strong {
+        font-size: 1rem;
+    }
+}
+
 /* Description Section (Full Width Below Images) */
 .product-description-full {
     margin-top: 40px;
