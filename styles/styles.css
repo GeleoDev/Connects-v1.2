@@ -283,6 +283,19 @@ background-color: rgba(0, 0, 0, 0.3);
     }
 }
 
+@keyframes promoGlow {
+    0%, 100% {
+        box-shadow: 0 0 30px rgba(255, 107, 53, 0.6), 
+                    0 0 60px rgba(255, 140, 66, 0.4),
+                    0 0 90px rgba(255, 107, 53, 0.2);
+    }
+    50% {
+        box-shadow: 0 0 40px rgba(255, 107, 53, 0.8), 
+                    0 0 80px rgba(255, 140, 66, 0.6),
+                    0 0 120px rgba(255, 107, 53, 0.4);
+    }
+}
+
 .swiper-button-next,
 .swiper-button-prev {
     color: var(--color-white);
@@ -836,6 +849,10 @@ background-color: rgba(0, 0, 0, 0.3);
     width: min(95vw, 1100px);
     overflow: hidden;
     pointer-events: auto; /* El contenido del modal sí recibe eventos */
+    box-shadow: 0 0 30px rgba(255, 107, 53, 0.6), 
+                0 0 60px rgba(255, 140, 66, 0.4),
+                0 0 90px rgba(255, 107, 53, 0.2);
+    animation: promoGlow 3s ease-in-out infinite;
 }
 
 .promo-modal-content .close-modal {

@@ -39,32 +39,50 @@
     color: #ffffff;
 }
 
-/* Globo de diálogo */
+/* Globo de diálogo - Diseño mejorado y centrado */
 .whatsapp-tooltip {
-    background-color: #ffffff;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
     color: #333333;
-    padding: 12px 18px;
-    border-radius: 20px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    font-size: 14px;
-    font-weight: 500;
-    white-space: nowrap;
+    padding: 0;
+    border-radius: 24px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12),
+                0 2px 8px rgba(0, 0, 0, 0.08);
     position: relative;
     animation: tooltipFadeIn 0.5s ease-out;
-    max-width: 200px;
+    max-width: 240px;
+    width: 300px;
+    min-width: 180px;
+    overflow: visible;
+}
+
+.tooltip-content {
+    padding: 14px 20px;
+    text-align: center;
+    position: relative;
+}
+
+.tooltip-text {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: #2c3e50;
+    letter-spacing: 0.2px;
+    white-space: nowrap;
 }
 
 .whatsapp-tooltip::after {
     content: '';
     position: absolute;
-    right: -8px;
+    right: -10px;
     top: 50%;
     transform: translateY(-50%);
     width: 0;
     height: 0;
-    border-top: 8px solid transparent;
-    border-bottom: 8px solid transparent;
-    border-left: 8px solid #ffffff;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+    border-left: 10px solid #ffffff;
+    filter: drop-shadow(2px 0 4px rgba(0, 0, 0, 0.1));
 }
 
 /* Animación de pulso opcional */
@@ -113,10 +131,25 @@
     }
     
     .whatsapp-tooltip {
-        font-size: 12px;
-        padding: 10px 14px;
         max-width: 160px;
+        min-width: 140px;
+    }
+    
+    .tooltip-content {
+        padding: 12px 16px;
+    }
+    
+    .tooltip-text {
+        font-size: 12px;
         white-space: normal;
+        line-height: 1.3;
+    }
+    
+    .whatsapp-tooltip::after {
+        right: -8px;
+        border-top: 8px solid transparent;
+        border-bottom: 8px solid transparent;
+        border-left: 8px solid #ffffff;
     }
 }
 

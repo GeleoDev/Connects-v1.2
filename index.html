@@ -79,8 +79,8 @@
             "availableLanguage": "Spanish"
         },
         "sameAs": [
-            "https://www.facebook.com/connects",
-            "https://www.instagram.com/connects",
+            "https://www.facebook.com/profile.php?id=61584716262408",
+            "https://www.instagram.com/connects.ar/",
             "https://www.linkedin.com/company/connects"
         ],
         "hasOfferCatalog": {
@@ -198,7 +198,7 @@
         <h2 class="section-title">Síguenos en redes</h2>
         <p class="section-subtitle">Conéctate con nosotros</p>
         <div class="social-container">
-            <a href="https://www.facebook.com/profile.php?id=61584605927833" class="social-icon" id="facebook-link" target="_blank" rel="noopener noreferrer">
+            <a href="https://www.facebook.com/profile.php?id=61584716262408" class="social-icon" id="facebook-link" target="_blank" rel="noopener noreferrer">
                 <i class="fab fa-facebook-f"></i>
             </a>
             <a href="https://www.instagram.com/connects.ar/" class="social-icon" id="instagram-link" target="_blank" rel="noopener noreferrer">
@@ -320,7 +320,7 @@
     <!-- Component Scripts - Se cargan dinámicamente por load-components.js -->
     <script src="./js/main.js"></script>
     <script>
-        // Abrir modal promocional al cargar - Sin restricciones de tiempo
+        // Abrir modal promocional solo al refrescar la página
         document.addEventListener('DOMContentLoaded', function () {
             const promoModal = document.getElementById('promoModal');
             const closeBtn = document.getElementById('promoClose');
@@ -332,7 +332,7 @@
                 promoBanner.classList.add('promo-hidden');
             }
 
-            // Mostrar modal inmediatamente al cargar
+            // Mostrar modal inmediatamente al cargar la página
             const showModal = () => {
                 promoModal.classList.add('active');
             };
@@ -345,19 +345,8 @@
                 }
             };
 
-            // Mostrar modal al cargar la página
+            // Mostrar modal al cargar/refrescar la página
             showModal();
-
-            // Volver a mostrar cada 30 segundos si está cerrado
-            setInterval(() => {
-                if (!promoModal.classList.contains('active')) {
-                    showModal();
-                    // Ocultar promobanner cuando se muestra el modal
-                    if (promoBanner) {
-                        promoBanner.classList.add('promo-hidden');
-                    }
-                }
-            }, 30000); // 30 segundos
 
             closeBtn?.addEventListener('click', hideModal);
             promoModal.addEventListener('click', (e) => {

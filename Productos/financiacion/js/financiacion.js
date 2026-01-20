@@ -25,8 +25,8 @@ const productos = [
         descripcion: 'Kit completo de energía solar con paneles, inversor y baterías. Solución todo en uno para tu hogar o negocio.'
     },
     {
-        id: 'soportes-colplanar',
-        nombre: 'Soportes Colplanar',
+        id: 'soportes-coplanar',
+        nombre: 'Soportes Coplanar',
         precio: 'CONSULTAR PRECIO',
         precioConIva: '',
         imagen: '../../Energias-renovables/img/Soportes_coplanar.jpg',

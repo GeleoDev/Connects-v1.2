@@ -7,8 +7,8 @@
     'use strict';
 
     // Configuración: Número de WhatsApp (formato: código de país + número sin espacios ni caracteres especiales)
-    // Ejemplo: 5491123456789 (Argentina: +54 9 11 2345-6789)
-    const WHATSAPP_NUMBER = '5491123456789'; // Cambiar por el número real
+    // Argentina: +54 1171025861
+    const WHATSAPP_NUMBER = '541171025861';
     
     // Mensaje predefinido (opcional)
     const DEFAULT_MESSAGE = 'Hola! Me gustaría obtener más información.';
