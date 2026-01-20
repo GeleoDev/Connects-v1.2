@@ -226,6 +226,18 @@
     <!-- Scripts -->
     <script src="../../component/load-components.js"></script>
     <script src="./js/financiacion.js"></script>
+    <script>
+        // Redirigir si aparece index.html en la URL (solo si no es file://)
+        if (window.location.protocol !== 'file:' && window.location.href.includes('index.html')) {
+            try {
+                var nuevaURL = window.location.href.replace('index.html', '');
+                window.history.replaceState({}, document.title, nuevaURL);
+            } catch (e) {
+                // Ignorar error si no se puede usar replaceState
+                console.warn('No se pudo usar replaceState:', e.message);
+            }
+        }
+    </script>
 </body>
 
 </html>
