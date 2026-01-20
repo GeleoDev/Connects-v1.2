@@ -83,8 +83,9 @@
                     <i class="fas fa-file-alt"></i>
                     Completa tus Datos
                 </h2>
-                <form class="financing-form" id="financingForm" action="https://formsubmit.co/ventas@connects.com.ar" method="POST" enctype="multipart/form-data" novalidate>
+                <form class="financing-form" id="financingForm" action="https://formsubmit.co/daiana_nagas@hotmail.com" method="POST" enctype="multipart/form-data" novalidate>
                     <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_cc" value="inpgeleo@gmail.com">
                     <input type="hidden" name="_subject" value="Consulta de Financiamiento">
                     <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-consulta/">
                     <input type="hidden" name="_error" value="../../Confirmaciones/Error/">
@@ -111,14 +112,17 @@
                         <div class="form-group">
                             <label for="cuit_cuil_dni" class="form-label">
                                 <i class="fas fa-id-card"></i>
-                                CUIT/CUIL/DNI <span class="required">*</span>
+                                CUIT/CUIL <span class="required">*</span>
                             </label>
                             <input 
                                 type="text" 
                                 id="cuit_cuil_dni" 
                                 name="cuit_cuil_dni" 
                                 class="form-input" 
-                                placeholder="Ingresa tu CUIT, CUIL o DNI"
+                                placeholder="Ingresa tu CUIT o CUIL (11 dígitos)"
+                                maxlength="11"
+                                pattern="[0-9]{11}"
+                                inputmode="numeric"
                                 required
                             >
                             <span class="input-focus-line"></span>
@@ -167,7 +171,9 @@
                                 id="telefono" 
                                 name="telefono" 
                                 class="form-input" 
-                                placeholder="Ej: +54 11 1234-5678"
+                                placeholder="Ej: 541112345678"
+                                pattern="[0-9]+"
+                                inputmode="numeric"
                                 required
                             >
                             <span class="input-focus-line"></span>

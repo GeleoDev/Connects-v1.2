@@ -1453,3 +1453,64 @@
     will-change: opacity;
 }
 
+/* Estilos para sección de bancos en card-benefits modal */
+.card-benefits__banks-section {
+    margin-top: 30px;
+    padding-top: 30px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.card-benefits__banks-title {
+    color: var(--color-white);
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card-benefits__banks-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.card-benefits__bank-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.card-benefits__bank-item:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.card-benefits__bank-item img {
+    max-width: 100%;
+    height: auto;
+    max-height: 50px;
+    object-fit: contain;
+}
+
+@media (max-width: 768px) {
+    .card-benefits__banks-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 15px;
+        max-width: 100%;
+    }
+    
+    .card-benefits__bank-item {
+        padding: 10px;
+    }
+    
+    .card-benefits__bank-item img {
+        max-height: 40px;
+    }
+}

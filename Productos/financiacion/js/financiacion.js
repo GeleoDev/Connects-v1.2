@@ -3,8 +3,8 @@ const productos = [
     {
         id: 'panel-solar',
         nombre: 'Panel Solar',
-        precio: '$5.500.000',
-        precioConIva: '$7.000.000 con IVA e Impuestos',
+        precio: 'CONSULTAR PRECIO',
+        precioConIva: '',
         imagen: '../../Energias-renovables/img/PanelesSolares.jpg',
         descripcion: 'Panel solar fotovoltaico de alta eficiencia para generación de energía renovable. Fabricado con células monocristalinas de última generación.'
     },
@@ -27,24 +27,24 @@ const productos = [
     {
         id: 'soportes-colplanar',
         nombre: 'Soportes Colplanar',
-        precio: '$5.500.000',
-        precioConIva: '$7.000.000 con IVA e Impuestos',
+        precio: 'CONSULTAR PRECIO',
+        precioConIva: '',
         imagen: '../../Energias-renovables/img/Soportes_coplanar.jpg',
         descripcion: 'Soportes de montaje colplanar de alta calidad para paneles solares. Diseñados para instalaciones en techos y estructuras planas.'
     },
     {
         id: 'cables-fotovoltaicos',
         nombre: 'Cables Fotovoltaicos',
-        precio: '$5.500.000',
-        precioConIva: '$7.000.000 con IVA e Impuestos',
+        precio: 'CONSULTAR PRECIO',
+        precioConIva: '',
         imagen: '../../Energias-renovables/img/Cableado especial.jpg',
         descripcion: 'Cables fotovoltaicos de alta calidad diseñados específicamente para sistemas solares. Fabricados con materiales resistentes a la intemperie.'
     },
     {
         id: 'portable-power-station',
         nombre: 'Portable Power Station',
-        precio: '$5.500.000',
-        precioConIva: '$7.000.000 con IVA e Impuestos',
+        precio: 'CONSULTAR PRECIO',
+        precioConIva: '',
         imagen: '../../Energias-renovables/img/Banco_de_energia.jpg',
         descripcion: 'Estación de energía portátil de alta capacidad para uso doméstico y exterior. Ideal para camping, emergencias y respaldo energético.'
     }
@@ -321,6 +321,42 @@ function inicializarFormulario() {
     const form = document.getElementById('financingForm');
     if (!form) return;
 
+    // Restricción para CUIT/CUIL: solo números, máximo 11 dígitos
+    const cuitInput = document.getElementById('cuit_cuil_dni');
+    if (cuitInput) {
+        cuitInput.addEventListener('input', function(e) {
+            // Solo permitir números
+            this.value = this.value.replace(/[^0-9]/g, '');
+            // Limitar a 11 dígitos
+            if (this.value.length > 11) {
+                this.value = this.value.slice(0, 11);
+            }
+        });
+
+        cuitInput.addEventListener('keypress', function(e) {
+            // Solo permitir números
+            if (!/[0-9]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+    }
+
+    // Restricción para teléfono: solo números
+    const telefonoInput = document.getElementById('telefono');
+    if (telefonoInput) {
+        telefonoInput.addEventListener('input', function(e) {
+            // Solo permitir números
+            this.value = this.value.replace(/[^0-9]/g, '');
+        });
+
+        telefonoInput.addEventListener('keypress', function(e) {
+            // Solo permitir números
+            if (!/[0-9]/.test(e.key) && !['Backspace', 'Delete', 'Tab', 'ArrowLeft', 'ArrowRight'].includes(e.key)) {
+                e.preventDefault();
+            }
+        });
+    }
+
     // Validación en tiempo real
     const inputs = form.querySelectorAll('.form-input');
     inputs.forEach(input => {
@@ -403,12 +439,21 @@ function validarCampo(input) {
         }
     }
 
-    // Validar teléfono
+    // Validar CUIT/CUIL: exactamente 11 dígitos numéricos
+    if (input.id === 'cuit_cuil_dni' && valor) {
+        const cuitRegex = /^[0-9]{11}$/;
+        if (!cuitRegex.test(valor)) {
+            esValido = false;
+            mensajeError = 'El CUIT/CUIL debe tener exactamente 11 dígitos numéricos';
+        }
+    }
+
+    // Validar teléfono: solo números, mínimo 8 dígitos
     if (input.type === 'tel' && valor) {
-        const phoneRegex = /^[\d\s\+\-\(\)]+$/;
+        const phoneRegex = /^[0-9]+$/;
         if (!phoneRegex.test(valor) || valor.length < 8) {
             esValido = false;
-            mensajeError = 'Ingresa un teléfono válido';
+            mensajeError = 'Ingresa un teléfono válido (solo números, mínimo 8 dígitos)';
         }
     }
 

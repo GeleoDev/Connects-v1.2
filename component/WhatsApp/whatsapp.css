@@ -1,8 +1,15 @@
 /* WhatsApp Button Component Styles */
-.whatsapp-button {
+.whatsapp-container {
     position: fixed;
     bottom: 20px;
     right: 20px;
+    z-index: 9998;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.whatsapp-button {
     width: 60px;
     height: 60px;
     background-color: #25D366;
@@ -11,10 +18,10 @@
     align-items: center;
     justify-content: center;
     box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
-    z-index: 9998;
     text-decoration: none;
     transition: all 0.3s ease;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .whatsapp-button:hover {
@@ -32,6 +39,34 @@
     color: #ffffff;
 }
 
+/* Globo de diálogo */
+.whatsapp-tooltip {
+    background-color: #ffffff;
+    color: #333333;
+    padding: 12px 18px;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    font-size: 14px;
+    font-weight: 500;
+    white-space: nowrap;
+    position: relative;
+    animation: tooltipFadeIn 0.5s ease-out;
+    max-width: 200px;
+}
+
+.whatsapp-tooltip::after {
+    content: '';
+    position: absolute;
+    right: -8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #ffffff;
+}
+
 /* Animación de pulso opcional */
 @keyframes whatsapp-pulse {
     0% {
@@ -45,21 +80,43 @@
     }
 }
 
+@keyframes tooltipFadeIn {
+    from {
+        opacity: 0;
+        transform: translateX(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
 .whatsapp-button {
     animation: whatsapp-pulse 2s ease-in-out infinite;
 }
 
 /* Responsive */
 @media (max-width: 768px) {
+    .whatsapp-container {
+        bottom: 15px;
+        right: 15px;
+        gap: 10px;
+    }
+    
     .whatsapp-button {
         width: 55px;
         height: 55px;
-        bottom: 15px;
-        right: 15px;
     }
     
     .whatsapp-button i {
         font-size: 28px;
+    }
+    
+    .whatsapp-tooltip {
+        font-size: 12px;
+        padding: 10px 14px;
+        max-width: 160px;
+        white-space: normal;
     }
 }
 
