@@ -141,7 +141,7 @@
 
                     <!-- Aclaraciones -->
                     <div class="product-clarifications">
-                        <h3><i class="fas fa-shield-halved"></i>  Garantía de los componentes</h3>
+                        <h3><i class="fas fa-shield-halved"></i>  Detalle de la Garantía</h3>
                         <ul class="clarifications-list">
                             <li></i> Garantia 6 meses.</li>
                         </ul>
@@ -373,58 +373,92 @@
         </div>
     </div>
 
-    <!-- Modal de beneficios con tarjetas -->
-    <div class="card-benefits-modal" id="cardBenefitsModal" aria-hidden="true">
-        <div class="card-benefits__overlay" data-card-benefits-close></div>
-        <div class="card-benefits__dialog" role="dialog" aria-modal="true" aria-labelledby="cardBenefitsTitle" tabindex="-1">
-            <button class="card-benefits__close" type="button" aria-label="Cerrar" data-card-benefits-close>&times;</button>
-            <div class="card-benefits__header">
-                <div class="card-benefits__icon" aria-hidden="true">
-                    <i class="fas fa-credit-card"></i>
-                </div>
-                <div>
-                    <h3 class="card-benefits__title" id="cardBenefitsTitle">Financiación con tarjetas</h3>
-                    <p class="card-benefits__subtitle">Elegí tu tarjeta y conocé las opciones disponibles.</p>
-                </div>
-            </div>
-            <div class="card-benefits__grid">
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fab fa-cc-visa" aria-hidden="true"></i>
+    <!-- Modal de medios de pago -->
+    <div class="payment-methods-modal" id="paymentMethodsModal" aria-hidden="true">
+        <div class="payment-methods__overlay" data-payment-methods-close></div>
+        <div class="payment-methods__dialog" role="dialog" aria-modal="true" aria-labelledby="paymentMethodsTitle" tabindex="-1">
+            <button class="payment-methods__close" type="button" aria-label="Cerrar" data-payment-methods-close>
+                <i class="fas fa-times"></i>
+            </button>
+            
+            <h2 class="payment-methods__title" id="paymentMethodsTitle">Medios de pago para este producto</h2>
+            
+            <p class="payment-methods__description">Podes pagar con cualquiera de estos medios. Es rápido y seguro, siempre.</p>
+            <p class="payment-methods__virtual-wallets">Se aceptan billeteras virtuales</p>
+            
+            <hr class="payment-methods__divider">
+            
+            <!-- Tarjetas de crédito -->
+            <div class="payment-methods__section">
+                <h3 class="payment-methods__section-title">Tarjetas de crédito</h3>
+                
+                <div class="payment-methods__credit-cards-grid">
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fab fa-cc-visa"></i>
                         <span>Visa</span>
                     </div>
-                </div>
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fab fa-cc-mastercard" aria-hidden="true"></i>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fab fa-cc-mastercard"></i>
                         <span>Mastercard</span>
                     </div>
-                </div>
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fab fa-cc-amex" aria-hidden="true"></i>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fab fa-cc-amex"></i>
                         <span>American Express</span>
                     </div>
-                </div>
-                <div class="card-benefits__item">
-                    <div class="card-benefits__card">
-                        <i class="fas fa-credit-card" aria-hidden="true"></i>
+                    <div class="payment-methods__credit-card-item">
+                        <i class="fas fa-credit-card"></i>
                         <span>Naranja X</span>
                     </div>
                 </div>
             </div>
             
-            <div class="card-benefits__banks-section">
-                <h4 class="card-benefits__banks-title">Bancos</h4>
-                <div class="card-benefits__banks-grid">
-                    <div class="card-benefits__bank-item">
-                        <img src="../img/Galicia.png" alt="Galicia" />
+            <hr class="payment-methods__divider">
+            
+            <!-- Tarjetas de débito -->
+            <div class="payment-methods__section">
+                <h3 class="payment-methods__section-title">Tarjetas de débito</h3>
+                
+                <div class="payment-methods__debit-cards">
+                    <div class="payment-methods__debit-card">
+                        <i class="fab fa-cc-visa"></i>
+                        <span>Visa</span>
                     </div>
-                    <div class="card-benefits__bank-item">
-                        <img src="../img/Santander.png" alt="Santander" />
+                    <div class="payment-methods__debit-card">
+                        <i class="fab fa-cc-mastercard"></i>
+                        <span>Mastercard</span>
                     </div>
-                    <div class="card-benefits__bank-item">
-                        <img src="../img/BBVA.png" alt="BBVA" />
+                    <div class="payment-methods__debit-card">
+                        <i class="fab fa-cc-amex"></i>
+                        <span>American Express</span>
+                    </div>
+                    <div class="payment-methods__debit-card">
+                        <i class="fas fa-credit-card"></i>
+                        <span>Naranja X</span>
+                    </div>
+                </div>
+            </div>
+            
+            <hr class="payment-methods__divider">
+            
+            <!-- Bancos -->
+            <div class="payment-methods__section">
+                <h3 class="payment-methods__section-title">Bancos</h3>
+                
+                <div class="payment-methods__banks-grid">
+                    <div class="payment-methods__bank-item">
+                        <div class="payment-methods__bank-logo">
+                            <img src="../img/Galicia.png" alt="Galicia" />
+                        </div>
+                    </div>
+                    <div class="payment-methods__bank-item">
+                        <div class="payment-methods__bank-logo">
+                            <img src="../img/Santander.png" alt="Santander" />
+                        </div>
+                    </div>
+                    <div class="payment-methods__bank-item">
+                        <div class="payment-methods__bank-logo">
+                            <img src="../img/BBVA.png" alt="BBVA" />
+                        </div>
                     </div>
                 </div>
             </div>
@@ -530,45 +564,45 @@
             });
         }
 
-        // Modal único de beneficios con tarjetas
-        const cardBenefitsModal = document.getElementById('cardBenefitsModal');
-        const cardBenefitsDialog = cardBenefitsModal?.querySelector('.card-benefits__dialog');
-        const cardBenefitsClosers = cardBenefitsModal ? cardBenefitsModal.querySelectorAll('[data-card-benefits-close]') : [];
+        // Modal de medios de pago
+        const paymentMethodsModal = document.getElementById('paymentMethodsModal');
+        const paymentMethodsDialog = paymentMethodsModal?.querySelector('.payment-methods__dialog');
+        const paymentMethodsClosers = paymentMethodsModal ? paymentMethodsModal.querySelectorAll('[data-payment-methods-close]') : [];
 
-        function openCardBenefits() {
-            if (!cardBenefitsModal) return;
-            cardBenefitsModal.classList.add('is-open');
-            cardBenefitsModal.setAttribute('aria-hidden', 'false');
+        function openPaymentMethods() {
+            if (!paymentMethodsModal) return;
+            paymentMethodsModal.classList.add('is-open');
+            paymentMethodsModal.setAttribute('aria-hidden', 'false');
             document.body.style.overflow = 'hidden';
-            cardBenefitsDialog?.focus();
+            paymentMethodsDialog?.focus();
         }
 
-        function closeCardBenefits() {
-            if (!cardBenefitsModal) return;
-            cardBenefitsModal.classList.remove('is-open');
-            cardBenefitsModal.setAttribute('aria-hidden', 'true');
+        function closePaymentMethods() {
+            if (!paymentMethodsModal) return;
+            paymentMethodsModal.classList.remove('is-open');
+            paymentMethodsModal.setAttribute('aria-hidden', 'true');
             document.body.style.overflow = '';
         }
 
         document.querySelectorAll('.payment-icons i').forEach(icon => {
-            icon.addEventListener('click', openCardBenefits);
+            icon.addEventListener('click', openPaymentMethods);
             icon.addEventListener('keydown', (e) => {
                 if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    openCardBenefits();
+                    openPaymentMethods();
                 }
             });
         });
 
-        cardBenefitsClosers.forEach(el => el.addEventListener('click', closeCardBenefits));
+        paymentMethodsClosers.forEach(el => el.addEventListener('click', closePaymentMethods));
 
-        cardBenefitsModal?.addEventListener('click', (e) => {
-            if (e.target === cardBenefitsModal) closeCardBenefits();
+        paymentMethodsModal?.addEventListener('click', (e) => {
+            if (e.target === paymentMethodsModal) closePaymentMethods();
         });
 
         document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && cardBenefitsModal?.classList.contains('is-open')) {
-                closeCardBenefits();
+            if (e.key === 'Escape' && paymentMethodsModal?.classList.contains('is-open')) {
+                closePaymentMethods();
             }
         });
 
