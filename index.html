@@ -324,7 +324,13 @@
         document.addEventListener('DOMContentLoaded', function () {
             const promoModal = document.getElementById('promoModal');
             const closeBtn = document.getElementById('promoClose');
+            const promoBanner = document.querySelector('.promo-banner');
             if (!promoModal) return;
+
+            // Ocultar promobanner inicialmente
+            if (promoBanner) {
+                promoBanner.classList.add('promo-hidden');
+            }
 
             // Mostrar modal inmediatamente al cargar
             const showModal = () => {
@@ -333,6 +339,10 @@
 
             const hideModal = () => {
                 promoModal.classList.remove('active');
+                // Mostrar promobanner cuando se cierra el modal
+                if (promoBanner) {
+                    promoBanner.classList.remove('promo-hidden');
+                }
             };
 
             // Mostrar modal al cargar la página
@@ -342,6 +352,10 @@
             setInterval(() => {
                 if (!promoModal.classList.contains('active')) {
                     showModal();
+                    // Ocultar promobanner cuando se muestra el modal
+                    if (promoBanner) {
+                        promoBanner.classList.add('promo-hidden');
+                    }
                 }
             }, 30000); // 30 segundos
 

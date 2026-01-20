@@ -820,7 +820,6 @@ background-color: rgba(0, 0, 0, 0.3);
 
 .close-modal:hover {
     color: var(--color-white);
-    transform: rotate(90deg);
 }
 
 /* Modal promocional estilo hero */
@@ -1130,7 +1129,6 @@ background-color: rgba(0, 0, 0, 0.3);
 
 .close-modal:hover {
     color: var(--color-white);
-    transform: rotate(90deg);
 }
 
 /* Estilos para el logo en la navbar */
