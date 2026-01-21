@@ -1,0 +1,241 @@
+/* Payment Methods Modal Component */
+
+/* Modal de medios de pago */
+.payment-methods-modal {
+    position: fixed;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 100000;
+    display: none;
+    /* Compatibilidad con Opera: usar display block y centrar con otros métodos */
+    padding: 24px;
+    background: rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    transition: opacity 0.25s ease;
+}
+
+.payment-methods-modal.is-open {
+    display: block;
+    opacity: 1;
+}
+
+.payment-methods__overlay {
+    position: absolute;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.payment-methods__dialog {
+    background: #ffffff;
+    color: #000000;
+    /* Compatibilidad con Opera: fallback para min() */
+    width: 95vw;
+    max-width: 600px;
+    max-height: 90vh;
+    overflow-y: auto;
+    border-radius: 12px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
+    padding: 32px;
+    /* Centrar el diálogo de forma compatible */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.payment-methods__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: transparent;
+    border: none;
+    color: #3498db;
+    font-size: 1.5rem;
+    cursor: pointer;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s ease;
+    z-index: 1;
+}
+
+.payment-methods__close:hover {
+    transform: scale(1.1);
+}
+
+.payment-methods__title {
+    margin: 0 0 20px 0;
+    font-size: 1.75rem;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: -0.02em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.payment-methods__description {
+    margin: 0 0 16px 0;
+    color: #4a4a4a;
+    font-size: 1rem;
+    line-height: 1.6;
+    font-weight: 400;
+}
+
+.payment-methods__virtual-wallets {
+    margin: 16px 0 0 0;
+    color: #2c5aa0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    padding: 12px 16px;
+    background: linear-gradient(135deg, #f0f7ff 0%, #e8f2ff 100%);
+    border-left: 4px solid #2c5aa0;
+    border-radius: 6px;
+}
+
+.payment-methods__divider {
+    border: none;
+    border-top: 1px solid #e0e0e0;
+    margin: 20px 0;
+}
+
+.payment-methods__section {
+    margin-bottom: 24px;
+}
+
+.payment-methods__section-title {
+    margin: 0 0 16px 0;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    letter-spacing: -0.01em;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+}
+
+.payment-methods__banks-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    margin-bottom: 16px;
+}
+
+.payment-methods__bank-item {
+    display: block;
+    padding: 16px;
+    border: 1px solid #e8e8e8;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.payment-methods__bank-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: #2c5aa0;
+}
+
+.payment-methods__bank-logo {
+    display: block;
+}
+
+.payment-methods__bank-logo img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Estilos para tarjetas de crédito y débito (usando las mismas clases) */
+/* Aumentar especificidad para sobrescribir estilos de product.css */
+#paymentMethodsModal .payment-methods__credit-cards-grid,
+.payment-methods-modal .payment-methods__credit-cards-grid,
+.payment-methods__dialog .payment-methods__credit-cards-grid {
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 16px !important;
+    margin-top: 16px !important;
+    flex-wrap: nowrap !important;
+}
+
+#paymentMethodsModal .payment-methods__credit-card-item,
+.payment-methods-modal .payment-methods__credit-card-item,
+.payment-methods__dialog .payment-methods__credit-card-item {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    padding: 16px !important;
+    min-width: auto !important;
+    width: 100% !important;
+    background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%) !important;
+    border: 1px solid #e8e8e8 !important;
+    border-radius: 10px !important;
+    transition: all 0.3s ease !important;
+    cursor: pointer !important;
+}
+
+#paymentMethodsModal .payment-methods__credit-card-item:hover,
+.payment-methods-modal .payment-methods__credit-card-item:hover,
+.payment-methods__dialog .payment-methods__credit-card-item:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    border-color: #2c5aa0 !important;
+}
+
+#paymentMethodsModal .payment-methods__credit-card-item i,
+.payment-methods-modal .payment-methods__credit-card-item i,
+.payment-methods__dialog .payment-methods__credit-card-item i {
+    font-size: 2.5rem !important;
+    color: #2c5aa0 !important;
+    transition: transform 0.3s ease !important;
+    display: block !important;
+}
+
+#paymentMethodsModal .payment-methods__credit-card-item:hover i,
+.payment-methods-modal .payment-methods__credit-card-item:hover i,
+.payment-methods__dialog .payment-methods__credit-card-item:hover i {
+    transform: scale(1.1) !important;
+}
+
+#paymentMethodsModal .payment-methods__credit-card-item span,
+.payment-methods-modal .payment-methods__credit-card-item span,
+.payment-methods__dialog .payment-methods__credit-card-item span {
+    font-size: 0.875rem !important;
+    font-weight: 600 !important;
+    color: #1a1a1a !important;
+    text-align: center !important;
+    letter-spacing: 0.01em !important;
+    display: block !important;
+    width: 100% !important;
+}
+
+@media (max-width: 768px) {
+    .payment-methods__banks-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    #paymentMethodsModal .payment-methods__credit-cards-grid,
+    .payment-methods-modal .payment-methods__credit-cards-grid,
+    .payment-methods__dialog .payment-methods__credit-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}
+
+@media (max-width: 640px) {
+    .payment-methods__dialog {
+        padding: 24px 18px 20px;
+    }
+    
+    #paymentMethodsModal .payment-methods__credit-cards-grid,
+    .payment-methods-modal .payment-methods__credit-cards-grid,
+    .payment-methods__dialog .payment-methods__credit-cards-grid {
+        grid-template-columns: repeat(2, 1fr) !important;
+    }
+}

@@ -243,6 +243,16 @@
                         }
                     }, 10);
                 }
+                
+                // Disparar evento cuando el modal PaymentMethods se carga
+                if (componentName === 'PaymentMethods') {
+                    setTimeout(() => {
+                        const paymentMethodsModal = document.getElementById('paymentMethodsModal');
+                        if (paymentMethodsModal) {
+                            window.dispatchEvent(new CustomEvent('paymentMethodsLoaded'));
+                        }
+                    }, 10);
+                }
             })
             .catch(error => {
                 console.error(`Error cargando componente ${componentName}:`, error);
@@ -298,6 +308,14 @@
             document.body.appendChild(backToTopPlaceholder);
         }
         loadComponent('BackToTop', '[data-component="backtotop"]');
+
+        // Cargar PaymentMethods (solo si existe el placeholder - en páginas de productos)
+        const paymentMethodsPlaceholder = document.querySelector('[data-component="paymentmethods"]');
+        if (paymentMethodsPlaceholder) {
+            loadComponent('PaymentMethods', '[data-component="paymentmethods"]').catch(err => {
+                console.error('Error cargando PaymentMethods:', err);
+            });
+        }
     }
 
     // Ejecutar cuando el DOM esté listo

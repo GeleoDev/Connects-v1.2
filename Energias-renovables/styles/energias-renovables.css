@@ -26,7 +26,7 @@ html, body {
     justify-content: center;
     text-align: center;
     color: var(--color-white);
-    margin-top: 140px; /* Alineado con hero principal */
+    margin-top: 80px; /* Ajustado solo para navbar (sin promobanner) */
     position: relative;
     overflow: hidden;
 }
@@ -1103,6 +1103,9 @@ html, body {
     padding: 8px 0;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
 }
 
 .price-label {
@@ -1113,6 +1116,14 @@ html, body {
     align-items: center;
     gap: 8px;
     letter-spacing: 0.5px;
+}
+
+.price-note {
+    font-size: 0.75rem;
+    color: var(--color-light-gray);
+    font-weight: 400;
+    opacity: 0.8;
+    font-style: italic;
 }
 
 .product-actions-ecommerce {

@@ -559,47 +559,7 @@
             });
         }
 
-        // Modal de medios de pago
-        const paymentMethodsModal = document.getElementById('paymentMethodsModal');
-        const paymentMethodsDialog = paymentMethodsModal?.querySelector('.payment-methods__dialog');
-        const paymentMethodsClosers = paymentMethodsModal ? paymentMethodsModal.querySelectorAll('[data-payment-methods-close]') : [];
-
-        function openPaymentMethods() {
-            if (!paymentMethodsModal) return;
-            paymentMethodsModal.classList.add('is-open');
-            paymentMethodsModal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-            paymentMethodsDialog?.focus();
-        }
-
-        function closePaymentMethods() {
-            if (!paymentMethodsModal) return;
-            paymentMethodsModal.classList.remove('is-open');
-            paymentMethodsModal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        document.querySelectorAll('.payment-icons i').forEach(icon => {
-            icon.addEventListener('click', openPaymentMethods);
-            icon.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openPaymentMethods();
-                }
-            });
-        });
-
-        paymentMethodsClosers.forEach(el => el.addEventListener('click', closePaymentMethods));
-
-        paymentMethodsModal?.addEventListener('click', (e) => {
-            if (e.target === paymentMethodsModal) closePaymentMethods();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && paymentMethodsModal?.classList.contains('is-open')) {
-                closePaymentMethods();
-            }
-        });
+        // Modal de medios de pago - ahora manejado por el componente PaymentMethods
 
         // FAQ acordeón
         const faqItems = document.querySelectorAll('.faq-item');

@@ -201,17 +201,38 @@ function initEventListeners() {
     // Modal de agradecimiento
     const thankYouModal = document.getElementById('thankYouModal');
     if (thankYouModal) {
+        // Función para abrir modal con bloqueo de scroll compatible con Opera
+        function openThankYouModal() {
+            thankYouModal.classList.add('active');
+            document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            const scrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
+        }
+        
+        // Función para cerrar modal restaurando scroll compatible con Opera
+        function closeThankYouModal() {
+            const scrollY = document.body.style.top;
+            thankYouModal.classList.remove('active');
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
+        }
+        
         document.querySelectorAll('.close-modal, .modal-close-btn').forEach(button => {
-            button.addEventListener('click', () => {
-                thankYouModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
+            button.addEventListener('click', closeThankYouModal);
         });
 
         thankYouModal.addEventListener('click', (e) => {
             if (e.target === thankYouModal) {
-                thankYouModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                closeThankYouModal();
             }
         });
     }
@@ -252,7 +273,13 @@ document.addEventListener('DOMContentLoaded', function() {
         const modal = document.getElementById('thankYouModal');
         if (modal) {
             modal.classList.add('active');
+            // Compatibilidad con Opera: bloquear scroll en body y html
             document.body.style.overflow = 'hidden';
+            document.documentElement.style.overflow = 'hidden';
+            const scrollY = window.scrollY;
+            document.body.style.position = 'fixed';
+            document.body.style.top = `-${scrollY}px`;
+            document.body.style.width = '100%';
             history.replaceState(null, null, ' '); // Limpiar el hash
         }
     }
@@ -269,21 +296,30 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Cerrar modal
+    // Cerrar modal (compatibilidad con Opera)
     const thankYouModal = document.getElementById('thankYouModal');
     if (thankYouModal) {
+        function closeThankYouModal() {
+            const scrollY = document.body.style.top;
+            thankYouModal.classList.remove('active');
+            document.body.style.position = '';
+            document.body.style.top = '';
+            document.body.style.width = '';
+            document.body.style.overflow = '';
+            document.documentElement.style.overflow = '';
+            if (scrollY) {
+                window.scrollTo(0, parseInt(scrollY || '0') * -1);
+            }
+        }
+        
         const closeButtons = thankYouModal.querySelectorAll('.close-modal, .modal-close-btn');
         closeButtons.forEach(button => {
-            button.addEventListener('click', () => {
-                thankYouModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
-            });
+            button.addEventListener('click', closeThankYouModal);
         });
 
         thankYouModal.addEventListener('click', (e) => {
             if (e.target === thankYouModal) {
-                thankYouModal.classList.remove('active');
-                document.body.style.overflow = 'auto';
+                closeThankYouModal();
             }
         });
     }

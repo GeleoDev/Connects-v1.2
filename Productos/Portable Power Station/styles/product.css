@@ -792,7 +792,11 @@
 /* Modal de medios de pago */
 .payment-methods-modal {
     position: fixed;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 100000;
     display: none;
     align-items: center;
@@ -804,24 +808,35 @@
 }
 
 .payment-methods-modal.is-open {
-    display: flex;
+    display: block;
     opacity: 1;
 }
 
 .payment-methods__overlay {
     position: absolute;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .payment-methods__dialog {
     background: #ffffff;
     color: #000000;
-    width: min(95vw, 600px);
+    /* Compatibilidad con Opera: fallback para min() */
+    width: 95vw;
+    max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
     padding: 32px;
+    /* Centrar el diálogo de forma compatible */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     position: relative;
 }
 
@@ -1076,6 +1091,7 @@
     font-size: 0.875rem;
     font-weight: 600;
     color: #1a1a1a;
+    text-align: center;
     letter-spacing: 0.01em;
 }
 
@@ -1220,7 +1236,11 @@
 .FORM-modal {
     display: none;
     position: fixed;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 99999;
     perspective: 1000px;
 }
@@ -1231,10 +1251,17 @@
 
 .FORM-modal__overlay {
     position: absolute;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: rgba(0, 0, 0, 0.55);
+    /* Compatibilidad con Opera: backdrop-filter con fallback */
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    /* Fallback para navegadores que no soportan backdrop-filter */
+    background: rgba(0, 0, 0, 0.65);
     opacity: 0;
     animation: fadeIn 0.3s ease forwards;
     will-change: opacity;
@@ -1242,7 +1269,9 @@
 
 .FORM-modal__dialog {
     position: relative;
-    width: min(640px, calc(100% - 32px));
+    /* Compatibilidad con Opera: fallback para min() */
+    width: calc(100% - 32px);
+    max-width: 640px;
     margin: 7vh auto;
     background: var(--color-secondary);
     border-radius: 16px;
@@ -1516,66 +1545,4 @@
 .product-main-image img {
     transition: opacity 0.3s ease;
     will-change: opacity;
-}
-
-/* Estilos para sección de bancos en card-benefits modal */
-.card-benefits__banks-section {
-    margin-top: 30px;
-    padding-top: 30px;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.card-benefits__banks-title {
-    color: var(--color-white);
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 20px;
-    text-align: center;
-}
-
-.card-benefits__banks-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    max-width: 400px;
-    margin: 0 auto;
-}
-
-.card-benefits__bank-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 15px;
-    background: rgba(255, 255, 255, 0.05);
-    border-radius: 10px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    transition: all 0.3s ease;
-}
-
-.card-benefits__bank-item:hover {
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
-}
-
-.card-benefits__bank-item img {
-    max-width: 100%;
-    height: auto;
-    max-height: 50px;
-    object-fit: contain;
-}
-
-@media (max-width: 768px) {
-    .card-benefits__banks-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        max-width: 100%;
-    }
-    
-    .card-benefits__bank-item {
-        padding: 10px;
-    }
-    
-    .card-benefits__bank-item img {
-        max-height: 40px;
-    }
 }

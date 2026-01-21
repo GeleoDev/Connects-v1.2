@@ -792,7 +792,11 @@
 /* Modal de medios de pago */
 .payment-methods-modal {
     position: fixed;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 100000;
     display: none;
     align-items: center;
@@ -804,24 +808,35 @@
 }
 
 .payment-methods-modal.is-open {
-    display: flex;
+    display: block;
     opacity: 1;
 }
 
 .payment-methods__overlay {
     position: absolute;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .payment-methods__dialog {
     background: #ffffff;
     color: #000000;
-    width: min(95vw, 600px);
+    /* Compatibilidad con Opera: fallback para min() */
+    width: 95vw;
+    max-width: 600px;
     max-height: 90vh;
     overflow-y: auto;
     border-radius: 12px;
     box-shadow: 0 20px 60px rgba(0, 0, 0, 0.55);
     padding: 32px;
+    /* Centrar el diálogo de forma compatible */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     position: relative;
 }
 
@@ -1076,6 +1091,7 @@
     font-size: 0.875rem;
     font-weight: 600;
     color: #1a1a1a;
+    text-align: center;
     letter-spacing: 0.01em;
 }
 
@@ -1220,7 +1236,11 @@
 .FORM-modal {
     display: none;
     position: fixed;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     z-index: 99999;
     perspective: 1000px;
 }
@@ -1231,10 +1251,17 @@
 
 .FORM-modal__overlay {
     position: absolute;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: rgba(0, 0, 0, 0.55);
+    /* Compatibilidad con Opera: backdrop-filter con fallback */
     backdrop-filter: blur(4px);
     -webkit-backdrop-filter: blur(4px);
+    /* Fallback para navegadores que no soportan backdrop-filter */
+    background: rgba(0, 0, 0, 0.65);
     opacity: 0;
     animation: fadeIn 0.3s ease forwards;
     will-change: opacity;
@@ -1242,7 +1269,9 @@
 
 .FORM-modal__dialog {
     position: relative;
-    width: min(640px, calc(100% - 32px));
+    /* Compatibilidad con Opera: fallback para min() */
+    width: calc(100% - 32px);
+    max-width: 640px;
     margin: 7vh auto;
     background: var(--color-secondary);
     border-radius: 16px;

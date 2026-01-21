@@ -20,7 +20,7 @@ const productos = [
         id: 'kit-solar',
         nombre: 'Kit Solar Completo',
         precio: '$6.900.000',
-        precioConIva: '$7.800.000 con IVA en transferencia/debito/credito',
+        precioConIva: '$7.200.000 con IVA en transferencia/debito/credito',
         imagen: '../../Energias-renovables/img/Equipo_todo_en_uno.jpg',
         descripcion: 'Kit completo de energía solar con paneles, inversor y baterías. Solución todo en uno para tu hogar o negocio.'
     },
@@ -121,6 +121,7 @@ function actualizarMainCard(producto) {
     const mainDescription = document.getElementById('mainProductDescription');
     const mainPrice = document.getElementById('mainProductPrice');
     const mainCard = document.getElementById('mainProductCard');
+    const mainArrow = document.getElementById('mainProductArrow');
 
     if (!mainImage || !mainName || !mainDescription || !mainPrice || !mainCard) return;
 
@@ -132,6 +133,8 @@ function actualizarMainCard(producto) {
         mainPrice.textContent = `${producto.precio} - ${producto.precioConIva}`;
         mainPrice.style.display = 'block';
         mainCard.classList.add('selected');
+        // La flecha siempre se muestra para permitir cambiar el producto
+        if (mainArrow) mainArrow.style.display = 'flex';
     } else {
         mainImage.src = '';
         mainImage.alt = 'Selecciona un producto';
@@ -139,6 +142,8 @@ function actualizarMainCard(producto) {
         mainDescription.textContent = 'Haz clic para ver todas las opciones disponibles';
         mainPrice.style.display = 'none';
         mainCard.classList.remove('selected');
+        // Mostrar flecha cuando no hay producto seleccionado
+        if (mainArrow) mainArrow.style.display = 'flex';
     }
 }
 
@@ -240,9 +245,6 @@ function seleccionarProducto(productId) {
         }
     });
 
-    // Mostrar producto seleccionado en el formulario
-    mostrarProductoSeleccionado(producto);
-
     // Habilitar botón de envío
     const submitBtn = document.getElementById('submitBtn');
     const productInput = document.getElementById('productInput');
@@ -250,30 +252,6 @@ function seleccionarProducto(productId) {
     if (submitBtn && productInput) {
         submitBtn.disabled = false;
         productInput.value = producto.nombre;
-    }
-
-    // Scroll suave al formulario
-    setTimeout(() => {
-        const formSection = document.querySelector('.financing-form-section');
-        if (formSection) {
-            formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        }
-    }, 300);
-}
-
-// Mostrar producto seleccionado en el formulario
-function mostrarProductoSeleccionado(producto) {
-    const display = document.getElementById('selectedProductDisplay');
-    const image = document.getElementById('selectedProductImage');
-    const name = document.getElementById('selectedProductName');
-    const price = document.getElementById('selectedProductPrice');
-
-    if (display && image && name && price) {
-        image.src = producto.imagen;
-        image.alt = producto.nombre;
-        name.textContent = producto.nombre;
-        price.textContent = `${producto.precio} - ${producto.precioConIva}`;
-        display.style.display = 'block';
     }
 }
 
@@ -291,12 +269,6 @@ function removerSeleccion() {
         item.setAttribute('aria-selected', 'false');
     });
 
-    // Ocultar producto seleccionado
-    const display = document.getElementById('selectedProductDisplay');
-    if (display) {
-        display.style.display = 'none';
-    }
-
     // Deshabilitar botón de envío
     const submitBtn = document.getElementById('submitBtn');
     const productInput = document.getElementById('productInput');
@@ -309,11 +281,8 @@ function removerSeleccion() {
 
 // Inicializar eventos
 function inicializarEventos() {
-    // Botón para remover selección
-    const btnRemove = document.getElementById('btnRemoveSelection');
-    if (btnRemove) {
-        btnRemove.addEventListener('click', removerSeleccion);
-    }
+    // Ya no hay botón para remover selección - el producto siempre debe estar seleccionado
+    // La flecha siempre permite abrir el dropdown para cambiar el producto
 }
 
 // Inicializar formulario
@@ -357,6 +326,45 @@ function inicializarFormulario() {
         });
     }
 
+    // Validación y contador para el campo de proyecto
+    const proyectoInput = document.getElementById('proyecto');
+    const charCounter = document.getElementById('charCounter');
+    if (proyectoInput && charCounter) {
+        // Actualizar contador de caracteres
+        proyectoInput.addEventListener('input', function(e) {
+            const valor = this.value;
+            const longitud = valor.length;
+            charCounter.textContent = `${longitud} / 500 caracteres`;
+            
+            // Validar caracteres especiales: solo permitir letras, números, espacios y caracteres básicos
+            // Permitir: letras (a-z, A-Z, á-ú, Á-Ú), números, espacios, puntos, comas, guiones, paréntesis
+            const caracteresPermitidos = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.,\-()]+$/;
+            
+            // Si hay caracteres no permitidos, filtrarlos
+            if (valor && !caracteresPermitidos.test(valor)) {
+                // Filtrar caracteres no permitidos
+                this.value = valor.split('').filter(char => {
+                    return /[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.,\-()]/.test(char);
+                }).join('');
+                
+                // Actualizar contador después de filtrar
+                const nuevaLongitud = this.value.length;
+                charCounter.textContent = `${nuevaLongitud} / 500 caracteres`;
+            }
+            
+            // Limitar a 500 caracteres
+            if (this.value.length > 500) {
+                this.value = this.value.slice(0, 500);
+                charCounter.textContent = '500 / 500 caracteres';
+            }
+        });
+
+        // Validar al perder el foco
+        proyectoInput.addEventListener('blur', function() {
+            validarCampo(this);
+        });
+    }
+
     // Validación en tiempo real
     const inputs = form.querySelectorAll('.form-input');
     inputs.forEach(input => {
@@ -378,9 +386,9 @@ function inicializarFormulario() {
         // Validar que haya un producto seleccionado
         if (!productoSeleccionado) {
             mostrarError('Por favor, selecciona un producto primero.');
-            const productSection = document.querySelector('.product-selection');
-            if (productSection) {
-                productSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            const productSelector = document.querySelector('.form-product-selection');
+            if (productSelector) {
+                productSelector.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
             return;
         }
@@ -454,6 +462,19 @@ function validarCampo(input) {
         if (!phoneRegex.test(valor) || valor.length < 8) {
             esValido = false;
             mensajeError = 'Ingresa un teléfono válido (solo números, mínimo 8 dígitos)';
+        }
+    }
+
+    // Validar campo de proyecto: máximo 500 caracteres, sin caracteres especiales
+    if (input.id === 'proyecto' && valor) {
+        const caracteresPermitidos = /^[a-zA-ZáéíóúÁÉÍÓÚñÑ0-9\s.,\-()]+$/;
+        if (!caracteresPermitidos.test(valor)) {
+            esValido = false;
+            mensajeError = 'El campo no puede contener caracteres especiales. Solo se permiten letras, números, espacios y signos básicos (., -)';
+        }
+        if (valor.length > 500) {
+            esValido = false;
+            mensajeError = 'El campo no puede exceder 500 caracteres';
         }
     }
 

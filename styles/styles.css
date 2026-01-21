@@ -135,7 +135,7 @@ img {
 /* Hero Slider Styles - Mejorado con flechas de navegación */
 .hero {
     height: 80vh;
-    margin-top: 140px; /* Ajustado para navbar (80px) + promobanner (~60px) */
+    margin-top: 80px; /* Ajustado solo para navbar (sin promobanner) */
     position: relative;
     overflow: hidden;
 }
@@ -780,17 +780,24 @@ background-color: rgba(0, 0, 0, 0.3);
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: transparent; /* Sin filtro oscuro */
     z-index: 2000;
-    align-items: center;
-    justify-content: center;
+    /* Compatibilidad con Opera: usar display block y centrar con otros métodos */
     opacity: 0;
     transition: all var(--transition-medium);
 }
 
 .modal.active {
-    display: flex;
+    display: block;
     opacity: 1;
+}
+
+/* Centrar contenido del modal de forma compatible */
+.modal.active .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .modal-content {
@@ -800,13 +807,15 @@ background-color: rgba(0, 0, 0, 0.3);
     max-width: 500px;
     width: 90%;
     text-align: center;
-    position: relative;
-    transform: translateY(-50px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: all var(--transition-medium);
 }
 
 .modal.active .modal-content {
-    transform: translateY(0);
+    transform: translate(-50%, -50%);
 }
 
 .modal-content h3 {
@@ -840,20 +849,32 @@ background-color: rgba(0, 0, 0, 0.3);
     /* El modal está visible pero no bloquea completamente la interacción */
     /* El hero swiper seguirá funcionando automáticamente ya que no bloqueamos el body */
     z-index: 10001 !important; /* Por encima del navbar (10000) y promobanner (9999) */
-    background-color: rgba(0, 0, 0, 0.15) !important; /* Fondo muy tenue */
+    background-color: transparent !important; /* Sin filtro oscuro */
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 }
 
 .promo-modal .modal-content {
     background: none;
     padding: 0;
     max-width: 1000px;
-    width: min(95vw, 1100px);
+    /* Compatibilidad con Opera: fallback para min() */
+    width: 95vw;
+    max-width: 1100px;
     overflow: hidden;
     pointer-events: auto; /* El contenido del modal sí recibe eventos */
     box-shadow: 0 0 30px rgba(255, 107, 53, 0.6), 
                 0 0 60px rgba(255, 140, 66, 0.4),
                 0 0 90px rgba(255, 107, 53, 0.2);
     animation: promoGlow 3s ease-in-out infinite;
+    /* Compatibilidad con Opera: centrar el contenido */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 
 .promo-modal-content .close-modal {
@@ -877,7 +898,11 @@ background-color: rgba(0, 0, 0, 0.3);
 .promo-hero::before {
     content: '';
     position: absolute;
-    inset: 0;
+    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
     background: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
     z-index: 1;
 }
@@ -890,10 +915,14 @@ background-color: rgba(0, 0, 0, 0.3);
 }
 
 .promo-hero .hero-title {
+    /* Compatibilidad con Opera: fallback para clamp() */
+    font-size: 2.4rem;
     font-size: clamp(2.4rem, 4vw, 3.2rem);
 }
 
 .promo-hero .hero-subtitle {
+    /* Compatibilidad con Opera: fallback para clamp() */
+    font-size: 1.2rem;
     font-size: clamp(1.2rem, 2.4vw, 1.6rem);
 }
 
@@ -909,7 +938,7 @@ background-color: rgba(0, 0, 0, 0.3);
 
     .hero {
         height: 70vh;
-        margin-top: 140px; /* Ajustado para navbar + promobanner */
+        margin-top: 80px; /* Ajustado solo para navbar (sin promobanner) */
     }
 
     .hero-title {
@@ -1077,14 +1106,13 @@ background-color: rgba(0, 0, 0, 0.3);
     height: 100%;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 2000;
-    align-items: center;
-    justify-content: center;
+    /* Compatibilidad con Opera: usar display block y centrar con otros métodos */
     opacity: 0;
     transition: opacity var(--transition-medium);
 }
 
 .modal.active {
-    display: flex;
+    display: block;
     opacity: 1;
 }
 
@@ -1095,14 +1123,16 @@ background-color: rgba(0, 0, 0, 0.3);
     max-width: 500px;
     width: 90%;
     text-align: center;
-    position: relative;
-    transform: translateY(-50px);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     transition: all var(--transition-medium);
     box-shadow: var(--shadow-lg);
 }
 
 .modal.active .modal-content {
-    transform: translateY(0);
+    transform: translate(-50%, -50%);
 }
 
 .modal-icon {

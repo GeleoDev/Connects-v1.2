@@ -45,7 +45,6 @@
     <!-- Component Styles - Cargar ANTES para tener prioridad -->
     <link rel="stylesheet" href="./component/Navbar/navbar.css">
     <link rel="stylesheet" href="./component/Footer/footer.css">
-    <link rel="stylesheet" href="./component/Promobanner/promobanner.css">
     <link rel="stylesheet" href="./styles/styles.css">
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="preload" href="./img/Hero11.jpg" as="image">
@@ -120,9 +119,6 @@
 <body>
     <!-- Navbar Component -->
     <div data-component="navbar"></div>
-
-    <!-- Promo Banner Component -->
-    <div data-component="promobanner"></div>
 
     <!-- Hero Slider -->
     <section class="hero">
@@ -324,31 +320,31 @@
         document.addEventListener('DOMContentLoaded', function () {
             const promoModal = document.getElementById('promoModal');
             const closeBtn = document.getElementById('promoClose');
-            const promoBanner = document.querySelector('.promo-banner');
+            const promoContent = promoModal?.querySelector('.promo-modal-content');
             if (!promoModal) return;
-
-            // Ocultar promobanner inicialmente
-            if (promoBanner) {
-                promoBanner.classList.add('promo-hidden');
-            }
 
             // Mostrar modal inmediatamente al cargar la página
             const showModal = () => {
                 promoModal.classList.add('active');
+                // Compatibilidad con Opera: asegurar que el contenido esté centrado
+                if (promoContent) {
+                    promoContent.style.position = 'absolute';
+                    promoContent.style.top = '50%';
+                    promoContent.style.left = '50%';
+                    promoContent.style.transform = 'translate(-50%, -50%)';
+                }
             };
 
             const hideModal = () => {
                 promoModal.classList.remove('active');
-                // Mostrar promobanner cuando se cierra el modal
-                if (promoBanner) {
-                    promoBanner.classList.remove('promo-hidden');
-                }
             };
 
             // Mostrar modal al cargar/refrescar la página
             showModal();
 
-            closeBtn?.addEventListener('click', hideModal);
+            if (closeBtn) {
+                closeBtn.addEventListener('click', hideModal);
+            }
             promoModal.addEventListener('click', (e) => {
                 // Solo cerrar si se hace clic en el fondo del modal (no en el contenido)
                 if (e.target === promoModal) {

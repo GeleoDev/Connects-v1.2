@@ -62,7 +62,14 @@
     els.modal.classList.add("FORM-is-open");
     els.modal.setAttribute("aria-hidden", "false");
     document.body.classList.add("FORM-modal-open");
+    // Compatibilidad con Opera: bloquear scroll en body y html
     document.body.style.overflow = "hidden";
+    document.documentElement.style.overflow = "hidden";
+    // Guardar posición de scroll para restaurarla después
+    const scrollY = window.scrollY;
+    document.body.style.position = "fixed";
+    document.body.style.top = `-${scrollY}px`;
+    document.body.style.width = "100%";
 
     // Limpiar cache después de animación
     setTimeout(() => {
@@ -80,7 +87,17 @@
     els.modal.classList.remove("FORM-is-open");
     els.modal.setAttribute("aria-hidden", "true");
     document.body.classList.remove("FORM-modal-open");
+    // Compatibilidad con Opera: restaurar scroll en body y html
+    const scrollY = document.body.style.top;
+    document.body.style.position = "";
+    document.body.style.top = "";
+    document.body.style.width = "";
     document.body.style.overflow = "";
+    document.documentElement.style.overflow = "";
+    // Restaurar posición de scroll
+    if (scrollY) {
+      window.scrollTo(0, parseInt(scrollY || '0') * -1);
+    }
 
     // Limpiar cache después de animación
     setTimeout(() => {

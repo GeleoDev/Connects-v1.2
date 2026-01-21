@@ -242,6 +242,12 @@ body {
     margin-top: 8px;
 }
 
+.main-product-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
 .main-product-arrow {
     width: 40px;
     height: 40px;
@@ -251,10 +257,21 @@ body {
     color: var(--color-accent);
     font-size: 1.25rem;
     transition: var(--transition);
+    flex-shrink: 0;
 }
 
 .main-product-arrow i {
     transition: transform 0.3s ease;
+}
+
+/* La flecha siempre se muestra para permitir cambiar el producto */
+.main-product-card.selected .main-product-arrow {
+    display: flex;
+}
+
+/* Rotar la flecha cuando el dropdown está abierto */
+.main-product-card.active .main-product-arrow i {
+    transform: rotate(180deg);
 }
 
 /* Products Dropdown */
@@ -560,6 +577,71 @@ body {
 
 .form-input:focus + .input-focus-line {
     width: 100%;
+}
+
+/* Product Selection dentro del formulario */
+.form-product-selection {
+    margin-bottom: 32px;
+}
+
+.form-product-selection .form-label {
+    margin-bottom: 12px;
+}
+
+.form-product-selection .product-selector-wrapper {
+    position: relative;
+    max-width: 100%;
+    margin: 0;
+}
+
+.form-product-selection .main-product-card {
+    margin: 0;
+}
+
+.form-product-selection .products-dropdown {
+    z-index: 200;
+}
+
+/* Textarea */
+.form-textarea {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 1rem;
+    border: 2px solid var(--border-color);
+    border-radius: 8px;
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    transition: var(--transition);
+    position: relative;
+    resize: vertical;
+    min-height: 120px;
+    font-family: inherit;
+    line-height: 1.6;
+}
+
+.form-textarea:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+}
+
+.form-textarea::placeholder {
+    color: var(--text-secondary);
+    opacity: 0.6;
+}
+
+/* Contador de caracteres */
+.char-counter {
+    display: block;
+    text-align: right;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    margin-top: 6px;
+    padding-right: 4px;
+}
+
+.char-counter::before {
+    content: '';
 }
 
 /* Submit Button */

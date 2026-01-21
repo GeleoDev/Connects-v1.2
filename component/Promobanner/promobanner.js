@@ -54,14 +54,69 @@
         const promoImage = promoBanner.querySelector('[data-promo-img]');
         
         if (promoLink) {
-            // Redirigir a Energías Renovables
-            promoLink.href = `${basePath}Energias-renovables/`;
+            // Redirigir a la sección de productos en Energías Renovables
+            promoLink.href = `${basePath}Energias-renovables/#products`;
         }
 
         if (promoImage) {
             // Ajustar la ruta del recurso según el entorno
             promoImage.src = `${basePath}img/Equipo_All_In_One_HBP_1800_en_PNG.png`;
         }
+
+        // Ajustar posición del promobanner para que quede pegado al navbar
+        function updatePromoBannerPosition() {
+            const navbar = document.querySelector('.compo-navbar');
+            if (navbar && promoBanner) {
+                // Obtener la altura real del navbar incluyendo padding y border
+                const navbarRect = navbar.getBoundingClientRect();
+                const navbarHeight = navbarRect.height;
+                // Asegurar que no haya espacio: usar la altura exacta
+                promoBanner.style.top = `${navbarHeight}px`;
+                promoBanner.style.marginTop = '0';
+                promoBanner.style.paddingTop = '0';
+            }
+        }
+
+        // Función para esperar a que el navbar esté completamente cargado
+        function waitForNavbar() {
+            const navbar = document.querySelector('.compo-navbar');
+            if (navbar && navbar.offsetHeight > 0) {
+                updatePromoBannerPosition();
+                return true;
+            }
+            return false;
+        }
+
+        // Intentar actualizar posición inmediatamente
+        if (!waitForNavbar()) {
+            // Si el navbar no está listo, esperar un poco
+            setTimeout(() => {
+                if (!waitForNavbar()) {
+                    // Si aún no está, usar requestAnimationFrame
+                    requestAnimationFrame(() => {
+                        updatePromoBannerPosition();
+                    });
+                }
+            }, 100);
+        }
+
+        // Actualizar posición cuando el navbar cambia (scroll, resize, etc.)
+        window.addEventListener('resize', updatePromoBannerPosition);
+        window.addEventListener('scroll', updatePromoBannerPosition, { passive: true });
+        
+        // Observar cambios en el navbar (por si cambia de tamaño)
+        const navbar = document.querySelector('.compo-navbar');
+        if (navbar) {
+            const resizeObserver = new ResizeObserver(() => {
+                updatePromoBannerPosition();
+            });
+            resizeObserver.observe(navbar);
+        }
+
+        // También escuchar cuando el navbar se carga completamente
+        window.addEventListener('navbarLoaded', () => {
+            setTimeout(updatePromoBannerPosition, 50);
+        });
     }
 
     function initVisibilityHandlers() {

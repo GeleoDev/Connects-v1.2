@@ -117,7 +117,7 @@
                     <!-- Price Section with Payment Icons -->
                     <div class="product-price">
                         <div class="price-header">
-                            <span class="price-label">CONSULTAR</span>
+                            <span class="price-label">CONSULTAR\</span>
                             <div class="payment-icons" aria-label="Tarjetas disponibles">
                                 <i class="fab fa-cc-visa" data-card-name="Visa" data-card-icon="fab fa-cc-visa" role="button" tabindex="0" aria-label="Visa"></i>
                                 <i class="fab fa-cc-mastercard" data-card-name="Mastercard" data-card-icon="fab fa-cc-mastercard" role="button" tabindex="0" aria-label="Mastercard"></i>
@@ -373,97 +373,8 @@
         </div>
     </div>
 
-    <!-- Modal de medios de pago -->
-    <div class="payment-methods-modal" id="paymentMethodsModal" aria-hidden="true">
-        <div class="payment-methods__overlay" data-payment-methods-close></div>
-        <div class="payment-methods__dialog" role="dialog" aria-modal="true" aria-labelledby="paymentMethodsTitle" tabindex="-1">
-            <button class="payment-methods__close" type="button" aria-label="Cerrar" data-payment-methods-close>
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <h2 class="payment-methods__title" id="paymentMethodsTitle">Medios de pago para este producto</h2>
-            
-            <p class="payment-methods__description">Podes pagar con cualquiera de estos medios. Es rápido y seguro, siempre.</p>
-            <p class="payment-methods__virtual-wallets">Se aceptan billeteras virtuales</p>
-            
-            <hr class="payment-methods__divider">
-            
-            <!-- Tarjetas de crédito -->
-            <div class="payment-methods__section">
-                <h3 class="payment-methods__section-title">Tarjetas de crédito</h3>
-                
-                <div class="payment-methods__credit-cards-grid">
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fab fa-cc-visa"></i>
-                        <span>Visa</span>
-                    </div>
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fab fa-cc-mastercard"></i>
-                        <span>Mastercard</span>
-                    </div>
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fab fa-cc-amex"></i>
-                        <span>American Express</span>
-                    </div>
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fas fa-credit-card"></i>
-                        <span>Naranja X</span>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="payment-methods__divider">
-            
-            <!-- Tarjetas de débito -->
-            <div class="payment-methods__section">
-                <h3 class="payment-methods__section-title">Tarjetas de débito</h3>
-                
-                <div class="payment-methods__debit-cards">
-                    <div class="payment-methods__debit-card">
-                        <i class="fab fa-cc-visa"></i>
-                        <span>Visa</span>
-                    </div>
-                    <div class="payment-methods__debit-card">
-                        <i class="fab fa-cc-mastercard"></i>
-                        <span>Mastercard</span>
-                    </div>
-                    <div class="payment-methods__debit-card">
-                        <i class="fab fa-cc-amex"></i>
-                        <span>American Express</span>
-                    </div>
-                    <div class="payment-methods__debit-card">
-                        <i class="fas fa-credit-card"></i>
-                        <span>Naranja X</span>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="payment-methods__divider">
-            
-            <!-- Bancos -->
-            <div class="payment-methods__section">
-                <h3 class="payment-methods__section-title">Bancos</h3>
-                
-                <div class="payment-methods__banks-grid">
-                    <div class="payment-methods__bank-item">
-                        <div class="payment-methods__bank-logo">
-                            <img src="../img/Galicia.png" alt="Galicia" />
-                        </div>
-                    </div>
-                    <div class="payment-methods__bank-item">
-                        <div class="payment-methods__bank-logo">
-                            <img src="../img/Santander.png" alt="Santander" />
-                        </div>
-                    </div>
-                    <div class="payment-methods__bank-item">
-                        <div class="payment-methods__bank-logo">
-                            <img src="../img/BBVA.png" alt="BBVA" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Payment Methods Modal Component -->
+    <div data-component="paymentmethods"></div>
 
     <!-- Scripts -->
     <script src="../../component/load-components.js"></script>
@@ -564,47 +475,7 @@
             });
         }
 
-        // Modal de medios de pago
-        const paymentMethodsModal = document.getElementById('paymentMethodsModal');
-        const paymentMethodsDialog = paymentMethodsModal?.querySelector('.payment-methods__dialog');
-        const paymentMethodsClosers = paymentMethodsModal ? paymentMethodsModal.querySelectorAll('[data-payment-methods-close]') : [];
-
-        function openPaymentMethods() {
-            if (!paymentMethodsModal) return;
-            paymentMethodsModal.classList.add('is-open');
-            paymentMethodsModal.setAttribute('aria-hidden', 'false');
-            document.body.style.overflow = 'hidden';
-            paymentMethodsDialog?.focus();
-        }
-
-        function closePaymentMethods() {
-            if (!paymentMethodsModal) return;
-            paymentMethodsModal.classList.remove('is-open');
-            paymentMethodsModal.setAttribute('aria-hidden', 'true');
-            document.body.style.overflow = '';
-        }
-
-        document.querySelectorAll('.payment-icons i').forEach(icon => {
-            icon.addEventListener('click', openPaymentMethods);
-            icon.addEventListener('keydown', (e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    openPaymentMethods();
-                }
-            });
-        });
-
-        paymentMethodsClosers.forEach(el => el.addEventListener('click', closePaymentMethods));
-
-        paymentMethodsModal?.addEventListener('click', (e) => {
-            if (e.target === paymentMethodsModal) closePaymentMethods();
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape' && paymentMethodsModal?.classList.contains('is-open')) {
-                closePaymentMethods();
-            }
-        });
+        // Modal de medios de pago - ahora manejado por el componente PaymentMethods
 
         // FAQ acordeón
         const faqItems = document.querySelectorAll('.faq-item');
