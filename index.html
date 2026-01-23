@@ -294,16 +294,41 @@
         </div>
     </div>
 
-    <!-- Modal Promocional de inicio -->
-    <div class="modal promo-modal" id="promoModal">
-        <div class="modal-content promo-modal-content">
-            <span class="close-modal" id="promoClose">&times;</span>
-            <div class="promo-hero">
-                <div class="hero-content">
-                    <h2 class="hero-title">Tecnología de vanguardia</h2>
-                    <p class="hero-subtitle">La evolucion del grupo electrógeno</p>
-                    <a href="./Energias-renovables/index.html" class="hero-cta btn btn-blink-orange">Ver productos</a>
+    <!-- Pop-up Publicitario -->
+    <div class="popup-ad" id="popupAd">
+        <div class="popup-ad__overlay"></div>
+        <div class="popup-ad__container">
+            <button class="popup-ad__close" id="popupClose" aria-label="Cerrar pop-up">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="popup-ad__content">
+                <div class="popup-ad__badge">
+                    <i class="fas fa-bolt"></i>
+                    <span>Nuevo Producto</span>
                 </div>
+                <h2 class="popup-ad__title">Kit Solar All In One</h2>
+                <p class="popup-ad__subtitle">La evolucion del grupo electrogeno</p>
+                <div class="popup-ad__features">
+                    <div class="popup-ad__feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Listo para Instalar</span>
+                    </div>
+                    <div class="popup-ad__feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Ofertas disponibles</span>
+                    </div>
+                    <div class="popup-ad__feature">
+                        <i class="fas fa-check-circle"></i>
+                        <span>Energía sustentable</span>
+                    </div>
+                </div>
+                <a href="./Energias-renovables/index.html" class="popup-ad__cta btn">
+                    <span>Descubrir más</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+            <div class="popup-ad__image-wrapper">
+                <img src="./img/KIT_Solar_ALL_IN_ONE_png.png" alt="Kit Solar All In One" class="popup-ad__image" />
             </div>
         </div>
     </div>
@@ -316,39 +341,41 @@
     <!-- Component Scripts - Se cargan dinámicamente por load-components.js -->
     <script src="./js/main.js"></script>
     <script>
-        // Abrir modal promocional solo al refrescar la página
+        // Pop-up publicitario - Aparece siempre al cargar la página
         document.addEventListener('DOMContentLoaded', function () {
-            const promoModal = document.getElementById('promoModal');
-            const closeBtn = document.getElementById('promoClose');
-            const promoContent = promoModal?.querySelector('.promo-modal-content');
-            if (!promoModal) return;
+            const popupAd = document.getElementById('popupAd');
+            const closeBtn = document.getElementById('popupClose');
+            const overlay = popupAd?.querySelector('.popup-ad__overlay');
+            
+            if (!popupAd) return;
 
-            // Mostrar modal inmediatamente al cargar la página
-            const showModal = () => {
-                promoModal.classList.add('active');
-                // Compatibilidad con Opera: asegurar que el contenido esté centrado
-                if (promoContent) {
-                    promoContent.style.position = 'absolute';
-                    promoContent.style.top = '50%';
-                    promoContent.style.left = '50%';
-                    promoContent.style.transform = 'translate(-50%, -50%)';
-                }
+            // Mostrar pop-up después de un pequeño delay
+            const showPopup = () => {
+                setTimeout(() => {
+                    popupAd.classList.add('active');
+                }, 1000);
             };
 
-            const hideModal = () => {
-                promoModal.classList.remove('active');
+            const hidePopup = () => {
+                popupAd.classList.remove('active');
             };
 
-            // Mostrar modal al cargar/refrescar la página
-            showModal();
+            // Mostrar pop-up al cargar la página
+            showPopup();
 
+            // Event listeners
             if (closeBtn) {
-                closeBtn.addEventListener('click', hideModal);
+                closeBtn.addEventListener('click', hidePopup);
             }
-            promoModal.addEventListener('click', (e) => {
-                // Solo cerrar si se hace clic en el fondo del modal (no en el contenido)
-                if (e.target === promoModal) {
-                    hideModal();
+            
+            if (overlay) {
+                overlay.addEventListener('click', hidePopup);
+            }
+
+            // Cerrar con ESC
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && popupAd.classList.contains('active')) {
+                    hidePopup();
                 }
             });
         });

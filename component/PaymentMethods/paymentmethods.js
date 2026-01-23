@@ -14,7 +14,7 @@
         return depth;
     }
 
-    // Obtener ruta base para recursos (imágenes de bancos)
+    // Obtener ruta base para recursos (imágenes de bancos y SVG de tarjetas)
     function getBasePath() {
         // Detectar si estamos en GitHub Pages
         if (window.location.hostname.includes('github.io')) {
@@ -43,13 +43,32 @@
         const bankImages = {
             'galicia': `${basePath}/Galicia.png`,
             'santander': `${basePath}/Santander.png`,
-            'bbva': `${basePath}/BBVA.png`
+            'bbva': `${basePath}/BBVA.png`,
+            'hipotecario': `${basePath}/Hipotecario.png`
         };
 
         Object.keys(bankImages).forEach(bank => {
             const img = document.querySelector(`[data-payment-bank-img="${bank}"]`);
             if (img) {
                 img.src = bankImages[bank];
+            }
+        });
+    }
+
+    // Configurar rutas de imágenes SVG de tarjetas
+    function setupCardImages() {
+        const basePath = getBasePath();
+        const cardImages = {
+            'visa': `${basePath}/SVG/Visa.svg`,
+            'mastercard': `${basePath}/SVG/mastercard.svg`,
+            'amex': `${basePath}/SVG/Amex.svg`,
+            'naranjax': `${basePath}/SVG/NaranjaX.svg`
+        };
+
+        Object.keys(cardImages).forEach(card => {
+            const img = document.querySelector(`[data-payment-card-img="${card}"]`);
+            if (img) {
+                img.src = cardImages[card];
             }
         });
     }
@@ -145,6 +164,9 @@
 
         // Configurar imágenes de bancos
         setupBankImages();
+        
+        // Configurar imágenes SVG de tarjetas
+        setupCardImages();
 
         // Inicializar listeners de iconos de pago
         attachPaymentIconListeners();

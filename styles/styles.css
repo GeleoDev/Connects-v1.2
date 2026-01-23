@@ -844,86 +844,272 @@ background-color: rgba(0, 0, 0, 0.3);
     color: var(--color-white);
 }
 
-/* Modal promocional estilo hero */
-.promo-modal {
-    /* El modal está visible pero no bloquea completamente la interacción */
-    /* El hero swiper seguirá funcionando automáticamente ya que no bloqueamos el body */
-    z-index: 10001 !important; /* Por encima del navbar (10000) y promobanner (9999) */
-    background-color: transparent !important; /* Sin filtro oscuro */
-    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
+/* Pop-up Publicitario */
+.popup-ad {
+    position: fixed;
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-}
-
-.promo-modal .modal-content {
-    background: none;
-    padding: 0;
-    max-width: 1000px;
-    /* Compatibilidad con Opera: fallback para min() */
-    width: 95vw;
-    max-width: 1100px;
-    overflow: hidden;
-    pointer-events: auto; /* El contenido del modal sí recibe eventos */
-    box-shadow: 0 0 30px rgba(255, 107, 53, 0.6), 
-                0 0 60px rgba(255, 140, 66, 0.4),
-                0 0 90px rgba(255, 107, 53, 0.2);
-    animation: promoGlow 3s ease-in-out infinite;
-    /* Compatibilidad con Opera: centrar el contenido */
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.promo-modal-content .close-modal {
-    color: var(--color-white);
-    z-index: 3;
-}
-
-.promo-hero {
-    position: relative;
-    min-height: 60vh;
+    width: 100%;
+    height: 100%;
+    z-index: 10001;
     display: flex;
     align-items: center;
     justify-content: center;
-    text-align: center;
-    background-image: url('../img/KIT_Solar_ALL_IN_ONE_pop_up.jpg');
-    background-size: cover;
-    background-position: center;
-    color: var(--color-white);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.4s ease, visibility 0.4s ease;
+    pointer-events: none;
 }
 
-.promo-hero::before {
-    content: '';
+.popup-ad.active {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: all;
+}
+
+.popup-ad__overlay {
     position: absolute;
-    /* Compatibilidad con Opera: usar top/right/bottom/left en lugar de inset */
     top: 0;
-    right: 0;
-    bottom: 0;
     left: 0;
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.35));
-    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(2px);
+    cursor: pointer;
 }
 
-.promo-hero .hero-content {
+.popup-ad__container {
+    position: relative;
+    width: 85%;
+    max-width: 1000px;
+    background: linear-gradient(145deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    border-radius: 24px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                0 0 40px rgba(255, 107, 53, 0.4),
+                0 0 80px rgba(255, 107, 53, 0.3),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    overflow: hidden;
+    transform: scale(0.9) translateY(20px);
+    transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    animation: popupSlideIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    display: flex;
+    align-items: center;
+    min-height: 550px;
+}
+
+.popup-ad.active .popup-ad__container {
+    transform: scale(1) translateY(0);
+}
+
+.popup-ad__close {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    color: var(--color-white);
+    font-size: 1.2rem;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    z-index: 10;
+    backdrop-filter: blur(10px);
+}
+
+.popup-ad__close:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: rotate(90deg) scale(1.1);
+}
+
+.popup-ad__content {
+    padding: 35px;
+    text-align: left;
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 550px;
+}
+
+.popup-ad__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 8px 20px;
+    background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+    border-radius: 50px;
+    color: var(--color-white);
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    animation: badgePulse 2s ease-in-out infinite;
+}
+
+.popup-ad__badge i {
+    font-size: 1rem;
+}
+
+.popup-ad__title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: var(--color-white);
+    margin: 0 0 15px 0;
+    line-height: 1.2;
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
+    background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.popup-ad__subtitle {
+    font-size: 1.2rem;
+    color: rgba(255, 255, 255, 0.8);
+    margin: 0 0 25px 0;
+    font-weight: 300;
+}
+
+.popup-ad__features {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+}
+
+.popup-ad__feature {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 50px;
+    color: var(--color-white);
+    font-size: 0.95rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.popup-ad__feature:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+.popup-ad__feature i {
+    color: #4ade80;
+    font-size: 1rem;
+}
+
+.popup-ad__image-wrapper {
+    flex: 1.5;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+    min-height: 550px;
+    background: linear-gradient(135deg, rgba(52, 152, 219, 0.1) 0%, rgba(41, 128, 185, 0.05) 100%);
+}
+
+.popup-ad__image {
+    width: 100%;
+    height: 100%;
+    max-width: 100%;
+    max-height: 100%;
+    min-height: 500px;
+    object-fit: contain;
+    filter: drop-shadow(0 15px 40px rgba(0, 0, 0, 0.4));
     position: relative;
     z-index: 2;
-    max-width: 800px;
-    padding: 40px 24px 48px;
 }
 
-.promo-hero .hero-title {
-    /* Compatibilidad con Opera: fallback para clamp() */
-    font-size: 2.4rem;
-    font-size: clamp(2.4rem, 4vw, 3.2rem);
+.popup-ad__cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 40px;
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: var(--color-white);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 6px 20px rgba(52, 152, 219, 0.4);
+    margin-top: 10px;
+    align-self: flex-start;
 }
 
-.promo-hero .hero-subtitle {
-    /* Compatibilidad con Opera: fallback para clamp() */
-    font-size: 1.2rem;
-    font-size: clamp(1.2rem, 2.4vw, 1.6rem);
+.popup-ad__cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(52, 152, 219, 0.6);
+    background: linear-gradient(135deg, #2980b9 0%, #3498db 100%);
+}
+
+.popup-ad__cta i {
+    transition: transform 0.3s ease;
+}
+
+.popup-ad__cta:hover i {
+    transform: translateX(5px);
+}
+
+@keyframes popupSlideIn {
+    0% {
+        transform: scale(0.8) translateY(50px);
+        opacity: 0;
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes badgePulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
+    }
+    50% {
+        box-shadow: 0 6px 25px rgba(255, 107, 53, 0.6);
+    }
+}
+
+@keyframes imageFloat {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+    }
+    50% {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+@keyframes popupGlow {
+    0%, 100% {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                    0 0 0 1px rgba(255, 255, 255, 0.1),
+                    0 0 40px rgba(255, 107, 53, 0.4),
+                    0 0 80px rgba(255, 107, 53, 0.3),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
+    50% {
+        box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                    0 0 0 1px rgba(255, 255, 255, 0.1),
+                    0 0 60px rgba(255, 107, 53, 0.6),
+                    0 0 120px rgba(255, 107, 53, 0.5),
+                    inset 0 1px 0 rgba(255, 255, 255, 0.1);
+    }
 }
 
 /* Responsive Adjustments */
@@ -950,6 +1136,63 @@ background-color: rgba(0, 0, 0, 0.3);
     }
 
     /* Estilos responsive del navbar movidos a component/Navbar/navbar.css */
+
+    .popup-ad__container {
+        width: 90%;
+        max-width: 500px;
+        min-height: 450px;
+        flex-direction: column;
+    }
+
+    .popup-ad__content {
+        padding: 25px 20px;
+        text-align: center;
+        min-height: auto;
+    }
+
+    .popup-ad__title {
+        font-size: 1.8rem;
+    }
+
+    .popup-ad__subtitle {
+        font-size: 1rem;
+    }
+
+    .popup-ad__features {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .popup-ad__feature {
+        width: 100%;
+        max-width: 220px;
+        justify-content: center;
+        font-size: 0.85rem;
+        padding: 8px 15px;
+    }
+
+    .popup-ad__image-wrapper {
+        min-height: 200px;
+        padding: 15px 0;
+        flex: 1;
+        background: transparent;
+    }
+
+    .popup-ad__image {
+        max-height: 200px;
+        min-height: auto;
+    }
+
+    .popup-ad__cta {
+        width: 100%;
+        max-width: 280px;
+        justify-content: center;
+        padding: 12px 25px;
+        font-size: 0.95rem;
+        align-self: center;
+    }
 
     .about-container,
     .contact-container {
@@ -1003,6 +1246,51 @@ background-color: rgba(0, 0, 0, 0.3);
     .swiper-button-next::after,
     .swiper-button-prev::after {
         font-size: 1.2rem;
+    }
+
+    .popup-ad__container {
+        width: 92%;
+        max-width: 420px;
+        min-height: 400px;
+    }
+
+    .popup-ad__content {
+        padding: 20px 15px;
+    }
+
+    .popup-ad__title {
+        font-size: 1.5rem;
+    }
+
+    .popup-ad__subtitle {
+        font-size: 0.9rem;
+    }
+
+    .popup-ad__badge {
+        font-size: 0.75rem;
+        padding: 6px 15px;
+    }
+
+    .popup-ad__feature {
+        max-width: 200px;
+        font-size: 0.8rem;
+        padding: 6px 12px;
+    }
+
+    .popup-ad__image-wrapper {
+        min-height: 180px;
+        padding: 10px 0;
+        background: transparent;
+    }
+
+    .popup-ad__image {
+        max-height: 180px;
+    }
+
+    .popup-ad__cta {
+        max-width: 250px;
+        padding: 10px 20px;
+        font-size: 0.9rem;
     }
 }
 

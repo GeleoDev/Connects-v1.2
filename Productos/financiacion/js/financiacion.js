@@ -12,7 +12,7 @@ const productos = [
         id: 'inversor-solar',
         nombre: 'Inversor Solar',
         precio: '$5.300.000 mas IVA en efectivo',
-        precioConIva: '$5.500.000 mas IVA en Trasnferencia/Debito',
+        precioConIva: '$5.500.000 mas IVA en Transferencia/Debito',
         imagen: '../../Energias-renovables/img/Grupo Electrogeno.jpg',
         descripcion: 'Inversor de alta eficiencia para sistemas solares fotovoltaicos. Convierte la energía DC de los paneles solares en corriente alterna (AC).'
     },
@@ -20,7 +20,7 @@ const productos = [
         id: 'kit-solar',
         nombre: 'Kit Solar Completo',
         precio: '$6.900.000 mas IVA en efectivo',
-        precioConIva: '$7.200.000 mas IVA en Transferencia/Debito',
+        precioConIva: '$7.800.000 mas IVA en Transferencia/Debito',
         imagen: '../../Energias-renovables/img/Equipo_todo_en_uno.jpg',
         descripcion: 'Kit completo de energía solar con paneles, inversor y baterías. Solución todo en uno para tu hogar o negocio.'
     },

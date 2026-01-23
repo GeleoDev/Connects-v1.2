@@ -177,11 +177,17 @@
     position: relative;
 }
 
-.price-header {
+.price-top-row {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 10px;
+}
+
+.price-header {
+    display: flex;
+    align-items: center;
+    margin-top: 5px;
 }
 
 .price-label {
@@ -194,6 +200,7 @@
     display: flex;
     gap: 10px;
     align-items: center;
+    justify-content: flex-end;
 }
 
 .payment-icons i {
@@ -1182,8 +1189,19 @@
         gap: 15px;
     }
     
+    .price-top-row {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .price-note {
+        flex: 1;
+        min-width: 120px;
+    }
+    
     .payment-icons {
-        align-self: flex-end;
+        flex-wrap: wrap;
+        justify-content: flex-end;
     }
 }
 
@@ -1200,8 +1218,22 @@
         grid-template-columns: 1fr;
     }
     
+    .price-top-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    
+    .price-note {
+        width: 100%;
+        order: 2;
+    }
+    
     .payment-icons {
         flex-wrap: wrap;
+        width: 100%;
+        justify-content: flex-start;
+        order: 1;
     }
     
     /* Reordenar bloques en mobile para mostrar el precio después de la imagen */
