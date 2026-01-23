@@ -29,6 +29,7 @@
      */
     function initWhatsAppButton() {
         const whatsappButton = document.getElementById('whatsapp-button');
+        const whatsappTooltip = document.querySelector('.whatsapp-tooltip');
         
         if (!whatsappButton) {
             console.warn('Botón de WhatsApp no encontrado');
@@ -41,9 +42,43 @@
 
         // Agregar evento de clic para tracking (opcional)
         whatsappButton.addEventListener('click', function() {
-            // Aquí puedes agregar analytics si lo necesitas
             console.log('WhatsApp button clicked');
         });
+
+        // Agregar funcionalidad para cerrar el globo al hacer clic
+        if (whatsappTooltip) {
+            // Asegurar que el cursor sea pointer
+            whatsappTooltip.style.cursor = 'pointer';
+            
+            // Función para cerrar el globo con transición
+            function closeTooltip() {
+                // Agregar clase para iniciar la animación de salida
+                whatsappTooltip.classList.add('whatsapp-tooltip-closing');
+                
+                // Esperar a que termine la transición antes de ocultar completamente
+                setTimeout(function() {
+                    whatsappTooltip.classList.add('whatsapp-tooltip-hidden');
+                    whatsappTooltip.style.display = 'none';
+                }, 1000); // Duración de la transición (1s)
+            }
+
+            // Agregar evento de clic al tooltip
+            whatsappTooltip.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                closeTooltip();
+            }, true); // Usar capture phase para asegurar que se ejecute
+
+            // También agregar al contenido del tooltip por si acaso
+            const tooltipContent = whatsappTooltip.querySelector('.tooltip-content');
+            if (tooltipContent) {
+                tooltipContent.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    closeTooltip();
+                }, true);
+            }
+        }
 
         return true;
     }

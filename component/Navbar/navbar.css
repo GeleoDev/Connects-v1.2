@@ -26,6 +26,13 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
+}
+
+@media (max-width: 763px) {
+    .compo-navbar-container {
+        overflow: visible;
+    }
 }
 
 .compo-navbar-logo {
@@ -119,7 +126,7 @@
         position: fixed;
         top: 80px;
         left: -100%;
-        width: 100%;
+        width: 100vw;
         height: calc(100vh - 80px);
         background: rgba(44, 62, 80, 0.95);
         flex-direction: column;
@@ -128,6 +135,8 @@
         z-index: 999;
         pointer-events: none;
         transition: left 0.3s ease;
+        margin: 0;
+        padding: 0;
     }
 
     .compo-navbar-menu.compo-active {

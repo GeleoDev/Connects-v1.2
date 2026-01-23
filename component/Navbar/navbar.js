@@ -70,11 +70,53 @@
             contacto: `${rootPath}index.html#contact`
         };
 
+        // Función para hacer scroll con offset
+        function scrollToHashWithOffset(hash, offset) {
+            setTimeout(() => {
+                const targetElement = document.getElementById(hash);
+                if (targetElement) {
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - offset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 100);
+        }
+
         // Actualizar enlaces
         Object.keys(links).forEach(key => {
             const link = navbar.querySelector(`[data-nav-link="${key}"]`);
             if (link) {
                 link.href = links[key];
+                
+                // Agregar evento de clic para enlaces con hash (especialmente fibra)
+                if (links[key].includes('#')) {
+                    link.addEventListener('click', function(e) {
+                        const href = this.getAttribute('href');
+                        const hashIndex = href.indexOf('#');
+                        const hash = href.substring(hashIndex + 1);
+                        const urlParts = href.split('#');
+                        const targetUrl = urlParts[0];
+                        const currentUrl = window.location.pathname + window.location.search;
+                        
+                        // Si es un enlace a otra página
+                        if (targetUrl && !currentUrl.includes(targetUrl.split('/').pop())) {
+                            e.preventDefault();
+                            sessionStorage.setItem('scrollToHash', hash);
+                            sessionStorage.setItem('scrollOffset', '20');
+                            window.location.href = href;
+                            return;
+                        }
+                        
+                        // Si estamos en la misma página
+                        e.preventDefault();
+                        scrollToHashWithOffset(hash, 20);
+                    });
+                }
+                
                 // Marcar página actual
                 if (key === currentPage) {
                     link.style.opacity = '0.7';
@@ -160,6 +202,47 @@
 
     // SIN EFECTO SCROLL - Removido completamente
 
+    // Función para manejar scroll con hash guardado
+    function handleStoredHashScroll() {
+        const scrollToHash = sessionStorage.getItem('scrollToHash');
+        const scrollOffset = parseInt(sessionStorage.getItem('scrollOffset')) || 20;
+        
+        if (scrollToHash) {
+            sessionStorage.removeItem('scrollToHash');
+            sessionStorage.removeItem('scrollOffset');
+            
+            setTimeout(() => {
+                const targetElement = document.getElementById(scrollToHash);
+                if (targetElement) {
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = elementPosition - scrollOffset;
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                }
+            }, 200);
+        } else {
+            // Si hay hash en la URL actual, también ajustarlo
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                setTimeout(() => {
+                    const targetElement = document.getElementById(hash);
+                    if (targetElement) {
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = elementPosition - 20;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    }
+                }, 200);
+            }
+        }
+    }
+
     // Inicializar navbar
     function initNavbar() {
         const navbar = document.querySelector('.compo-navbar');
@@ -180,6 +263,7 @@
 
         setupNavbar();
         initMobileMenu();
+        handleStoredHashScroll();
         // initScrollEffect() - REMOVIDO
         
         return true;
@@ -189,16 +273,28 @@
     function tryInit() {
         if (!initNavbar()) {
             setTimeout(tryInit, 100);
+        } else {
+            // Ejecutar scroll después de que el navbar esté inicializado
+            setTimeout(handleStoredHashScroll, 300);
         }
     }
 
     // Escuchar evento cuando el navbar se carga dinámicamente
-    window.addEventListener('navbarLoaded', initNavbar);
+    window.addEventListener('navbarLoaded', () => {
+        initNavbar();
+        setTimeout(handleStoredHashScroll, 300);
+    });
 
     // Intentar inicializar inmediatamente si el navbar ya existe
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', tryInit);
+        // También ejecutar scroll cuando la página esté completamente cargada
+        window.addEventListener('load', () => {
+            setTimeout(handleStoredHashScroll, 300);
+        });
     } else {
         tryInit();
+        // Si ya está cargado, ejecutar scroll después de un delay
+        setTimeout(handleStoredHashScroll, 300);
     }
 })();

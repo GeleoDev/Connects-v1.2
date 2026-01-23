@@ -54,8 +54,81 @@
         const promoImage = promoBanner.querySelector('[data-promo-img]');
         
         if (promoLink) {
+            // Calcular ruta absoluta hacia Energías Renovables
+            // Detectar si estamos en GitHub Pages
+            let targetPath;
+            if (window.location.hostname.includes('github.io')) {
+                const pathParts = window.location.pathname.split('/').filter(p => p);
+                const repoName = pathParts[0] || 'Connects-v1.2';
+                targetPath = `/${repoName}/Energias-renovables/index.html#products`;
+            } else {
+                // Para desarrollo local, usar ruta relativa desde la raíz
+                // Si estamos en la raíz, usar './', si no, calcular '../' según profundidad
+                const pathParts = window.location.pathname.split('/').filter(p => p && p !== 'index.html' && !p.includes('.html'));
+                const depth = pathParts.length;
+                
+                if (depth === 0) {
+                    targetPath = './Energias-renovables/index.html#products';
+                } else {
+                    targetPath = '../'.repeat(depth) + 'Energias-renovables/index.html#products';
+                }
+            }
+            
             // Redirigir a la sección de productos en Energías Renovables
-            promoLink.href = `${basePath}Energias-renovables/#products`;
+            promoLink.href = targetPath;
+            
+            // Agregar evento de clic para ajustar el scroll 20px más arriba
+            promoLink.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const href = this.getAttribute('href');
+                const hashIndex = href.indexOf('#');
+                const hash = hashIndex !== -1 ? href.substring(hashIndex + 1) : '';
+                const urlParts = href.split('#');
+                const targetUrl = urlParts[0];
+                const currentPath = window.location.pathname;
+                
+                // Normalizar rutas para comparación
+                const normalizePath = (path) => {
+                    return path.replace(/\/index\.html$/, '').replace(/\/$/, '') || '/';
+                };
+                
+                const normalizedTarget = normalizePath(targetUrl);
+                const normalizedCurrent = normalizePath(currentPath);
+                
+                // Verificar si es un enlace a otra página
+                const isExternalLink = !normalizedCurrent.includes('Energias-renovables') || 
+                                      !normalizedTarget.includes('Energias-renovables') ||
+                                      normalizedTarget !== normalizedCurrent;
+                
+                if (isExternalLink && hash) {
+                    // Navegar a la página y luego hacer scroll
+                    sessionStorage.setItem('scrollToHash', hash);
+                    sessionStorage.setItem('scrollOffset', '20');
+                    window.location.href = href;
+                    return;
+                }
+                
+                // Si estamos en la misma página (Energías Renovables), hacer scroll directamente
+                if (hash) {
+                    const targetElement = document.getElementById(hash);
+                    if (targetElement) {
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = Math.max(0, elementPosition - 20); // 20px más arriba
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    } else {
+                        // Si el elemento no existe aún, navegar normalmente
+                        window.location.href = href;
+                    }
+                } else {
+                    // Si no hay hash, navegar normalmente
+                    window.location.href = href;
+                }
+            });
         }
 
         if (promoImage) {
@@ -167,10 +240,63 @@
         updateByScroll();
     }
 
+    // Función para manejar el scroll cuando se carga una página con hash
+    function handleHashScroll() {
+        // Verificar si hay un hash guardado en sessionStorage
+        const scrollToHash = sessionStorage.getItem('scrollToHash');
+        const scrollOffset = parseInt(sessionStorage.getItem('scrollOffset')) || 20;
+        
+        if (scrollToHash) {
+            // Limpiar sessionStorage
+            sessionStorage.removeItem('scrollToHash');
+            sessionStorage.removeItem('scrollOffset');
+            
+            // Esperar a que el DOM esté completamente cargado y las imágenes se hayan renderizado
+            const attemptScroll = (attempts = 0) => {
+                const targetElement = document.getElementById(scrollToHash);
+                if (targetElement && targetElement.offsetHeight > 0) {
+                    const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                    const offsetPosition = Math.max(0, elementPosition - scrollOffset);
+                    
+                    window.scrollTo({
+                        top: offsetPosition,
+                        behavior: 'smooth'
+                    });
+                } else if (attempts < 10) {
+                    setTimeout(() => attemptScroll(attempts + 1), 100);
+                }
+            };
+            
+            setTimeout(() => attemptScroll(), 200);
+        } else {
+            // Si hay un hash en la URL actual, también ajustarlo
+            const hash = window.location.hash.substring(1);
+            if (hash) {
+                const attemptScroll = (attempts = 0) => {
+                    const targetElement = document.getElementById(hash);
+                    if (targetElement && targetElement.offsetHeight > 0) {
+                        const elementPosition = targetElement.getBoundingClientRect().top + window.pageYOffset;
+                        const offsetPosition = Math.max(0, elementPosition - 20);
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                    } else if (attempts < 10) {
+                        setTimeout(() => attemptScroll(attempts + 1), 100);
+                    }
+                };
+                
+                setTimeout(() => attemptScroll(), 200);
+            }
+        }
+    }
+
     // Inicializar promo banner
     function initPromoBanner() {
         setupPromoBanner();
         initVisibilityHandlers();
+        handleHashScroll();
     }
 
     // Ejecutar cuando el DOM esté listo

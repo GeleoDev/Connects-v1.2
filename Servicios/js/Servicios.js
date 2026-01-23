@@ -46,30 +46,6 @@ document.addEventListener('DOMContentLoaded', function() {
     }
     
     // ======================
-    // SCROLL TO TOP BUTTON
-    // ======================
-    const scrollToTopBtn = document.createElement('button');
-    scrollToTopBtn.innerHTML = '<i class="fas fa-arrow-up"></i>';
-    scrollToTopBtn.setAttribute('aria-label', 'Volver arriba');
-    scrollToTopBtn.classList.add('scroll-to-top');
-    document.body.appendChild(scrollToTopBtn);
-    
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
-    });
-    
-    window.addEventListener('scroll', () => {
-        if (window.scrollY > 300) {
-            scrollToTopBtn.classList.add('show');
-        } else {
-            scrollToTopBtn.classList.remove('show');
-        }
-    });
-    
-    // ======================
     // SMOOTH SCROLL
     // ======================
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

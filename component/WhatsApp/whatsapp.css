@@ -53,6 +53,28 @@
     width: 300px;
     min-width: 180px;
     overflow: visible;
+    cursor: pointer;
+    transition: opacity 1s ease, transform 1s ease, visibility 1s ease;
+    user-select: none;
+    opacity: 1;
+    visibility: visible;
+}
+
+.whatsapp-tooltip:hover {
+    opacity: 0.9;
+    transform: scale(1.02);
+}
+
+.whatsapp-tooltip-closing {
+    opacity: 0 !important;
+    transform: translateX(10px) scale(0.95) !important;
+    visibility: hidden !important;
+}
+
+.whatsapp-tooltip-hidden {
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
 }
 
 .tooltip-content {

@@ -390,7 +390,7 @@ html, body {
 
 /* Products Section */
 .products {
-    padding: 60px 0 100px 0;
+    padding: 70px 0 100px 0;
     background-color: var(--color-primary);
     position: relative;
 }
@@ -1234,7 +1234,7 @@ html, body {
     }
     
     .products {
-        padding: 40px 0 80px 0;
+        padding: 50px 0 80px 0;
     }
 }
 
