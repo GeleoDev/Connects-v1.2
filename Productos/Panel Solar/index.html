@@ -114,10 +114,10 @@
                         <div class="price-header">
                             <span class="price-label">CONSULTAR</span>
                             <div class="payment-icons" aria-label="Tarjetas disponibles">
-                                <i class="fab fa-cc-visa" data-card-name="Visa" data-card-icon="fab fa-cc-visa" role="button" tabindex="0" aria-label="Visa"></i>
-                                <i class="fab fa-cc-mastercard" data-card-name="Mastercard" data-card-icon="fab fa-cc-mastercard" role="button" tabindex="0" aria-label="Mastercard"></i>
-                                <i class="fab fa-cc-amex" data-card-name="American Express" data-card-icon="fab fa-cc-amex" role="button" tabindex="0" aria-label="American Express"></i>
-                                <i class="fas fa-credit-card" data-card-name="Tarjeta de crédito" data-card-icon="fas fa-credit-card" role="button" tabindex="0" aria-label="Tarjeta de crédito"></i>
+                                <img src="../img/SVG/Visa.svg" alt="Visa" class="payment-icon" data-card-name="Visa" role="button" tabindex="0" aria-label="Visa">
+                                <img src="../img/SVG/mastercard.svg" alt="Mastercard" class="payment-icon" data-card-name="Mastercard" role="button" tabindex="0" aria-label="Mastercard">
+                                <img src="../img/SVG/Amex.svg" alt="American Express" class="payment-icon" data-card-name="American Express" role="button" tabindex="0" aria-label="American Express">
+                                <img src="../img/SVG/NaranjaX.svg" alt="Naranja X" class="payment-icon" data-card-name="Naranja X" role="button" tabindex="0" aria-label="Naranja X">
                             </div>
                         </div>
                         
@@ -368,97 +368,8 @@
         </div>
     </div>
 
-    <!-- Modal de medios de pago -->
-    <div class="payment-methods-modal" id="paymentMethodsModal" aria-hidden="true">
-        <div class="payment-methods__overlay" data-payment-methods-close></div>
-        <div class="payment-methods__dialog" role="dialog" aria-modal="true" aria-labelledby="paymentMethodsTitle" tabindex="-1">
-            <button class="payment-methods__close" type="button" aria-label="Cerrar" data-payment-methods-close>
-                <i class="fas fa-times"></i>
-            </button>
-            
-            <h2 class="payment-methods__title" id="paymentMethodsTitle">Medios de pago para este producto</h2>
-            
-            <p class="payment-methods__description">Podes pagar con cualquiera de estos medios. Es rápido y seguro, siempre.</p>
-            <p class="payment-methods__virtual-wallets">Se aceptan billeteras virtuales</p>
-            
-            <hr class="payment-methods__divider">
-            
-            <!-- Tarjetas de crédito -->
-            <div class="payment-methods__section">
-                <h3 class="payment-methods__section-title">Tarjetas de crédito</h3>
-                
-                <div class="payment-methods__credit-cards-grid">
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fab fa-cc-visa"></i>
-                        <span>Visa</span>
-                    </div>
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fab fa-cc-mastercard"></i>
-                        <span>Mastercard</span>
-                    </div>
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fab fa-cc-amex"></i>
-                        <span>American Express</span>
-                    </div>
-                    <div class="payment-methods__credit-card-item">
-                        <i class="fas fa-credit-card"></i>
-                        <span>Naranja X</span>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="payment-methods__divider">
-            
-            <!-- Tarjetas de débito -->
-            <div class="payment-methods__section">
-                <h3 class="payment-methods__section-title">Tarjetas de débito</h3>
-                
-                <div class="payment-methods__debit-cards">
-                    <div class="payment-methods__debit-card">
-                        <i class="fab fa-cc-visa"></i>
-                        <span>Visa</span>
-                    </div>
-                    <div class="payment-methods__debit-card">
-                        <i class="fab fa-cc-mastercard"></i>
-                        <span>Mastercard</span>
-                    </div>
-                    <div class="payment-methods__debit-card">
-                        <i class="fab fa-cc-amex"></i>
-                        <span>American Express</span>
-                    </div>
-                    <div class="payment-methods__debit-card">
-                        <i class="fas fa-credit-card"></i>
-                        <span>Naranja X</span>
-                    </div>
-                </div>
-            </div>
-            
-            <hr class="payment-methods__divider">
-            
-            <!-- Bancos -->
-            <div class="payment-methods__section">
-                <h3 class="payment-methods__section-title">Bancos</h3>
-                
-                <div class="payment-methods__banks-grid">
-                    <div class="payment-methods__bank-item">
-                        <div class="payment-methods__bank-logo">
-                            <img src="../img/Galicia.png" alt="Galicia" />
-                        </div>
-                    </div>
-                    <div class="payment-methods__bank-item">
-                        <div class="payment-methods__bank-logo">
-                            <img src="../img/Santander.png" alt="Santander" />
-                        </div>
-                    </div>
-                    <div class="payment-methods__bank-item">
-                        <div class="payment-methods__bank-logo">
-                            <img src="../img/BBVA.png" alt="BBVA" />
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    <!-- Payment Methods Modal Component -->
+    <div data-component="paymentmethods"></div>
 
     <!-- Scripts -->
     <script src="../../component/load-components.js"></script>

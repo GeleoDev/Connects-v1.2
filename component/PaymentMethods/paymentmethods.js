@@ -114,7 +114,9 @@
 
         // Agregar event listeners a los iconos de pago
         function attachPaymentIconListeners() {
-            const paymentIcons = document.querySelectorAll('.payment-icons i');
+            // Buscar tanto iconos FontAwesome (<i>) como imágenes SVG (<img>)
+            // Incluye: .payment-icons i (FontAwesome), .payment-icon (SVG), y .payment-icons .payment-icon (SVG dentro del contenedor)
+            const paymentIcons = document.querySelectorAll('.payment-icons i, .payment-icon, .payment-icons .payment-icon');
             paymentIcons.forEach(icon => {
                 // Verificar si ya tiene el listener
                 if (icon.dataset.paymentListener === 'true') {
