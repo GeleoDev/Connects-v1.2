@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inversor Solar - Connects</title>
+    <title>Estacion de Energia - Connects</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <!-- Component Styles -->
     <link rel="stylesheet" href="../../component/Navbar/navbar.css">
@@ -26,7 +26,7 @@
                 <span>/</span>
                 <a href="../../Energias-renovables/index.html">Energías Renovables</a>
                 <span>/</span>
-                <span>Inversor Solar</span>
+                <span>Estacion de Energia</span>
             </nav>
         </div>
     </section>
@@ -41,7 +41,7 @@
                     <div class="product-images">
                         <div class="product-main-image">
                             
-                            <img src="../../Energias-renovables/img/Grupo Electrogeno.jpg" alt="Inversor Solar" id="mainImage" loading="eager">
+                            <img src="../../Energias-renovables/img/Grupo Electrogeno.jpg" alt="Estacion de Energia" id="mainImage" loading="eager">
                             
                         </div>
 
@@ -50,7 +50,11 @@
                     <!-- Description Section (below images) -->
                     <div class="product-description-full">
                         <h3>Descripción</h3>
-                        <p>Inversor de alta eficiencia para sistemas solares fotovoltaicos. Convierte la energía DC de los paneles solares en corriente alterna (AC) para uso doméstico y comercial. Diseñado con tecnología de punta para maximizar la eficiencia energética y garantizar un rendimiento óptimo.</p>
+                        <p>Estacion de energia TODO EN UNO. Una solución hibrida, ideal para almacenamiento y generacion de energía  sustentable (solar, eolica, o red domiciliaria) es perfecto para atender la falta de electricidad en casas, apartamentos, hoteles, locales comerciales.
+
+                            Está diseñado para satisfacer necesidades de electricidad en momentos críticos de cortes de luz, con autonomía suficiente para proporcionar energía hasta que la misma retorne. Una de sus funciones es, conmutar automaticamente, cada vez que la electricidad se corte
+                            
+                            Basado en un diseño de gabinete original, consta de un inversor de energía y batería de litio incorporados, que administra y almacena la energia recibida hasta el momento de corte. Brinda una autonomia suficiente para el consumo normal de una casa de 7 u 8 horas (consumo promedio de 700Wh)</p>
                     </div>
 
                     <!-- Características Generales (Dropdown) -->
@@ -134,13 +138,13 @@
 
                 <!-- Right Column: Product Info -->
                 <div class="product-info">
-                    <h1 class="product-title">Inversor Solar</h1>
+                    <h1 class="product-title">Estacion de Energia</h1>
                     
                     
                     <!-- Price Section with Payment Icons -->
                     <div class="product-price">
                         <div class="price-top-row">
-                            <p class="price-note">Precio en efectivo</p>
+                            <p class="price-note">Precio en Efectivo</p>
                             <div class="payment-icons" aria-label="Tarjetas disponibles">
                                 <img src="../img/SVG/Visa.svg" alt="Visa" class="payment-icon" data-card-name="Visa" role="button" tabindex="0" aria-label="Visa">
                                 <img src="../img/SVG/mastercard.svg" alt="Mastercard" class="payment-icon" data-card-name="Mastercard" role="button" tabindex="0" aria-label="Mastercard">
@@ -149,13 +153,13 @@
                             </div>
                         </div>
                         <div class="price-header">
-                            <span class="price-label">$5.300.000 + IVA</span>
+                            <span class="price-label">$ 6.413.000</span>
                         </div>
-                        <p class="price-with-tax">$5.500.000 + IVA en transferencia/debito</p>
+                        <p class="price-with-tax">$ 5.300.000 Sin impuestos nacionales.</p>
                     </div>
 
                     <!-- Financiamiento Button -->
-                    <a href="../financiacion/" class="btn btn-financing">
+                    <a href="../financiacion/?producto=estacion-de-energia" class="btn btn-financing">
                         Consultar opciones de financiación 
                     </a>
 
@@ -299,113 +303,7 @@
     <!-- Footer Component -->
     <div data-component="footer"></div>
 
-    <!-- FORM- Modal (desde 0) -->
-    <div class="FORM-modal" id="FORM-modal" aria-hidden="true">
-        <div class="FORM-modal__overlay" data-FORM-close></div>
-        <div class="FORM-modal__dialog" role="dialog" aria-modal="true" aria-label="Formulario">
-            <button type="button" class="FORM-modal__close" data-FORM-close aria-label="Cerrar">&times;</button>
-            <h3 class="FORM-modal__title" id="FORM-modal-title">Formulario</h3>
-
-            <!-- Financiamiento -->
-            <form class="FORM-form" data-FORM-form="financing" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST" enctype="multipart/form-data" novalidate>
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Consulta de Financiamiento - Inversor Solar">
-                <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-consulta/">
-                <input type="hidden" name="_error" value="../../Confirmaciones/Error/">
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-product"></label>
-                    <select class="FORM-select" id="FORM-fin-product" name="producto" required>
-                        <option value="Inversor Solar" selected>Inversor Solar</option>
-                        <option value="Kit Solar Completo">Kit Solar Completo</option>
-                        <option value="Panel Solar">Panel Solar</option>
-                        <option value="Portable Power Station">Portable Power Station</option>
-                        <option value="Cables Fotovoltaicos">Cables Fotovoltaicos</option>
-                        <option value="Soportes Colplanar">Soportes Colplanar</option>
-                    </select>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-doc">CUIT/CUIL/DNI</label>
-                    <input class="FORM-input" type="text" id="FORM-fin-doc" name="cuit_cuil_dni" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-name">Nombre y Apellido</label>
-                    <input class="FORM-input" type="text" id="FORM-fin-name" name="nombre_apellido" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-company">Razón Social</label>
-                    <input class="FORM-input" type="text" id="FORM-fin-company" name="razon_social">
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-phone">Teléfono</label>
-                    <input class="FORM-input" type="tel" id="FORM-fin-phone" name="telefono" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-email">Email</label>
-                    <input class="FORM-input" type="email" id="FORM-fin-email" name="email" required>
-                </div>
-
-                <button type="submit" class="FORM-submit">Enviar Consulta</button>
-            </form>
-
-            <!-- Transferencia -->
-            <form class="FORM-form" data-FORM-form="transfer" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST" enctype="multipart/form-data" novalidate>
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Pago por Transferencia - Inversor Solar">
-                <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-transferencia/">
-                <input type="hidden" name="_error" value="../../Confirmaciones/Error/">
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-product"></label>
-                    <select class="FORM-select" id="FORM-tr-product" name="producto" required>
-                        <option value="Inversor Solar" selected>Inversor Solar</option>
-                        <option value="Kit Solar Completo">Kit Solar Completo</option>
-                        <option value="Panel Solar">Panel Solar</option>
-                        <option value="Portable Power Station">Portable Power Station</option>
-                        <option value="Cables Fotovoltaicos">Cables Fotovoltaicos</option>
-                        <option value="Soportes Colplanar">Soportes Colplanar</option>
-                    </select>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-doc">CUIT/CUIL/DNI</label>
-                    <input class="FORM-input" type="text" id="FORM-tr-doc" name="cuit_cuil_dni" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-name">Nombre y Apellido</label>
-                    <input class="FORM-input" type="text" id="FORM-tr-name" name="nombre_apellido" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-company">Razón Social</label>
-                    <input class="FORM-input" type="text" id="FORM-tr-company" name="razon_social">
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-phone">Teléfono</label>
-                    <input class="FORM-input" type="tel" id="FORM-tr-phone" name="telefono" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-email">Email</label>
-                    <input class="FORM-input" type="email" id="FORM-tr-email" name="email" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-proof"></label>
-                    <input class="FORM-file" type="file" id="FORM-tr-proof" name="comprobante" accept=".pdf" required>
-                </div>
-
-                <button type="submit" class="FORM-submit">Enviar</button>
-            </form>
-        </div>
-    </div>
+    
     <!-- Payment Methods Modal Component -->
     <div data-component="paymentmethods"></div>
 

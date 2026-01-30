@@ -9,18 +9,18 @@ const productos = [
         descripcion: 'Panel solar fotovoltaico de alta eficiencia para generación de energía renovable. Fabricado con células monocristalinas de última generación.'
     },
     {
-        id: 'inversor-solar',
-        nombre: 'Inversor Solar',
-        precio: '$5.300.000 + IVA en efectivo',
-        precioConIva: '$5.500.000 + IVA en Transferencia/Debito',
+        id: 'estacion-de-energia',
+        nombre: 'Estacion de Energia',
+        precio: '$ 6.413.000',
+        precioConIva: '$5.300.000 Sin impuestos nacionales',
         imagen: '../../Energias-renovables/img/Grupo Electrogeno.jpg',
-        descripcion: 'Inversor de alta eficiencia para sistemas solares fotovoltaicos. Convierte la energía DC de los paneles solares en corriente alterna (AC).'
+        descripcion: 'Estacion de energia TODO EN UNO. Una solución hibrida, ideal para almacenamiento y generacion de energía  sustentable (solar, eolica, o red domiciliaria) es perfecto para atender la falta de electricidad en casas, apartamentos, hoteles, locales comerciales.'
     },
     {
         id: 'kit-solar',
         nombre: 'Kit Solar Completo',
-        precio: '$6.900.000 + IVA en efectivo',
-        precioConIva: '$7.800.000 + IVA en Transferencia/Debito',
+        precio: '$ 8.349.000',
+        precioConIva: '$ 6.900.000 Sin impuestos nacionales',
         imagen: '../../Energias-renovables/img/Equipo_todo_en_uno.jpg',
         descripcion: 'Kit completo de energía solar con paneles, inversor y baterías. Solución todo en uno para tu hogar o negocio.'
     },
@@ -64,8 +64,20 @@ document.addEventListener('DOMContentLoaded', function() {
 // Inicializar productos
 function inicializarProductos() {
     renderizarDropdown();
-    // Preseleccionar Inversor Solar
-    seleccionarProducto('inversor-solar');
+
+    // Intentar determinar el producto inicial desde la URL (?producto=...)
+    const params = new URLSearchParams(window.location.search);
+    const productoDesdeUrl = params.get('producto');
+
+    // Validar que el id pasado por URL exista en la lista de productos
+    const existeProductoUrl = productos.some(p => p.id === productoDesdeUrl);
+
+    if (productoDesdeUrl && existeProductoUrl) {
+        seleccionarProducto(productoDesdeUrl);
+    } else {
+        // Si no hay parámetro o es inválido, preseleccionar Estacion de energia por defecto
+        seleccionarProducto('estacion-de-energia');
+    }
 }
 
 // Renderizar productos en el dropdown
@@ -130,7 +142,8 @@ function actualizarMainCard(producto) {
         mainImage.alt = producto.nombre;
         mainName.textContent = producto.nombre;
         mainDescription.textContent = producto.descripcion;
-        mainPrice.textContent = `${producto.precio} - ${producto.precioConIva}`;
+        // Mostrar precios uno debajo del otro
+        mainPrice.innerHTML = `<span class="main-price-primary" style="display: block;">${producto.precio}</span><span class="main-price-secondary" style="display: block;">${producto.precioConIva}</span>`;
         mainPrice.style.display = 'block';
         mainCard.classList.add('selected');
         // La flecha siempre se muestra para permitir cambiar el producto

@@ -27,7 +27,7 @@
         // Las páginas de productos están en Productos/*/index.html
         // Las imágenes están en Productos/img/
         // Desde Productos/Kit/index.html necesitamos ../img
-        // Desde Productos/Inversor Solar/index.html necesitamos ../img
+        // Desde Productos/Estacion de energia/index.html necesitamos ../img
         const depth = getPageDepth();
         if (depth >= 2) {
             // Estamos en una página de producto (Productos/Nombre/index.html)

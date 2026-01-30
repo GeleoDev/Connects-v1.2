@@ -64,7 +64,7 @@ body {
 .financing-hero {
     background: var(--bg-secondary);
     color: var(--text-primary);
-    padding: 170px 0 40px 0;
+    padding: 100px 0 40px 0;
     position: relative;
     overflow: hidden;
     margin-top: 0;
@@ -240,6 +240,19 @@ body {
     font-weight: 700;
     color: var(--color-accent);
     margin-top: 8px;
+}
+
+.main-price-primary {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    margin-bottom: 4px;
+}
+
+.main-price-secondary {
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-secondary);
 }
 
 .main-product-actions {

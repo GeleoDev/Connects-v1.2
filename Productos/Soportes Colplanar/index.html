@@ -129,7 +129,7 @@
                     </div>
 
                     <!-- Financiamiento Button -->
-                    <a href="../financiacion/" class="btn btn-financing">
+                    <a href="../financiacion/?producto=soportes-coplanar" class="btn btn-financing">
                         Consultar opciones de financiación 
                     </a>
 
@@ -265,113 +265,7 @@
     <!-- Footer Component -->
     <div data-component="footer"></div>
 
-    <!-- FORM- Modal (desde 0) -->
-    <div class="FORM-modal" id="FORM-modal" aria-hidden="true">
-        <div class="FORM-modal__overlay" data-FORM-close></div>
-        <div class="FORM-modal__dialog" role="dialog" aria-modal="true" aria-label="Formulario">
-            <button type="button" class="FORM-modal__close" data-FORM-close aria-label="Cerrar">&times;</button>
-            <h3 class="FORM-modal__title" id="FORM-modal-title">Formulario</h3>
-
-            <!-- Financiamiento -->
-            <form class="FORM-form" data-FORM-form="financing" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST" enctype="multipart/form-data" novalidate>
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Consulta de Financiamiento - Soportes Colplanar">
-                <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-consulta/">
-                <input type="hidden" name="_error" value="../../Confirmaciones/Error/">
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-product"></label>
-                    <select class="FORM-select" id="FORM-fin-product" name="producto" required>
-                        <option value="Soportes Colplanar" selected>Soportes Colplanar</option>
-                        <option value="Inversor Solar">Inversor Solar</option>
-                        <option value="Kit Solar Completo">Kit Solar Completo</option>
-                        <option value="Panel Solar">Panel Solar</option>
-                        <option value="Portable Power Station">Portable Power Station</option>
-                        <option value="Cables Fotovoltaicos">Cables Fotovoltaicos</option>
-                    </select>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-doc">CUIT/CUIL/DNI</label>
-                    <input class="FORM-input" type="text" id="FORM-fin-doc" name="cuit_cuil_dni" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-name">Nombre y Apellido</label>
-                    <input class="FORM-input" type="text" id="FORM-fin-name" name="nombre_apellido" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-company">Razón Social</label>
-                    <input class="FORM-input" type="text" id="FORM-fin-company" name="razon_social">
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-phone">Teléfono</label>
-                    <input class="FORM-input" type="tel" id="FORM-fin-phone" name="telefono" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-fin-email">Email</label>
-                    <input class="FORM-input" type="email" id="FORM-fin-email" name="email" required>
-                </div>
-
-                <button type="submit" class="FORM-submit">Enviar Consulta</button>
-            </form>
-
-            <!-- Transferencia -->
-            <form class="FORM-form" data-FORM-form="transfer" action="https://formsubmit.co/tu-email@ejemplo.com" method="POST" enctype="multipart/form-data" novalidate>
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_subject" value="Pago por Transferencia - Soportes Colplanar">
-                <input type="hidden" name="_next" value="../../Confirmaciones/Sussefull-transferencia/">
-                <input type="hidden" name="_error" value="../../Confirmaciones/Error/">
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-product"></label>
-                    <select class="FORM-select" id="FORM-tr-product" name="producto" required>
-                        <option value="Soportes Colplanar" selected>Soportes Colplanar</option>
-                        <option value="Inversor Solar">Inversor Solar</option>
-                        <option value="Kit Solar Completo">Kit Solar Completo</option>
-                        <option value="Panel Solar">Panel Solar</option>
-                        <option value="Portable Power Station">Portable Power Station</option>
-                        <option value="Cables Fotovoltaicos">Cables Fotovoltaicos</option>
-                    </select>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-doc">CUIT/CUIL/DNI</label>
-                    <input class="FORM-input" type="text" id="FORM-tr-doc" name="cuit_cuil_dni" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-name">Nombre y Apellido</label>
-                    <input class="FORM-input" type="text" id="FORM-tr-name" name="nombre_apellido" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-company">Razón Social</label>
-                    <input class="FORM-input" type="text" id="FORM-tr-company" name="razon_social">
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-phone">Teléfono</label>
-                    <input class="FORM-input" type="tel" id="FORM-tr-phone" name="telefono" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-email">Email</label>
-                    <input class="FORM-input" type="email" id="FORM-tr-email" name="email" required>
-                </div>
-
-                <div class="FORM-field">
-                    <label class="FORM-label" for="FORM-tr-proof"></label>
-                    <input class="FORM-file" type="file" id="FORM-tr-proof" name="comprobante" accept=".pdf" required>
-                </div>
-
-                <button type="submit" class="FORM-submit">Enviar</button>
-            </form>
-        </div>
-    </div>
+    
 
     <!-- Payment Methods Modal Component -->
     <div data-component="paymentmethods"></div>
